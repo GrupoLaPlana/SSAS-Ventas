@@ -5246,7 +5246,7 @@
                 " ",
                 "VAR Calendario = CALENDAR(",
                 "    DATE( 2018, 1, 1),",
-                "    DATE( 2022, 12, 31)",
+                "    DATE( 2023, 12, 31)",
                 ") return SELECTCOLUMNS(",
                 "   Calendario,",
                 "    \"Fecha\", [Date],",

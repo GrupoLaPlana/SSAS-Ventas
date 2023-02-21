@@ -37,7 +37,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Produccion' ">
     <OutputPath>bin\Produccion\</OutputPath>
-    <DeploymentServerName>POWERBIPRO\DWHPOWERBI</DeploymentServerName>
+    <DeploymentServerName>POWERBIPROD\DWHPOWERBI</DeploymentServerName>
     <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
     <DeploymentServerDatabase>DWH_CLP_SSAS_DIRECCION</DeploymentServerDatabase>
