@@ -11,18 +11,17 @@
         "connectionDetails": {
           "protocol": "tds",
           "address": {
-            "server": "POWERBIPROD\\DWHPOWERBI",
+            "server": "POWERBI\\DWHPOWERBI",
             "database": "DWH_CLP"
           },
           "authentication": null,
           "query": null
         },
-        "options": {},
         "credential": {
-          "AuthenticationKind": "UsernamePassword",
+          "AuthenticationKind": "Windows",
           "kind": "SQL",
-          "path": "powerbiprod\\dwhpowerbi;DWH_CLP",
-          "Username": "sa",
+          "path": "powerbi\\dwhpowerbi;DWH_CLP",
+          "Username": "SERVIDOR\\Administrador",
           "EncryptConnection": false
         }
       }
@@ -2075,17 +2074,6 @@
             ]
           },
           {
-            "name": "ZTDOS51-- Margen Neto",
-            "expression": " ( ( [ZTDOS51-- Margen Operativo] - [€ Gastos Financieros]) - [€ Descuentos por pronto pago]) + [€ Ingresos Fi/SD]",
-            "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"3082\" DisplayName=\"€ Spanish (Spain)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
-              }
-            ]
-          },
-          {
             "name": "€ Ing. Financieros",
             "expression": " [€ Ingresos Fi/SD]",
             "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
@@ -2244,7 +2232,7 @@
           },
           {
             "name": "M2 Real SPLY",
-            "expression": " CALCULATE([Total Cantidad M2 (Real)],SAMEPERIODLASTYEAR(Fechas[Fecha]))"
+            "expression": " CALCULATE([Total Cantidad M2 (Real)],SAMEPERIODLASTYEAR('dim Fechas'[Fecha]))"
           },
           {
             "name": "Total Cantidad UD (Real)",
@@ -2432,6 +2420,17 @@
               "",
               "",
               "Return Opcion1"
+            ]
+          },
+          {
+            "name": "ZTDOS51-- Margen Neto",
+            "expression": " ( ( [ZTDOS51-- Margen Operativo] - [€ Gastos Financieros]) - [€ Descuentos por pronto pago]) + [€ Ingresos Fi/SD]",
+            "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"3082\" DisplayName=\"€ Spanish (Spain)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
+              }
             ]
           }
         ]
@@ -2954,7 +2953,6 @@
             "name": "MesNro",
             "dataType": "int64",
             "isNameInferred": true,
-            "isDataTypeInferred": false,
             "sourceColumn": "[MesNro]",
             "summarizeBy": "none"
           },
@@ -2963,7 +2961,6 @@
             "name": "TrimNro",
             "dataType": "double",
             "isNameInferred": true,
-            "isDataTypeInferred": false,
             "sourceColumn": "[TrimNro]",
             "summarizeBy": "none"
           },
@@ -4590,7 +4587,6 @@
             "name": "Id",
             "dataType": "int64",
             "isNameInferred": false,
-            "isDataTypeInferred": false,
             "sourceColumn": "[Value]"
           },
           {
@@ -4691,10 +4687,10 @@
               "",
               "SWITCH (",
               "    MAX ( 'Metricas visuales'[Id] ),",
-              "    1, CALCULATE([Venta Neta],DATESYTD(Fechas[Fecha])),",
-              "    2, CALCULATE([Total Cantidad M2 (Real)],DATESYTD(Fechas[Fecha])) ,",
-              "    3, CALCULATE([Total Cantidad UD (Real)],DATESYTD(Fechas[Fecha])) ,",
-              "    4, CALCULATE([Venta Neta BO],DATESYTD(Fechas[Fecha]))",
+              "    1, CALCULATE([Venta Neta],DATESYTD('dim Fechas'[Fecha])),",
+              "    2, CALCULATE([Total Cantidad M2 (Real)],DATESYTD('dim Fechas'[Fecha])) ,",
+              "    3, CALCULATE([Total Cantidad UD (Real)],DATESYTD('dim Fechas'[Fecha])) ,",
+              "    4, CALCULATE([Venta Neta BO],DATESYTD('dim Fechas'[Fecha]))",
               "    /* ,",
               "    5, CALCULATE( [% Margen Final],DATESYTD(Fechas[Fecha]))",
               "    */",
@@ -4709,10 +4705,10 @@
               "",
               "SWITCH (",
               "    MAX ( 'Metricas visuales'[Id] ),",
-              "    1, CALCULATE([Venta Neta Plan],DATESYTD(Fechas[Fecha])),",
-              "    2, CALCULATE([Total Cantidad M2 (Plan)],DATESYTD(Fechas[Fecha])),",
-              "     3, CALCULATE([Total Cantidad UD (Plan)],DATESYTD(Fechas[Fecha])),",
-              "    4, CALCULATE([Venta Neta Plan],DATESYTD(Fechas[Fecha]))",
+              "    1, CALCULATE([Venta Neta Plan],DATESYTD('dim Fechas'[Fecha])),",
+              "    2, CALCULATE([Total Cantidad M2 (Plan)],DATESYTD('dim Fechas'[Fecha])),",
+              "     3, CALCULATE([Total Cantidad UD (Plan)],DATESYTD('dim Fechas'[Fecha])),",
+              "    4, CALCULATE([Venta Neta Plan],DATESYTD('dim Fechas'[Fecha]))",
               "    /*,",
               "    3, CALCULATE([Margen Contribucion Plan],DATESYTD(Fechas[Fecha])),",
               "    4, CALCULATE([Margen Final Plan],DATESYTD(Fechas[Fecha])) ,",
@@ -4733,21 +4729,22 @@
               "",
               "",
               "",
-              "VAR _DIAS = CALCULATE(DISTINCTCOUNT(Fechas[Fecha]),Fechas[DiaSemana]<6)",
+              "VAR _DIAS = CALCULATE(DISTINCTCOUNT('dim Fechas'[Fecha]),'dim Fechas'[DiaSemana]<6)",
               "VAR _Promedio = DIVIDE([Ingresos Totales Plan],_DIAS)",
               "",
-              "VAR _YTD = CALCULATE([Ingresos Totales],DATESYTD(Fechas[Fecha]))",
+              "VAR _YTD = CALCULATE([Ingresos Totales],DATESYTD('dim Fechas'[Fecha]))",
               "",
               "",
               "",
               "RETURN _Promedio ",
+              "",
               ""
             ],
             "formatString": "#,0"
           },
           {
             "name": "Dias",
-            "expression": " CALCULATE(DISTINCTCOUNT(Fechas[Fecha]),Fechas[DiaSemana]<6)"
+            "expression": " CALCULATE(DISTINCTCOUNT( 'dim Fechas'[Fecha]), 'dim Fechas'[DiaSemana]<6)"
           },
           {
             "name": "Plan YTD / Dia",
@@ -4761,9 +4758,9 @@
               "",
               "SWITCH (",
               "    MAX ( 'Metricas visuales'[Id] ),",
-              "    1, CALCULATE([Venta Neta],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    2, CALCULATE([Total Cantidad M2 (Real)],SAMEPERIODLASTYEAR(Fechas[Fecha])) ,",
-              "    3, CALCULATE([Total Cantidad UD (Real)],SAMEPERIODLASTYEAR(Fechas[Fecha])) ",
+              "    1, CALCULATE([Venta Neta],SAMEPERIODLASTYEAR('dim Fechas'[Fecha])),",
+              "    2, CALCULATE([Total Cantidad M2 (Real)],SAMEPERIODLASTYEAR('dim Fechas'[Fecha])) ,",
+              "    3, CALCULATE([Total Cantidad UD (Real)],SAMEPERIODLASTYEAR('dim Fechas'[Fecha])) ",
               "    /*,",
               "    4, CALCULATE([Margen Final],SAMEPERIODLASTYEAR(Fechas[Fecha])) ,",
               "    5, CALCULATE( [% Margen Final],SAMEPERIODLASTYEAR(Fechas[Fecha]))",
@@ -4868,10 +4865,10 @@
             "name": "Titulo VAR1",
             "expression": [
               "",
-              "VAR _Year = SELECTEDVALUE ( Fechas[Año] )",
-              "VAR _Month = SELECTEDVALUE ( Fechas[Mes] )",
-              "VAR _FirstMonth = MONTH(MIN(Fechas[Fecha]))",
-              "VAR _LastMonth = MONTH(MAX(Fechas[Fecha]))",
+              "VAR _Year = SELECTEDVALUE ( 'dim Fechas'[Año] )",
+              "VAR _Month = SELECTEDVALUE ( 'dim Fechas'[Mes] )",
+              "VAR _FirstMonth = MONTH(MIN('dim Fechas'[Fecha]))",
+              "VAR _LastMonth = MONTH(MAX('dim Fechas'[Fecha]))",
               "VAR _Sociedad = SELECTEDVALUE ( 'dim Sociedades'[Poblacion] )",
               "",
               "VAR _Result =",
@@ -4908,8 +4905,8 @@
             "expression": [
               " ",
               "VAR _Metricas = SELECTEDVALUE('Metricas visuales Costes'[Metricas Costes])",
-              "VAR _SelectedYear = SELECTEDVALUE(Fechas[Año])",
-              "VAR _PreviousYear = SELECTEDVALUE(Fechas[Año])-1",
+              "VAR _SelectedYear = SELECTEDVALUE('dim Fechas'[Año])",
+              "VAR _PreviousYear = SELECTEDVALUE('dim Fechas'[Año])-1",
               "",
               "RETURN ",
               "",
@@ -4920,10 +4917,10 @@
             "name": "Titulo VAR Clientes",
             "expression": [
               "",
-              "VAR _Year = SELECTEDVALUE ( Fechas[Año] )",
-              "VAR _Month = SELECTEDVALUE ( Fechas[Mes] )",
-              "VAR _FirstMonth = MONTH(MIN(Fechas[Fecha]))",
-              "VAR _LastMonth = MONTH(MAX(Fechas[Fecha]))",
+              "VAR _Year = SELECTEDVALUE ( 'dim Fechas'[Año] )",
+              "VAR _Month = SELECTEDVALUE ( 'dim Fechas'[Mes] )",
+              "VAR _FirstMonth = MONTH(MIN('dim Fechas'[Fecha]))",
+              "VAR _LastMonth = MONTH(MAX('dim Fechas'[Fecha]))",
               "VAR _Sociedad = SELECTEDVALUE ( 'dim Sociedades'[Poblacion] )",
               "",
               "VAR _Result =",
@@ -4943,10 +4940,10 @@
             "name": "Titulo VAR Geografia",
             "expression": [
               "",
-              "VAR _Year = SELECTEDVALUE ( Fechas[Año] )",
-              "VAR _Month = SELECTEDVALUE ( Fechas[Mes] )",
-              "VAR _FirstMonth = MONTH(MIN(Fechas[Fecha]))",
-              "VAR _LastMonth = MONTH(MAX(Fechas[Fecha]))",
+              "VAR _Year = SELECTEDVALUE ( 'dim Fechas'[Año] )",
+              "VAR _Month = SELECTEDVALUE ( 'dim Fechas'[Mes] )",
+              "VAR _FirstMonth = MONTH(MIN('dim Fechas'[Fecha]))",
+              "VAR _LastMonth = MONTH(MAX('dim Fechas'[Fecha]))",
               "VAR _Sociedad = SELECTEDVALUE ( 'dim Sociedades'[Poblacion] )",
               "",
               "VAR _Result =",
@@ -4967,10 +4964,10 @@
             "expression": [
               " ",
               "VAR _Metricas = SWITCH(SELECTEDVALUE('Metricas visuales'[Id]),1,\"Euros\",2,\"M2\",\"Otros\")",
-              "VAR _Year = SELECTEDVALUE ( Fechas[Año] )",
-              "VAR _Month = SELECTEDVALUE ( Fechas[Mes] )",
-              "VAR _FirstMonth = MONTH(MIN(Fechas[Fecha]))",
-              "VAR _LastMonth = MONTH(MAX(Fechas[Fecha]))",
+              "VAR _Year = SELECTEDVALUE ( 'dim Fechas'[Año] )",
+              "VAR _Month = SELECTEDVALUE ( 'dim Fechas'[Mes] )",
+              "VAR _FirstMonth = MONTH(MIN('dim Fechas'[Fecha]))",
+              "VAR _LastMonth = MONTH(MAX('dim Fechas'[Fecha]))",
               "VAR _Sector = SELECTEDVALUE('dim Sectores'[Descripcion Sector])",
               "",
               "VAR _Result =",
@@ -5039,6 +5036,7 @@
       },
       {
         "name": "Fechas",
+        "isHidden": true,
         "dataCategory": "Time",
         "columns": [
           {
@@ -5248,7 +5246,7 @@
                 " ",
                 "VAR Calendario = CALENDAR(",
                 "    DATE( 2018, 1, 1),",
-                "    DATE( 2022, 12, 31)",
+                "    DATE( 2023, 12, 31)",
                 ") return SELECTCOLUMNS(",
                 "   Calendario,",
                 "    \"Fecha\", [Date],",
@@ -5340,7 +5338,6 @@
             "name": "Id",
             "dataType": "int64",
             "isNameInferred": false,
-            "isDataTypeInferred": false,
             "sourceColumn": "[Value]"
           },
           {
@@ -5415,30 +5412,30 @@
             "expression": [
               "SWITCH(",
               "    MAX( 'Metricas visuales Costes'[Id] ),",
-              "    1, CALCULATE( [Ingresos Totales], DATESYTD( 'Fechas'[Fecha] ) ),",
+              "    1, CALCULATE( [Ingresos Totales], DATESYTD(  'dim Fechas'[Fecha] ) ),",
               "    2,",
               "        CALCULATE(",
-              "            [Total Cantidad M2 (Real)], DATESYTD( 'Fechas'[Fecha] )",
+              "            [Total Cantidad M2 (Real)], DATESYTD(  'dim Fechas'[Fecha] )",
               "        ),",
               "    3,",
               "        CALCULATE(",
               "            [Venta Neta],",
-              "            DATESYTD( 'Fechas'[Fecha] )",
+              "            DATESYTD(  'dim Fechas'[Fecha] )",
               "        ),",
-              "    4, CALCULATE( [Pr. Estandar], DATESYTD( 'Fechas'[Fecha] ) ),",
-              "    5, CALCULATE( [ZTDOS51-- Margen Industrial], DATESYTD( 'Fechas'[Fecha] ) ),",
+              "    4, CALCULATE( [Pr. Estandar], DATESYTD(  'dim Fechas'[Fecha]) ),",
+              "    5, CALCULATE( [ZTDOS51-- Margen Industrial], DATESYTD(  'dim Fechas'[Fecha] ) ),",
               "    6,",
               "        CALCULATE(",
-              "            [ZTDOS51-- Margen Contribucion], DATESYTD( 'Fechas'[Fecha] )",
+              "            [ZTDOS51-- Margen Contribucion], DATESYTD(  'dim Fechas'[Fecha] )",
               "        ),",
               "    7,",
               "        CALCULATE(",
               "            [ZTDOS51-- Margen Operativo],",
-              "            DATESYTD( 'Fechas'[Fecha] )",
+              "            DATESYTD(  'dim Fechas'[Fecha] )",
               "        ),",
-              "    8, CALCULATE( [ZTDOS51-- Margen Neto], DATESYTD( 'Fechas'[Fecha] ) ),",
+              "    8, CALCULATE( [ZTDOS51-- Margen Neto], DATESYTD(  'dim Fechas'[Fecha] ) ),",
               "    9,",
-              "        CALCULATE( [ZTDOS51-- Margen Final], DATESYTD( 'Fechas'[Fecha] ) )",
+              "        CALCULATE( [ZTDOS51-- Margen Final], DATESYTD(  'dim Fechas'[Fecha] ) )",
               ")"
             ],
             "formatString": "#,0"
@@ -5449,41 +5446,41 @@
               "SWITCH(",
               "    MAX( 'Metricas visuales Costes'[Id] ),",
               "    1,",
-              "        CALCULATE( [Ingresos Totales Plan], DATESYTD( 'Fechas'[Fecha] ) ),",
+              "        CALCULATE( [Ingresos Totales Plan], DATESYTD( 'dim Fechas'[Fecha] ) ),",
               "    2,",
               "        CALCULATE(",
               "            [Total Cantidad M2 (Plan)],",
-              "            DATESYTD( 'Fechas'[Fecha] )",
+              "            DATESYTD('dim Fechas'[Fecha] )",
               "        ),",
               "    3,",
               "        CALCULATE(",
               "            [Venta Neta Plan],",
-              "            DATESYTD( 'Fechas'[Fecha] )",
+              "            DATESYTD('dim Fechas'[Fecha] )",
               "        ),",
               "    4,",
-              "        CALCULATE( [Pr. Estándar Plan], DATESYTD( 'Fechas'[Fecha] ) ),",
+              "        CALCULATE( [Pr. Estándar Plan], DATESYTD( 'dim Fechas'[Fecha] ) ),",
               "    5,",
               "        CALCULATE(",
               "            [Margen Industrial Plan],",
-              "            DATESYTD( 'Fechas'[Fecha] )",
+              "            DATESYTD('dim Fechas'[Fecha] )",
               "        ),",
               "    6,",
               "        CALCULATE(",
               "            [Margen Contribucion Plan],",
-              "            DATESYTD( 'Fechas'[Fecha] )",
+              "            DATESYTD( 'dim Fechas'[Fecha] )",
               "        ),",
               "    7,",
               "        CALCULATE(",
               "            [Margen Operativo Plan],",
-              "            DATESYTD( 'Fechas'[Fecha] )",
+              "            DATESYTD( 'dim Fechas'[Fecha] )",
               "        ),",
               "    8,",
               "        CALCULATE(",
               "            [Margen Neto Plan],",
-              "            DATESYTD( 'Fechas'[Fecha] )",
+              "            DATESYTD( 'dim Fechas'[Fecha] )",
               "        ),",
               "    9,",
-              "        CALCULATE( [Margen Final Plan], DATESYTD( 'Fechas'[Fecha] ) )",
+              "        CALCULATE( [Margen Final Plan], DATESYTD( 'dim Fechas'[Fecha] ) )",
               ")"
             ],
             "formatString": "#,0"
@@ -5496,49 +5493,50 @@
               "    1,",
               "        CALCULATE(",
               "            [Ingresos Totales],",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])",
               "        ),",
               "    2,",
               "        CALCULATE(",
               "            [Total Cantidad M2 (Real)],",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    3,",
               "        CALCULATE(",
               "            [Venta Neta],",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    4,",
               "        CALCULATE(",
               "            [Pr. Estandar],",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    5,",
               "        CALCULATE(",
               "            [ZTDOS51-- Margen Industrial],",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    6,",
               "        CALCULATE(",
               "            [ZTDOS51-- Margen Contribucion],",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    7,",
               "        CALCULATE(",
               "            [ZTDOS51-- Margen Operativo],",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    8,",
               "        CALCULATE(",
               "            [ZTDOS51-- Margen Neto],",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    9,",
               "        CALCULATE(",
               "            [ZTDOS51-- Margen Final],",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        )",
-              ")"
+              ")",
+              ""
             ],
             "formatString": "#,0"
           },
@@ -5546,17 +5544,6 @@
             "name": "Diferencia Costes SPLY",
             "expression": "[Resultado Real]-[Real  SPLY]",
             "formatString": "#,0"
-          },
-          {
-            "name": "RANK Agrupado 1",
-            "expression": [
-              "VAR _Top = RANKX(ALL('dim Clientes'),[Diferencia Costes SPLY],,DESC,Dense)",
-              "",
-              "VAR _Down = RANKX(ALL('dim Clientes'),[Diferencia Costes SPLY],,ASC,Dense)",
-              "",
-              "RETURN",
-              "IF(_Top<=10,\"TOP10\",IF(_Down<=10,\"DOWN10\",\"RESTO\"))"
-            ]
           },
           {
             "name": "% Real s / SPLY 1",
@@ -5575,48 +5562,48 @@
               "    MAX( 'Metricas visuales Costes'[Id] ),",
               "    1,",
               "        CALCULATE(",
-              "            CALCULATE([Ingresos Totales],DATESYTD(Fechas[Fecha])),",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            CALCULATE([Ingresos Totales],DATESYTD( 'dim Fechas'[Fecha])),",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    2,",
               "        CALCULATE(",
-              "            CALCULATE([Total Cantidad M2 (Real)],DATESYTD(Fechas[Fecha])),",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            CALCULATE([Total Cantidad M2 (Real)],DATESYTD( 'dim Fechas'[Fecha])),",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    3,",
               "        CALCULATE(",
-              "            CALCULATE([Venta Neta],DATESYTD(Fechas[Fecha])),",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            CALCULATE([Venta Neta],DATESYTD( 'dim Fechas'[Fecha])),",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    4,",
               "        CALCULATE(",
-              "            CALCULATE([Pr. Estandar],DATESYTD(Fechas[Fecha])),",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            CALCULATE([Pr. Estandar],DATESYTD( 'dim Fechas'[Fecha])),",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    5,",
               "        CALCULATE(",
-              "            CALCULATE([ZTDOS51-- Margen Industrial],DATESYTD(Fechas[Fecha])),",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            CALCULATE([ZTDOS51-- Margen Industrial],DATESYTD( 'dim Fechas'[Fecha])),",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    6,",
               "        CALCULATE(",
-              "            CALCULATE([ZTDOS51-- Margen Contribucion],DATESYTD(Fechas[Fecha])),",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            CALCULATE([ZTDOS51-- Margen Contribucion],DATESYTD( 'dim Fechas'[Fecha])),",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    7,",
               "        CALCULATE(",
-              "            CALCULATE([ZTDOS51-- Margen Operativo],DATESYTD(Fechas[Fecha])),",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            CALCULATE([ZTDOS51-- Margen Operativo],DATESYTD( 'dim Fechas'[Fecha])),",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    8,",
               "        CALCULATE(",
-              "            CALCULATE([ZTDOS51-- Margen Neto],DATESYTD(Fechas[Fecha])),",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            CALCULATE([ZTDOS51-- Margen Neto],DATESYTD( 'dim Fechas'[Fecha])),",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        ),",
               "    9,",
               "        CALCULATE(",
-              "            CALCULATE([ZTDOS51-- Margen Final],DATESYTD(Fechas[Fecha])),",
-              "            SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )",
+              "            CALCULATE([ZTDOS51-- Margen Final],DATESYTD( 'dim Fechas'[Fecha])),",
+              "            SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )",
               "        )",
               ")",
               ""
@@ -5624,10 +5611,44 @@
             "formatString": "#,0"
           },
           {
+            "name": "RANK Agrupado 1",
+            "expression": [
+              "VAR _Top = RANKX(ALL('dim Clientes'),[Diferencia Costes SPLY],,DESC,Dense)",
+              "",
+              "VAR _Down = RANKX(ALL('dim Clientes'),[Diferencia Costes SPLY],,ASC,Dense)",
+              "",
+              "RETURN",
+              "IF(_Top<=10,\"TOP10\",IF(_Down<=10,\"DOWN10\",\"RESTO\"))"
+            ]
+          },
+          {
             "name": "Ranking Ventas",
             "expression": [
               " RANKX(ALL('dim Clientes'),[Venta neta],,DESC,Dense)",
               "",
+              ""
+            ]
+          },
+          {
+            "name": "ZCTAREDOS -- Costes Real",
+            "expression": [
+              "",
+              "",
+              "/*",
+              "SWITCH(",
+              "    MAX( 'Metricas visuales Costes'[Id] ),",
+              "    1, [Ingresos Totales],",
+              "    2, [Total Cantidad M2 (Real)],",
+              "    3, [Venta Neta],",
+              "    4, [Pr. Estandar],",
+              "    5, [ZCTAREDOS2-- Margen Industrial],",
+              "    6, [ZCTAREDOS2-- Margen Contribucion],",
+              "    7, [ZCTAREDOS2-- Margen Operativo],",
+              "    8, [ZCTAREDOS2-- Margen Neto],",
+              "    9, [ZCTAREDOS2-- Margen Final]",
+              "    ",
+              ")",
+              "*/",
               ""
             ]
           }
@@ -5824,40 +5845,40 @@
             "name": "Costes Visual SPLY",
             "expression": [
               "SWITCH(MAX('Detalle Costes'[Sub_Id]),",
-              "    \"1.1\",CALCULATE([€ Precio Neto 5000], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"1.2\",CALCULATE([€ Ingresos], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"1.3\",CALCULATE([€ C.Transport. Teorico], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"1.4\",CALCULATE([€ Rec. Multsdad], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"1.5\",CALCULATE([€ Abono Mala Calidad], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"3.1\",CALCULATE([Ingresos Totales], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"3.2\",CALCULATE([€ Descuento Ventas]*-1, SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"3.3\",CALCULATE([€ Rappels], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"3.4\",CALCULATE([€ Abono Mala Calidad], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"3.5\",CALCULATE([€ Dtos Rotos Montadora]*-1, SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"5.1\",CALCULATE([Pr. Estandar], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"5.2\",CALCULATE([Desv. Product Costing], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"5.3\",CALCULATE([Desviacion Ordenes], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.1\",CALCULATE([€ Comision de Ventas], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.2\",CALCULATE([€ Transporte Total], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.3\",CALCULATE([€ Canon Unic], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.4\",CALCULATE([€ Coste Recargo Lidl], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.5\",CALCULATE([€ Coste Chep Palet], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.6\",CALCULATE([€ Coste Palets], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.7\",CALCULATE([€ Coste de Montaje], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.8\",CALCULATE([€ Seguro Caucion], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.9\",CALCULATE([€ Compra Troq/Cliches/Utiles], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.10\",CALCULATE([€ Gastos Montadora], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.11\",CALCULATE([€ Gastos Dir. Cogenerac.], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"6.12\",CALCULATE([€ Gastos Recorte], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"7.1\",CALCULATE([€ Estructura Comercial], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"7.2\",CALCULATE([€ Logistica Carga/Mtto], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"7.3\",CALCULATE([€ Estructura Oficinas], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"7.4\",CALCULATE([€ Estructura General], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"7.5\",CALCULATE([€ Gastos Cogeneracion], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"8.1\",CALCULATE([€ Ing. Financieros], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"8.2\",CALCULATE([€ Gastos Financieros], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"8.3\",CALCULATE([€ Descuentos por pronto pago], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] )),",
-              "    \"9.1\",CALCULATE([Ing. Extraordin. Total], SAMEPERIODLASTYEAR( 'Fechas'[Fecha] ))",
+              "    \"1.1\",CALCULATE([€ Precio Neto 5000], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"1.2\",CALCULATE([€ Ingresos], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])),",
+              "    \"1.3\",CALCULATE([€ C.Transport. Teorico], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"1.4\",CALCULATE([€ Rec. Multsdad], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"1.5\",CALCULATE([€ Abono Mala Calidad], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"3.1\",CALCULATE([Ingresos Totales], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])),",
+              "    \"3.2\",CALCULATE([€ Descuento Ventas]*-1, SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"3.3\",CALCULATE([€ Rappels], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])),",
+              "    \"3.4\",CALCULATE([€ Abono Mala Calidad], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])),",
+              "    \"3.5\",CALCULATE([€ Dtos Rotos Montadora]*-1, SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"5.1\",CALCULATE([Pr. Estandar], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"5.2\",CALCULATE([Desv. Product Costing], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"5.3\",CALCULATE([Desviacion Ordenes], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])),",
+              "    \"6.1\",CALCULATE([€ Comision de Ventas], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] )),",
+              "    \"6.2\",CALCULATE([€ Transporte Total], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"6.3\",CALCULATE([€ Canon Unic], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"6.4\",CALCULATE([€ Coste Recargo Lidl], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] )),",
+              "    \"6.5\",CALCULATE([€ Coste Chep Palet], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"6.6\",CALCULATE([€ Coste Palets], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])),",
+              "    \"6.7\",CALCULATE([€ Coste de Montaje], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])),",
+              "    \"6.8\",CALCULATE([€ Seguro Caucion], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"6.9\",CALCULATE([€ Compra Troq/Cliches/Utiles], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"6.10\",CALCULATE([€ Gastos Montadora], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])),",
+              "    \"6.11\",CALCULATE([€ Gastos Dir. Cogenerac.], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"6.12\",CALCULATE([€ Gastos Recorte], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"7.1\",CALCULATE([€ Estructura Comercial], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"7.2\",CALCULATE([€ Logistica Carga/Mtto], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"7.3\",CALCULATE([€ Estructura Oficinas], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"7.4\",CALCULATE([€ Estructura General], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"7.5\",CALCULATE([€ Gastos Cogeneracion], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"8.1\",CALCULATE([€ Ing. Financieros], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])),",
+              "    \"8.2\",CALCULATE([€ Gastos Financieros], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha] )),",
+              "    \"8.3\",CALCULATE([€ Descuentos por pronto pago], SAMEPERIODLASTYEAR(  'dim Fechas'[Fecha])),",
+              "    \"9.1\",CALCULATE([Ing. Extraordin. Total], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ))",
               ")",
               ""
             ]
@@ -6047,26 +6068,26 @@
             "name": "Desglose Costes Visual SPLY",
             "expression": [
               "SWITCH(MAX('Detalle Costes 2'[Sub_Id]),",
-              "    \"5.1.1\",CALCULATE([* Consumo Papeles],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.1.2\",CALCULATE([* Consumo Pdtos Ondulados],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.1.3\",CALCULATE([* Consumo Tintas],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.1.4\",CALCULATE([* Consumo Palets],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.1.5\",CALCULATE([* Consumo Aprov. Varios],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.1.6\",CALCULATE([* Actividad Externa],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.1.7\",CALCULATE([* Coste Horas maquina],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.1.8\",CALCULATE([* Coste MOD],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.1.9\",CALCULATE([* Coste Estructura],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.1.10\",CALCULATE([* Coste Montaje],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.3.1\",CALCULATE([** Desv. Precio input],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.3.2\",CALCULATE([** Desviac. Estructura],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.3.3\",CALCULATE([** Desv. Ctd. a emplear],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.3.4\",CALCULATE([** Desv. Restante input],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.3.5\",CALCULATE([** Desv. Precio imputac],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.3.6\",CALCULATE([** Desv. Costes Fijos],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.3.7\",CALCULATE([** Desv. Ctd imputacion],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.3.8\",CALCULATE([** Desviacion Restante],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.3.9\",CALCULATE([** Desv. Rechazo],SAMEPERIODLASTYEAR(Fechas[Fecha])),",
-              "    \"5.3.10\",CALCULATE([** Desv. Precio Mixto],SAMEPERIODLASTYEAR(Fechas[Fecha]))",
+              "    \"5.1.1\",CALCULATE([* Consumo Papeles],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.1.2\",CALCULATE([* Consumo Pdtos Ondulados],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.1.3\",CALCULATE([* Consumo Tintas],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.1.4\",CALCULATE([* Consumo Palets],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.1.5\",CALCULATE([* Consumo Aprov. Varios],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.1.6\",CALCULATE([* Actividad Externa],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.1.7\",CALCULATE([* Coste Horas maquina],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.1.8\",CALCULATE([* Coste MOD],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.1.9\",CALCULATE([* Coste Estructura],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.1.10\",CALCULATE([* Coste Montaje],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.3.1\",CALCULATE([** Desv. Precio input],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.3.2\",CALCULATE([** Desviac. Estructura],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.3.3\",CALCULATE([** Desv. Ctd. a emplear],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.3.4\",CALCULATE([** Desv. Restante input],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.3.5\",CALCULATE([** Desv. Precio imputac],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.3.6\",CALCULATE([** Desv. Costes Fijos],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.3.7\",CALCULATE([** Desv. Ctd imputacion],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.3.8\",CALCULATE([** Desviacion Restante],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.3.9\",CALCULATE([** Desv. Rechazo],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha])),",
+              "    \"5.3.10\",CALCULATE([** Desv. Precio Mixto],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha]))",
               ")"
             ]
           }
@@ -6296,10 +6317,10 @@
             "expression": [
               " ",
               "VAR _Metricas = SWITCH(SELECTEDVALUE('Metricas visuales'[Id]),1,\"Euros\",2,\"M2\",\"Otros\")",
-              "VAR _Year = SELECTEDVALUE ( Fechas[Año] )",
-              "VAR _Month = SELECTEDVALUE ( Fechas[Mes] )",
-              "VAR _FirstMonth = MONTH(MIN(Fechas[Fecha]))",
-              "VAR _LastMonth = MONTH(MAX(Fechas[Fecha]))",
+              "VAR _Year = SELECTEDVALUE ( 'dim Fechas'[Año] )",
+              "VAR _Month = SELECTEDVALUE ( 'dim Fechas'[Mes] )",
+              "VAR _FirstMonth = MONTH(MIN('dim Fechas'[Fecha]))",
+              "VAR _LastMonth = MONTH(MAX('dim Fechas'[Fecha]))",
               "VAR _Sector = SELECTEDVALUE('dim Sectores'[Descripcion Sector])",
               "",
               "",
@@ -6323,10 +6344,10 @@
             "expression": [
               " ",
               "VAR _Metricas = SWITCH(SELECTEDVALUE('Metricas visuales'[Id]),1,\"Euros\",2,\"M2\",\"Otros\")",
-              "VAR _Year = SELECTEDVALUE ( Fechas[Año] )",
-              "VAR _Month = SELECTEDVALUE ( Fechas[Mes] )",
-              "VAR _FirstMonth = MONTH(MIN(Fechas[Fecha]))",
-              "VAR _LastMonth = MONTH(MAX(Fechas[Fecha]))",
+              "VAR _Year = SELECTEDVALUE ( 'dim Fechas'[Año] )",
+              "VAR _Month = SELECTEDVALUE ( 'dim Fechas'[Mes] )",
+              "VAR _FirstMonth = MONTH(MIN('dim Fechas'[Fecha]))",
+              "VAR _LastMonth = MONTH(MAX('dim Fechas'[Fecha]))",
               "VAR _Sector = SELECTEDVALUE('dim Sectores'[Descripcion Sector])",
               "",
               "",
@@ -6344,6 +6365,155 @@
               "",
               "_Result"
             ]
+          }
+        ]
+      },
+      {
+        "name": "dim Fechas",
+        "columns": [
+          {
+            "name": "Fecha",
+            "dataType": "dateTime",
+            "sourceColumn": "Fecha"
+          },
+          {
+            "name": "Año",
+            "dataType": "int64",
+            "sourceColumn": "Año"
+          },
+          {
+            "name": "Mes",
+            "dataType": "string",
+            "sourceColumn": "Mes",
+            "sortByColumn": "MesNro"
+          },
+          {
+            "name": "MesNro",
+            "dataType": "int64",
+            "sourceColumn": "MesNro"
+          },
+          {
+            "name": "DiaNro",
+            "dataType": "int64",
+            "sourceColumn": "DiaNro"
+          },
+          {
+            "name": "SemanaNro",
+            "dataType": "int64",
+            "sourceColumn": "SemanaNro"
+          },
+          {
+            "name": "Semana",
+            "dataType": "string",
+            "sourceColumn": "Semana"
+          },
+          {
+            "name": "Fin de Semana",
+            "dataType": "string",
+            "sourceColumn": "Fin de Semana"
+          },
+          {
+            "name": "DiaSemana",
+            "dataType": "int64",
+            "sourceColumn": "DiaSemana"
+          },
+          {
+            "name": "Nombre Dia",
+            "dataType": "string",
+            "sourceColumn": "Nombre Dia"
+          },
+          {
+            "name": "TrimNro",
+            "dataType": "int64",
+            "sourceColumn": "TrimNro"
+          },
+          {
+            "name": "Trimestre",
+            "dataType": "string",
+            "sourceColumn": "Trimestre"
+          },
+          {
+            "name": "SemestreNro",
+            "dataType": "int64",
+            "sourceColumn": "SemestreNro"
+          },
+          {
+            "name": "Semestre",
+            "dataType": "string",
+            "sourceColumn": "Semestre"
+          },
+          {
+            "name": "AñoMes",
+            "dataType": "int64",
+            "sourceColumn": "AñoMes"
+          },
+          {
+            "name": "MesAño",
+            "dataType": "string",
+            "sourceColumn": "MesAño"
+          },
+          {
+            "name": "AñoTrim",
+            "dataType": "int64",
+            "sourceColumn": "AñoTrim"
+          },
+          {
+            "name": "TrimAño",
+            "dataType": "string",
+            "sourceColumn": "TrimAño"
+          },
+          {
+            "name": "AñoSem",
+            "dataType": "int64",
+            "sourceColumn": "AñoSem"
+          },
+          {
+            "name": "SemAño",
+            "dataType": "string",
+            "sourceColumn": "SemAño"
+          },
+          {
+            "name": "AñoSemana",
+            "dataType": "int64",
+            "sourceColumn": "AñoSemana"
+          },
+          {
+            "name": "SemanaAño",
+            "dataType": "string",
+            "sourceColumn": "SemanaAño"
+          },
+          {
+            "name": "Fecha Cierre Calidad",
+            "dataType": "dateTime",
+            "sourceColumn": "Fecha Cierre Calidad"
+          },
+          {
+            "name": "Dia Cierre Calidad",
+            "dataType": "int64",
+            "sourceColumn": "Dia Cierre Calidad"
+          },
+          {
+            "name": "Mes 2",
+            "dataType": "string",
+            "sourceColumn": "Mes",
+            "sortByColumn": "MesNro"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
+                "    dim_Fechas = Source{[Schema=\"dim\",Item=\"Fechas\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(dim_Fechas,{{\"Año\", Int64.Type}, {\"MesNro\", Int64.Type}, {\"DiaNro\", Int64.Type}, {\"SemanaNro\", Int64.Type}, {\"DiaSemana\", Int64.Type}, {\"TrimNro\", Int64.Type}, {\"SemestreNro\", Int64.Type}, {\"AñoMes\", Int64.Type}, {\"AñoTrim\", Int64.Type}, {\"AñoSem\", Int64.Type}, {\"AñoSemana\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
           }
         ]
       }
@@ -6462,20 +6632,6 @@
         "toColumn": "Id_Sectores"
       },
       {
-        "name": "9faf5a9e-9546-45f0-a5e3-5fa6b5a3fb7c",
-        "fromTable": "fact Costes_Real",
-        "fromColumn": "Id_Fecha",
-        "toTable": "Fechas",
-        "toColumn": "Fecha"
-      },
-      {
-        "name": "7c815bb3-2f75-4c7e-8d32-16b4e6bfce30",
-        "fromTable": "fact Costes_Plan",
-        "fromColumn": "Id_Fecha",
-        "toTable": "Fechas",
-        "toColumn": "Fecha"
-      },
-      {
         "name": "932a1556-62a9-4bff-be45-dc1cc65a63e6",
         "fromTable": "fact Costes_Real",
         "fromColumn": "Id_Divisiones",
@@ -6516,6 +6672,20 @@
         "fromColumn": "Id_Clientes",
         "toTable": "SeleccionClientes",
         "toColumn": "Id_Clientes"
+      },
+      {
+        "name": "1067da42-be6a-4574-8adf-c1348d19e35f",
+        "fromTable": "fact Costes_Real",
+        "fromColumn": "Id_Fecha",
+        "toTable": "dim Fechas",
+        "toColumn": "Fecha"
+      },
+      {
+        "name": "d32c64b2-1ab4-4478-b7a6-0961a95cbe72",
+        "fromTable": "fact Costes_Plan",
+        "fromColumn": "Id_Fecha",
+        "toTable": "dim Fechas",
+        "toColumn": "Fecha"
       }
     ],
     "expressions": [
@@ -6534,12 +6704,7 @@
       {
         "name": "ClientCompatibilityLevel",
         "value": "600"
-      },
-      {
-        "name": "__TEdtr",
-        "value": "1"
       }
     ]
-  },
-  "id": "SemanticModel"
+  }
 }

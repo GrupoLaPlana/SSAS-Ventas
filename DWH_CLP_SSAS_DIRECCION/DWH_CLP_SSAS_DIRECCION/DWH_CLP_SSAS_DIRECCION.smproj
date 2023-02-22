@@ -24,11 +24,11 @@
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == '' ">
-    <DeploymentServerName>localhost</DeploymentServerName>
+    <DeploymentServerName>POWERBI\DWHPOWERBI</DeploymentServerName>
     <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
     <DeploymentServerDatabase>DWH_CLP_SSAS_DIRECCION</DeploymentServerDatabase>
-    <DeploymentServerCubeName>Modelo</DeploymentServerCubeName>
+    <DeploymentServerCubeName>Model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
@@ -37,7 +37,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Produccion' ">
     <OutputPath>bin\Produccion\</OutputPath>
-    <DeploymentServerName>POWERBIPRO\DWHPOWERBI</DeploymentServerName>
+    <DeploymentServerName>POWERBIPROD\DWHPOWERBI</DeploymentServerName>
     <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
     <DeploymentServerDatabase>DWH_CLP_SSAS_DIRECCION</DeploymentServerDatabase>
