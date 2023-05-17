@@ -11,18 +11,18 @@
         "connectionDetails": {
           "protocol": "tds",
           "address": {
-            "server": "POWERBI\\DWHPOWERBI",
+            "server": "POWERBIPROD\\DWHPOWERBI",
             "database": "DWH_CLP"
           },
           "authentication": null,
           "query": null
         },
+        "options": {},
         "credential": {
           "AuthenticationKind": "Windows",
-          "kind": "SQL",
-          "path": "powerbi\\dwhpowerbi;DWH_CLP",
           "Username": "SERVIDOR\\Administrador",
-          "EncryptConnection": false
+          "EncryptConnection": true,
+          "PrivacySetting": "Organizational"
         }
       }
     ],
@@ -34,549 +34,673 @@
             "name": "CLV_Mandante",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Mandante"
+            "sourceColumn": "CLV_Mandante",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Tipo de moneda para una sociedad PA",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Tipo de moneda para una sociedad PA"
+            "sourceColumn": "CLV_Tipo de moneda para una sociedad PA",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Clase de operación",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Clase de operación"
+            "sourceColumn": "CLV_Clase de operación",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Versión plan (CO-PA)",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Versión plan (CO-PA)"
+            "sourceColumn": "CLV_Versión plan (CO-PA)",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Período/Año",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Período/Año"
+            "sourceColumn": "CLV_Período/Año",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Número para objetos PA (CO-PA)",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Número para objetos PA (CO-PA)"
+            "sourceColumn": "CLV_Número para objetos PA (CO-PA)",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Historial de modificación para objetos PA (CO-PA)",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Historial de modificación para objetos PA (CO-PA)"
+            "sourceColumn": "CLV_Historial de modificación para objetos PA (CO-PA)",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Nº de documento del cálculo de resultados de prtd.individual",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Nº de documento del cálculo de resultados de prtd.individual"
+            "sourceColumn": "CLV_Nº de documento del cálculo de resultados de prtd.individual",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Número de posición de la cuenta de resultados de PI",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Número de posición de la cuenta de resultados de PI"
+            "sourceColumn": "CLV_Número de posición de la cuenta de resultados de PI",
+            "isAvailableInMdx": false
           },
           {
             "name": "T/C de conversión de mon. de área de resultados -> mon. soc.",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "T/C de conversión de mon. de área de resultados -> mon. soc."
+            "sourceColumn": "T/C de conversión de mon. de área de resultados -> mon. soc.",
+            "isAvailableInMdx": false
           },
           {
             "name": "T/C de conversión de mon. del área de resultados -> mon. gp.",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "T/C de conversión de mon. del área de resultados -> mon. gp."
+            "sourceColumn": "T/C de conversión de mon. del área de resultados -> mon. gp.",
+            "isAvailableInMdx": false
           },
           {
             "name": "Coste Producto",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Coste Producto"
+            "sourceColumn": "Coste Producto",
+            "isAvailableInMdx": false
           },
           {
             "name": "Volumen de ventas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Volumen de ventas"
+            "sourceColumn": "Volumen de ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Ingresos",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Ingresos"
+            "sourceColumn": "Ingresos",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Ctd. imputación",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Ctd. imputación"
+            "sourceColumn": "Desv.Ctd. imputación",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Precio Input",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Precio Input"
+            "sourceColumn": "Desv.Precio Input",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desviac.Estructura",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desviac.Estructura"
+            "sourceColumn": "Desviac.Estructura",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Ctd. a emplear",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Ctd. a emplear"
+            "sourceColumn": "Desv.Ctd. a emplear",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Restante input",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Restante input"
+            "sourceColumn": "Desv.Restante input",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.precio imputac.",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.precio imputac."
+            "sourceColumn": "Desv.precio imputac.",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Costes Fijos",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Costes Fijos"
+            "sourceColumn": "Desv.Costes Fijos",
+            "isAvailableInMdx": false
           },
           {
             "name": "Rappels",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Rappels"
+            "sourceColumn": "Rappels",
+            "isAvailableInMdx": false
           },
           {
             "name": "Descuentos ventas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Descuentos ventas"
+            "sourceColumn": "Descuentos ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Descuento por pronto pago",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Descuento por pronto pago"
+            "sourceColumn": "Descuento por pronto pago",
+            "isAvailableInMdx": false
           },
           {
             "name": "Diferencia de precio",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Diferencia de precio"
+            "sourceColumn": "Diferencia de precio",
+            "isAvailableInMdx": false
           },
           {
             "name": "Comisión de ventas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Comisión de ventas"
+            "sourceColumn": "Comisión de ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Precio estándar",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Precio estándar"
+            "sourceColumn": "Precio estándar",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos generales de ventas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos generales de ventas"
+            "sourceColumn": "Gastos generales de ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos generales de gestión",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos generales de gestión"
+            "sourceColumn": "Gastos generales de gestión",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desviacion Restante",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desviacion Restante"
+            "sourceColumn": "Desviacion Restante",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Rechazo",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Rechazo"
+            "sourceColumn": "Desv.Rechazo",
+            "isAvailableInMdx": false
           },
           {
             "name": "Compra de troqueles",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Compra de troqueles"
+            "sourceColumn": "Compra de troqueles",
+            "isAvailableInMdx": false
           },
           {
             "name": "Compra de cliches",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Compra de cliches"
+            "sourceColumn": "Compra de cliches",
+            "isAvailableInMdx": false
           },
           {
             "name": "Materias primas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Materias primas"
+            "sourceColumn": "Materias primas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Rappels Compras",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Rappels Compras"
+            "sourceColumn": "Rappels Compras",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv. Precio Mixto",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv. Precio Mixto"
+            "sourceColumn": "Desv. Precio Mixto",
+            "isAvailableInMdx": false
           },
           {
             "name": "Estr. Administración",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Estr. Administración"
+            "sourceColumn": "Estr. Administración",
+            "isAvailableInMdx": false
           },
           {
             "name": "Logística Cargas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Logística Cargas"
+            "sourceColumn": "Logística Cargas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Crédito y Caución",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Crédito y Caución"
+            "sourceColumn": "Crédito y Caución",
+            "isAvailableInMdx": false
           },
           {
             "name": "Coste vtas cogen.",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Coste vtas cogen."
+            "sourceColumn": "Coste vtas cogen.",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos Cogeneración",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos Cogeneración"
+            "sourceColumn": "Gastos Cogeneración",
+            "isAvailableInMdx": false
           },
           {
             "name": "Estructura Comercial",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Estructura Comercial"
+            "sourceColumn": "Estructura Comercial",
+            "isAvailableInMdx": false
           },
           {
             "name": "Chep Palet",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Chep Palet"
+            "sourceColumn": "Chep Palet",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos Extraord.",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos Extraord."
+            "sourceColumn": "Gastos Extraord.",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos Financieros",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos Financieros"
+            "sourceColumn": "Gastos Financieros",
+            "isAvailableInMdx": false
           },
           {
             "name": "Estructura General",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Estructura General"
+            "sourceColumn": "Estructura General",
+            "isAvailableInMdx": false
           },
           {
             "name": "Impuesto s/bº",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Impuesto s/bº"
+            "sourceColumn": "Impuesto s/bº",
+            "isAvailableInMdx": false
           },
           {
             "name": "Ing. Extraordinarios",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Ing. Extraordinarios"
+            "sourceColumn": "Ing. Extraordinarios",
+            "isAvailableInMdx": false
           },
           {
             "name": "Ingresos Financieros",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Ingresos Financieros"
+            "sourceColumn": "Ingresos Financieros",
+            "isAvailableInMdx": false
           },
           {
             "name": "Coste de Montaje",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Coste de Montaje"
+            "sourceColumn": "Coste de Montaje",
+            "isAvailableInMdx": false
           },
           {
             "name": "Canon Plaform",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Canon Plaform"
+            "sourceColumn": "Canon Plaform",
+            "isAvailableInMdx": false
           },
           {
             "name": "Transporte Externo",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Transporte Externo"
+            "sourceColumn": "Transporte Externo",
+            "isAvailableInMdx": false
           },
           {
             "name": "Transporte Interno",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Transporte Interno"
+            "sourceColumn": "Transporte Interno",
+            "isAvailableInMdx": false
           },
           {
             "name": "Cantidad en M2",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Cantidad en M2"
+            "sourceColumn": "Cantidad en M2",
+            "isAvailableInMdx": false
           },
           {
             "name": "Rappel en Pedido",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Rappel en Pedido"
+            "sourceColumn": "Rappel en Pedido",
+            "isAvailableInMdx": false
           },
           {
             "name": "Compra Utiles",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Compra Utiles"
+            "sourceColumn": "Compra Utiles",
+            "isAvailableInMdx": false
           },
           {
             "name": "Mapfre",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Mapfre"
+            "sourceColumn": "Mapfre",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos Montadora",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos Montadora"
+            "sourceColumn": "Gastos Montadora",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos recorte",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos recorte"
+            "sourceColumn": "Gastos recorte",
+            "isAvailableInMdx": false
           },
           {
             "name": "Dtos PP Compras",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Dtos PP Compras"
+            "sourceColumn": "Dtos PP Compras",
+            "isAvailableInMdx": false
           },
           {
             "name": "Merma real",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Merma real"
+            "sourceColumn": "Merma real",
+            "isAvailableInMdx": false
           },
           {
             "name": "Merma teórica",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Merma teórica"
+            "sourceColumn": "Merma teórica",
+            "isAvailableInMdx": false
           },
           {
             "name": "C.Transp.Teórico",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "C.Transp.Teórico"
+            "sourceColumn": "C.Transp.Teórico",
+            "isAvailableInMdx": false
           },
           {
             "name": "Rec.Multsdad",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Rec.Multsdad"
+            "sourceColumn": "Rec.Multsdad",
+            "isAvailableInMdx": false
           },
           {
             "name": "Ineficiencias PP 1",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Ineficiencias PP 1"
+            "sourceColumn": "Ineficiencias PP 1",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gast.dir.Cogenerac.",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gast.dir.Cogenerac."
+            "sourceColumn": "Gast.dir.Cogenerac.",
+            "isAvailableInMdx": false
           },
           {
             "name": "Margen Rentabilidad",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Margen Rentabilidad"
+            "sourceColumn": "Margen Rentabilidad",
+            "isAvailableInMdx": false
           },
           {
             "name": "Montaje",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Montaje"
+            "sourceColumn": "Montaje",
+            "isAvailableInMdx": false
           },
           {
             "name": "Papeles",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Papeles"
+            "sourceColumn": "Papeles",
+            "isAvailableInMdx": false
           },
           {
             "name": "Pdtos Ondulados",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Pdtos Ondulados"
+            "sourceColumn": "Pdtos Ondulados",
+            "isAvailableInMdx": false
           },
           {
             "name": "Tintas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Tintas"
+            "sourceColumn": "Tintas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Palets",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Palets"
+            "sourceColumn": "Palets",
+            "isAvailableInMdx": false
           },
           {
             "name": "Aprov. Varios",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Aprov. Varios"
+            "sourceColumn": "Aprov. Varios",
+            "isAvailableInMdx": false
           },
           {
             "name": "Actividad Externa",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Actividad Externa"
+            "sourceColumn": "Actividad Externa",
+            "isAvailableInMdx": false
           },
           {
             "name": "Costes Estructura",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Costes Estructura"
+            "sourceColumn": "Costes Estructura",
+            "isAvailableInMdx": false
           },
           {
             "name": "MOD",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "MOD"
+            "sourceColumn": "MOD",
+            "isAvailableInMdx": false
           },
           {
             "name": "Horas Máquina",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Horas Máquina"
+            "sourceColumn": "Horas Máquina",
+            "isAvailableInMdx": false
           },
           {
             "name": "Reserva 2",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Reserva 2"
+            "sourceColumn": "Reserva 2",
+            "isAvailableInMdx": false
           },
           {
             "name": "Reserva 3",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Reserva 3"
+            "sourceColumn": "Reserva 3",
+            "isAvailableInMdx": false
           },
           {
             "name": "Peso bruto",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Peso bruto"
+            "sourceColumn": "Peso bruto",
+            "isAvailableInMdx": false
           },
           {
             "name": "Condición Zuni",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Condición Zuni"
+            "sourceColumn": "Condición Zuni",
+            "isAvailableInMdx": false
           },
           {
             "name": "Recargo Lidl",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Recargo Lidl"
+            "sourceColumn": "Recargo Lidl",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Clientes",
             "dataType": "int64",
-            "sourceColumn": "Id_Clientes"
+            "isHidden": true,
+            "sourceColumn": "Id_Clientes",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Materiales",
             "dataType": "int64",
-            "sourceColumn": "Id_Materiales"
+            "isHidden": true,
+            "sourceColumn": "Id_Materiales",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Zona_Ventas",
             "dataType": "int64",
-            "sourceColumn": "Id_Zona_Ventas"
+            "isHidden": true,
+            "sourceColumn": "Id_Zona_Ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Organizacion_Ventas",
             "dataType": "int64",
-            "sourceColumn": "Id_Organizacion_Ventas"
+            "isHidden": true,
+            "sourceColumn": "Id_Organizacion_Ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Centros",
             "dataType": "int64",
-            "sourceColumn": "Id_Centros"
+            "isHidden": true,
+            "sourceColumn": "Id_Centros",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Costes",
             "dataType": "int64",
-            "sourceColumn": "Id_Costes"
+            "isHidden": true,
+            "sourceColumn": "Id_Costes",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Sociedad",
             "dataType": "int64",
-            "sourceColumn": "Id_Sociedad"
+            "isHidden": true,
+            "sourceColumn": "Id_Sociedad",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Sectores",
             "dataType": "int64",
-            "sourceColumn": "Id_Sectores"
+            "isHidden": true,
+            "sourceColumn": "Id_Sectores",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Fecha",
             "dataType": "dateTime",
-            "sourceColumn": "Id_Fecha"
+            "isHidden": true,
+            "sourceColumn": "Id_Fecha",
+            "isAvailableInMdx": false
           },
           {
             "name": "Cantidad en UD",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Cantidad en UD"
+            "sourceColumn": "Cantidad en UD",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Divisiones",
             "dataType": "int64",
-            "sourceColumn": "Id_Divisiones"
+            "isHidden": true,
+            "sourceColumn": "Id_Divisiones",
+            "isAvailableInMdx": false
+          },
+          {
+            "name": "Id_Ramo",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Id_Ramo",
+            "isAvailableInMdx": false
+          },
+          {
+            "name": "Id_Coste_Real",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Id_Coste_Real",
+            "isAvailableInMdx": false
+          },
+          {
+            "name": "Id_Atributos_Materiales_PROVISIONAL",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Id_Atributos_Materiales_PROVISIONAL",
+            "isAvailableInMdx": false
           }
         ],
         "partitions": [
@@ -1586,6 +1710,7 @@
             "name": "ZTDOS51-- Margen Industrial",
             "expression": " ([Venta Neta] - [€ Precio Estandar])-[Desviacion Ordenes]",
             "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -1845,6 +1970,7 @@
             "name": "ZTDOS51-- Margen Contribucion",
             "expression": "( [ZTDOS51-- Margen Industrial] - ( [€ Comision de Ventas] + [€ Coste Transporte Interno] + [€ Coste Transporte Externo] + [€ Canon Plaform] + [€ Coste Chep Palet] + [€ Coste de Montaje] + [€ Credito y Caucion] + [€ Mapfre] + [€ Gastos Dir. Cogenerac.] + [€ Gastos Montadora] + [€ Coste Palets] + [€ Canon Uniq] + [€ Compra Troq/Cliches/Utiles] + [€ Coste Recargo Lidl] ) ) - [€ Gastos Recorte]",
             "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -2066,6 +2192,7 @@
             "name": "ZTDOS51-- Margen Operativo",
             "expression": " [ZTDOS51-- Margen Contribucion] - ( [€ Logistica Carga/Mtto]+ [€ Estructura Oficinas] + [€ Estructura General] + [€ Gastos Cogeneracion] + [€ Estructura Comercial])",
             "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -2106,6 +2233,7 @@
             "name": "ZTDOS51-- Margen Final",
             "expression": " [ZTDOS51-- Margen Neto] + [€ Ingresos Ext/SD]",
             "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -2237,13 +2365,28 @@
           {
             "name": "Total Cantidad UD (Real)",
             "expression": [
+              "/***** Opcion Inicial del Desarrollo ******/",
+              "VAR _Opcion1 =",
+              "    CALCULATE(",
+              "        SUM( 'fact Costes_Real'[Volumen de ventas] ),",
+              "        'dim Atributos_Costes'[Clase de operación] = \"F\",",
+              "        'dim Atributos_Costes'[Indicador plan/real] = \"0\",",
+              "        'dim Clientes'[BK_CLIENTE] <> \"\"",
+              "    )",
               "",
-              "CALCULATE (",
-              "    SUM ( 'fact Costes_Real'[Volumen de ventas] ),",
-              "    'dim Atributos_Costes'[Clase de operación] = \"F\",",
-              "    'dim Atributos_Costes'[Indicador plan/real] = \"0\",",
-              "    'dim Clientes'[BK_CLIENTE]<>\"\"",
-              ")",
+              "/***** Opcion Vetnas ZPLAN002B Indicada por Alberto Romero ******/",
+              "VAR _Opcion2 =",
+              "    CALCULATE(",
+              "        SUM( 'fact Costes_Real'[Volumen de ventas] ),",
+              "        'dim Atributos_Costes'[Clase de operación] = \"F\" ",
+              "            || 'dim Atributos_Costes'[Clase de operación] = \"C\"",
+              "            || 'dim Atributos_Costes'[Clase de operación] = \"B\"",
+              "            || 'dim Atributos_Costes'[Clase de operación] = \"V\",",
+              "        'dim Atributos_Costes'[Indicador plan/real] = \"0\",",
+              "        'dim Clientes'[BK_CLIENTE] <> \"\"",
+              "    )",
+              "RETURN",
+              "    _Opcion2",
               "",
               "/*  Se incluye el ultimo Filtro de Clientes ya que en los Informes de BO no estan tenido en cuenta los movimientos de M2 que no tienen cliente Asociado ",
               "     Por ejemplo en el mes de Enero de 2021 hay 119673 m2 no asociados a ningun cliente */"
@@ -2426,12 +2569,187 @@
             "name": "ZTDOS51-- Margen Neto",
             "expression": " ( ( [ZTDOS51-- Margen Operativo] - [€ Gastos Financieros]) - [€ Descuentos por pronto pago]) + [€ Ingresos Fi/SD]",
             "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
                 "value": "<Format Format=\"Currency\"><Currency LCID=\"3082\" DisplayName=\"€ Spanish (Spain)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "ZCTAREDOS2 -- % Margen Contribucion",
+            "expression": "DIVIDE( [ZCTAREDOS2-- Margen Contribucion], [Venta Neta] )",
+            "formatString": "#,##0.0 %"
+          },
+          {
+            "name": "ZCTAREDOS2 -- % Margen Final",
+            "expression": " DIVIDE([ZCTAREDOS2-- Margen Final],[Venta Neta])",
+            "formatString": "#,##0.0 %"
+          },
+          {
+            "name": "ZCTAREDOS2 -- % Margen Industrial",
+            "expression": "DIVIDE( [ZCTAREDOS2-- Margen Industrial], [Venta Neta] )",
+            "formatString": "#,##0.0 %"
+          },
+          {
+            "name": "ZCTAREDOS2 -- % Margen Operativo",
+            "expression": "DIVIDE( [ZCTAREDOS2-- Margen Operativo], [Venta Neta] )",
+            "formatString": "#,##0.0 %"
+          },
+          {
+            "name": "ZCTAREDOS2-- Margen Contribucion",
+            "expression": [
+              "( [ZCTAREDOS2-- Margen Industrial]",
+              "    - ( [€ Comision de Ventas] + [€ Coste Transporte Interno]",
+              "    + [€ Coste Transporte Externo]",
+              "    + [€ Canon Plaform]",
+              "    + [€ Canon Uniq]",
+              "    + [€ Coste Chep Palet]",
+              "    + [€ Coste de Montaje]",
+              "    + [€ Credito y Caucion]",
+              "    + [€ Compra Troq/Cliches/Utiles]",
+              "    + [€ Mapfre]",
+              "    + [€ Gastos Dir. Cogenerac.]",
+              "    + [€ Gastos Montadora]",
+              "    + [€ Coste Palets]",
+              "    + [€ Coste Recargo Lidl] ) )",
+              "    - [€ Gastos Recorte]"
+            ],
+            "formatString": "#,##0"
+          },
+          {
+            "name": "ZCTAREDOS2-- Margen Final",
+            "expression": "[ZCTAREDOS2-- Margen Neto] + [€ Ingresos Ext/SD]",
+            "formatString": "#,##0"
+          },
+          {
+            "name": "ZCTAREDOS2-- Margen Industrial",
+            "expression": "( [Venta Neta] - [€ Precio Estandar] ) - [Desv. Product Costing]",
+            "formatString": "#,##0"
+          },
+          {
+            "name": "ZCTAREDOS2-- Margen Neto",
+            "expression": [
+              "( ( [ZCTAREDOS2-- Margen Operativo] - [€ Gastos Financieros] )",
+              "    - [€ Descuentos por pronto pago] )",
+              "    + [€ Ingresos Fi/SD]"
+            ],
+            "formatString": "#,##0"
+          },
+          {
+            "name": "ZCTAREDOS2-- Margen Operativo",
+            "expression": [
+              "[ZCTAREDOS2-- Margen Contribucion]",
+              "    - ( [€ Logistica Carga/Mtto] + [€ Estructura Oficinas]",
+              "    + [€ Estructura General]",
+              "    + [€ Gastos Cogeneracion]",
+              "    + [€ Estructura Comercial] )"
+            ],
+            "formatString": "#,##0"
+          },
+          {
+            "name": "Total Real Vs Plan (m2)",
+            "expression": "[Total Cantidad M2 (Real)]-[Total Cantidad M2 (Plan)]"
+          },
+          {
+            "name": "Total Real vs Plan (€)",
+            "expression": "[Ingresos Totales]-[Ingresos Totales Plan]"
+          },
+          {
+            "name": "% Margen Final BO (No Hierar)",
+            "expression": [
+              "VAR _Margen = DIVIDE( [Margen Final BO], [Venta Neta], BLANK( ) )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        _Margen",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Total Cantidad M2 (Real) (No Hierar)",
+            "expression": [
+              "VAR _Cantidad =",
+              "    CALCULATE(",
+              "        SUM( 'fact Costes_Real'[Cantidad en M2] ),",
+              "        'dim Atributos_Costes'[Clase de operación] = \"F\",",
+              "        'dim Atributos_Costes'[Indicador plan/real] = \"0\",",
+              "        'dim Clientes'[BK_CLIENTE] <> \"\"",
+              "    )",
+              "",
+              "/*  Se incluye el ultimo Filtro de Clientes ya que en los Informes de BO no estan tenido en cuenta los movimientos de M2 que no tienen cliente Asociado ",
+              "     Por ejemplo en el mes de Enero de 2021 hay 119673 m2 no asociados a ningun cliente */",
+              "",
+              "",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        _Cantidad",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Venta Neta (No Hierar)",
+            "expression": [
+              "VAR _Venta =",
+              "    ( ( [Ingresos Totales] - [€ Descuento Ventas] ) + [€ Rappels] + [€ Abono Roto montad.] + [€ Abono Mala Calidad] )",
+              "        - [€ Dtos Rotos Montadora]",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        _Venta",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"3082\" DisplayName=\"€ Spanish (Spain)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Total Venta Neta Real vs Plan (€)",
+            "expression": "[Venta Neta] - [Venta Neta Plan]"
           }
         ]
       },
@@ -2441,21 +2759,25 @@
           {
             "name": "BK_MANDT",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_MANDT"
           },
           {
             "name": "BK_SPRAS",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_SPRAS"
           },
           {
             "name": "BK_PAIS",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_PAIS"
           },
           {
             "name": "BK_PROVINCIA",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_PROVINCIA"
           },
           {
@@ -2518,12 +2840,33 @@
           {
             "name": "Id_Clientes",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Id_Clientes"
           },
           {
             "name": "País",
             "dataType": "string",
             "sourceColumn": "País"
+          },
+          {
+            "name": "Ramo Industrial",
+            "dataType": "string",
+            "sourceColumn": "Ramo Industrial"
+          },
+          {
+            "name": "DescripcionNivel2",
+            "dataType": "string",
+            "sourceColumn": "DescripcionNivel2"
+          },
+          {
+            "name": "DescripcionNivel3",
+            "dataType": "string",
+            "sourceColumn": "DescripcionNivel3"
+          },
+          {
+            "name": "DescripcionNivel4",
+            "dataType": "string",
+            "sourceColumn": "DescripcionNivel4"
           }
         ],
         "partitions": [
@@ -2555,6 +2898,31 @@
                 "name": "Provincia",
                 "ordinal": 1,
                 "column": "Provincia"
+              }
+            ]
+          },
+          {
+            "name": "Jerarquia Ramo Cliente",
+            "levels": [
+              {
+                "name": "Ramo Industrial",
+                "ordinal": 3,
+                "column": "Ramo Industrial"
+              },
+              {
+                "name": "DescripcionNivel2",
+                "ordinal": 2,
+                "column": "DescripcionNivel2"
+              },
+              {
+                "name": "DescripcionNivel4",
+                "ordinal": 0,
+                "column": "DescripcionNivel4"
+              },
+              {
+                "name": "DescripcionNivel3",
+                "ordinal": 1,
+                "column": "DescripcionNivel3"
               }
             ]
           }
@@ -2648,11 +3016,13 @@
           {
             "name": "Id_Organizacion_Ventas",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Id_Organizacion_Ventas"
           },
           {
             "name": "BK_MANDT",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_MANDT"
           },
           {
@@ -2668,6 +3038,7 @@
           {
             "name": "BK_AREAVENTAS",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_AREAVENTAS"
           },
           {
@@ -2699,31 +3070,37 @@
           {
             "name": "ID Geografia",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ID Geografia"
           },
           {
             "name": "BK_MANDT",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_MANDT"
           },
           {
             "name": "BK_SPRAS",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_SPRAS"
           },
           {
             "name": "BK_PAIS",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_PAIS"
           },
           {
             "name": "BK_PROVINCIA",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_PROVINCIA"
           },
           {
             "name": "BK_ZONAVENTAS",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_ZONAVENTAS"
           },
           {
@@ -2777,42 +3154,51 @@
           {
             "name": "Id_Costes",
             "dataType": "int64",
-            "sourceColumn": "Id_Costes"
+            "isHidden": true,
+            "sourceColumn": "Id_Costes",
+            "isAvailableInMdx": false
           },
           {
             "name": "Clase de factura",
             "dataType": "string",
-            "sourceColumn": "Clase de factura"
+            "sourceColumn": "Clase de factura",
+            "isAvailableInMdx": false
           },
           {
             "name": "Motivo de pedido (motivo de la operación)",
             "dataType": "string",
-            "sourceColumn": "Motivo de pedido (motivo de la operación)"
+            "sourceColumn": "Motivo de pedido (motivo de la operación)",
+            "isAvailableInMdx": false
           },
           {
             "name": "Clase de operación",
             "dataType": "string",
-            "sourceColumn": "Clase de operación"
+            "sourceColumn": "Clase de operación",
+            "isAvailableInMdx": false
           },
           {
             "name": "División",
             "dataType": "string",
-            "sourceColumn": "División"
+            "sourceColumn": "División",
+            "isAvailableInMdx": false
           },
           {
             "name": "Sociedad CO",
             "dataType": "string",
-            "sourceColumn": "Sociedad CO"
+            "sourceColumn": "Sociedad CO",
+            "isAvailableInMdx": false
           },
           {
             "name": "Version Plan",
             "dataType": "string",
-            "sourceColumn": "Version Plan"
+            "sourceColumn": "Version Plan",
+            "isAvailableInMdx": false
           },
           {
             "name": "Indicador plan/real",
             "dataType": "string",
-            "sourceColumn": "Indicador plan/real"
+            "sourceColumn": "Indicador plan/real",
+            "isAvailableInMdx": false
           }
         ],
         "partitions": [
@@ -2838,6 +3224,7 @@
           {
             "name": "Id_Material",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Id_Material"
           },
           {
@@ -2899,6 +3286,11 @@
             "name": "Digital",
             "dataType": "string",
             "sourceColumn": "Digital"
+          },
+          {
+            "name": "AltaCalidad",
+            "dataType": "string",
+            "sourceColumn": "AltaCalidad"
           }
         ],
         "partitions": [
@@ -2953,6 +3345,7 @@
             "name": "MesNro",
             "dataType": "int64",
             "isNameInferred": true,
+            "isDataTypeInferred": false,
             "sourceColumn": "[MesNro]",
             "summarizeBy": "none"
           },
@@ -2961,6 +3354,7 @@
             "name": "TrimNro",
             "dataType": "double",
             "isNameInferred": true,
+            "isDataTypeInferred": false,
             "sourceColumn": "[TrimNro]",
             "summarizeBy": "none"
           },
@@ -3076,21 +3470,25 @@
           {
             "name": "Id_Centro",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Id_Centro"
           },
           {
             "name": "BK_MANDT",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_MANDT"
           },
           {
             "name": "BK_SPRAS",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_SPRAS"
           },
           {
             "name": "BK_PAIS",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_PAIS"
           },
           {
@@ -3101,11 +3499,13 @@
           {
             "name": "BK_CLIENTE",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_CLIENTE"
           },
           {
             "name": "BK_PROVEEDOR",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_PROVEEDOR"
           },
           {
@@ -3143,531 +3543,646 @@
             "name": "CLV_Mandante",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Mandante"
+            "sourceColumn": "CLV_Mandante",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Tipo de moneda para una sociedad PA",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Tipo de moneda para una sociedad PA"
+            "sourceColumn": "CLV_Tipo de moneda para una sociedad PA",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Clase de operación",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Clase de operación"
+            "sourceColumn": "CLV_Clase de operación",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Versión plan (CO-PA)",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Versión plan (CO-PA)"
+            "sourceColumn": "CLV_Versión plan (CO-PA)",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Período/Año",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Período/Año"
+            "sourceColumn": "CLV_Período/Año",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Número para objetos PA (CO-PA)",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Número para objetos PA (CO-PA)"
+            "sourceColumn": "CLV_Número para objetos PA (CO-PA)",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Historial de modificación para objetos PA (CO-PA)",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Historial de modificación para objetos PA (CO-PA)"
+            "sourceColumn": "CLV_Historial de modificación para objetos PA (CO-PA)",
+            "isAvailableInMdx": false
           },
           {
             "name": "CLV_Nº de documento del cálculo de resultados de prtd.individual",
             "dataType": "string",
             "isHidden": true,
-            "sourceColumn": "CLV_Nº de documento del cálculo de resultados de prtd.individual"
+            "sourceColumn": "CLV_Nº de documento del cálculo de resultados de prtd.individual",
+            "isAvailableInMdx": false
           },
           {
             "name": "Coste Producto",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Coste Producto"
+            "sourceColumn": "Coste Producto",
+            "isAvailableInMdx": false
           },
           {
             "name": "Volumen de ventas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Volumen de ventas"
+            "sourceColumn": "Volumen de ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Ingresos",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Ingresos"
+            "sourceColumn": "Ingresos",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Ctd. imputación",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Ctd. imputación"
+            "sourceColumn": "Desv.Ctd. imputación",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Precio Input",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Precio Input"
+            "sourceColumn": "Desv.Precio Input",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desviac.Estructura",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desviac.Estructura"
+            "sourceColumn": "Desviac.Estructura",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Ctd. a emplear",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Ctd. a emplear"
+            "sourceColumn": "Desv.Ctd. a emplear",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Restante input",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Restante input"
+            "sourceColumn": "Desv.Restante input",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.precio imputac.",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.precio imputac."
+            "sourceColumn": "Desv.precio imputac.",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Costes Fijos",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Costes Fijos"
+            "sourceColumn": "Desv.Costes Fijos",
+            "isAvailableInMdx": false
           },
           {
             "name": "Rappels",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Rappels"
+            "sourceColumn": "Rappels",
+            "isAvailableInMdx": false
           },
           {
             "name": "Descuentos ventas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Descuentos ventas"
+            "sourceColumn": "Descuentos ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Descuento por pronto pago",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Descuento por pronto pago"
+            "sourceColumn": "Descuento por pronto pago",
+            "isAvailableInMdx": false
           },
           {
             "name": "Diferencia de precio",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Diferencia de precio"
+            "sourceColumn": "Diferencia de precio",
+            "isAvailableInMdx": false
           },
           {
             "name": "Comisión de ventas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Comisión de ventas"
+            "sourceColumn": "Comisión de ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Precio estándar",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Precio estándar"
+            "sourceColumn": "Precio estándar",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos generales de ventas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos generales de ventas"
+            "sourceColumn": "Gastos generales de ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos generales de gestión",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos generales de gestión"
+            "sourceColumn": "Gastos generales de gestión",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desviacion Restante",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desviacion Restante"
+            "sourceColumn": "Desviacion Restante",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv.Rechazo",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv.Rechazo"
+            "sourceColumn": "Desv.Rechazo",
+            "isAvailableInMdx": false
           },
           {
             "name": "Compra de troqueles",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Compra de troqueles"
+            "sourceColumn": "Compra de troqueles",
+            "isAvailableInMdx": false
           },
           {
             "name": "Compra de cliches",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Compra de cliches"
+            "sourceColumn": "Compra de cliches",
+            "isAvailableInMdx": false
           },
           {
             "name": "Materias primas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Materias primas"
+            "sourceColumn": "Materias primas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Rappels Compras",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Rappels Compras"
+            "sourceColumn": "Rappels Compras",
+            "isAvailableInMdx": false
           },
           {
             "name": "Desv. Precio Mixto",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Desv. Precio Mixto"
+            "sourceColumn": "Desv. Precio Mixto",
+            "isAvailableInMdx": false
           },
           {
             "name": "Estr. Administración",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Estr. Administración"
+            "sourceColumn": "Estr. Administración",
+            "isAvailableInMdx": false
           },
           {
             "name": "Logística Cargas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Logística Cargas"
+            "sourceColumn": "Logística Cargas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Crédito y Caución",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Crédito y Caución"
+            "sourceColumn": "Crédito y Caución",
+            "isAvailableInMdx": false
           },
           {
             "name": "Coste vtas cogen.",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Coste vtas cogen."
+            "sourceColumn": "Coste vtas cogen.",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos Cogeneración",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos Cogeneración"
+            "sourceColumn": "Gastos Cogeneración",
+            "isAvailableInMdx": false
           },
           {
             "name": "Estructura Comercial",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Estructura Comercial"
+            "sourceColumn": "Estructura Comercial",
+            "isAvailableInMdx": false
           },
           {
             "name": "Chep Palet",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Chep Palet"
+            "sourceColumn": "Chep Palet",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos Extraord.",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos Extraord."
+            "sourceColumn": "Gastos Extraord.",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos Financieros",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos Financieros"
+            "sourceColumn": "Gastos Financieros",
+            "isAvailableInMdx": false
           },
           {
             "name": "Estructura General",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Estructura General"
+            "sourceColumn": "Estructura General",
+            "isAvailableInMdx": false
           },
           {
             "name": "Impuesto s/bº",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Impuesto s/bº"
+            "sourceColumn": "Impuesto s/bº",
+            "isAvailableInMdx": false
           },
           {
             "name": "Ing. Extraordinarios",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Ing. Extraordinarios"
+            "sourceColumn": "Ing. Extraordinarios",
+            "isAvailableInMdx": false
           },
           {
             "name": "Ingresos Financieros",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Ingresos Financieros"
+            "sourceColumn": "Ingresos Financieros",
+            "isAvailableInMdx": false
           },
           {
             "name": "Coste de Montaje",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Coste de Montaje"
+            "sourceColumn": "Coste de Montaje",
+            "isAvailableInMdx": false
           },
           {
             "name": "Canon Plaform",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Canon Plaform"
+            "sourceColumn": "Canon Plaform",
+            "isAvailableInMdx": false
           },
           {
             "name": "Transporte Externo",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Transporte Externo"
+            "sourceColumn": "Transporte Externo",
+            "isAvailableInMdx": false
           },
           {
             "name": "Transporte Interno",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Transporte Interno"
+            "sourceColumn": "Transporte Interno",
+            "isAvailableInMdx": false
           },
           {
             "name": "Cantidad en M2",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Cantidad en M2"
+            "sourceColumn": "Cantidad en M2",
+            "isAvailableInMdx": false
           },
           {
             "name": "Rappel en Pedido",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Rappel en Pedido"
+            "sourceColumn": "Rappel en Pedido",
+            "isAvailableInMdx": false
           },
           {
             "name": "Compra Utiles",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Compra Utiles"
+            "sourceColumn": "Compra Utiles",
+            "isAvailableInMdx": false
           },
           {
             "name": "Mapfre",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Mapfre"
+            "sourceColumn": "Mapfre",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos Montadora",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos Montadora"
+            "sourceColumn": "Gastos Montadora",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gastos recorte",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gastos recorte"
+            "sourceColumn": "Gastos recorte",
+            "isAvailableInMdx": false
           },
           {
             "name": "Dtos PP Compras",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Dtos PP Compras"
+            "sourceColumn": "Dtos PP Compras",
+            "isAvailableInMdx": false
           },
           {
             "name": "Merma real",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Merma real"
+            "sourceColumn": "Merma real",
+            "isAvailableInMdx": false
           },
           {
             "name": "Merma teórica",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Merma teórica"
+            "sourceColumn": "Merma teórica",
+            "isAvailableInMdx": false
           },
           {
             "name": "C.Transp.Teórico",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "C.Transp.Teórico"
+            "sourceColumn": "C.Transp.Teórico",
+            "isAvailableInMdx": false
           },
           {
             "name": "Rec.Multsdad",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Rec.Multsdad"
+            "sourceColumn": "Rec.Multsdad",
+            "isAvailableInMdx": false
           },
           {
             "name": "Ineficiencias PP 1",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Ineficiencias PP 1"
+            "sourceColumn": "Ineficiencias PP 1",
+            "isAvailableInMdx": false
           },
           {
             "name": "Gast.dir.Cogenerac.",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Gast.dir.Cogenerac."
+            "sourceColumn": "Gast.dir.Cogenerac.",
+            "isAvailableInMdx": false
           },
           {
             "name": "Margen Rentabilidad",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Margen Rentabilidad"
+            "sourceColumn": "Margen Rentabilidad",
+            "isAvailableInMdx": false
           },
           {
             "name": "Montaje",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Montaje"
+            "sourceColumn": "Montaje",
+            "isAvailableInMdx": false
           },
           {
             "name": "Papeles",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Papeles"
+            "sourceColumn": "Papeles",
+            "isAvailableInMdx": false
           },
           {
             "name": "Pdtos Ondulados",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Pdtos Ondulados"
+            "sourceColumn": "Pdtos Ondulados",
+            "isAvailableInMdx": false
           },
           {
             "name": "Tintas",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Tintas"
+            "sourceColumn": "Tintas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Palets",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Palets"
+            "sourceColumn": "Palets",
+            "isAvailableInMdx": false
           },
           {
             "name": "Aprov. Varios",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Aprov. Varios"
+            "sourceColumn": "Aprov. Varios",
+            "isAvailableInMdx": false
           },
           {
             "name": "Actividad Externa",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Actividad Externa"
+            "sourceColumn": "Actividad Externa",
+            "isAvailableInMdx": false
           },
           {
             "name": "Costes Estructura",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Costes Estructura"
+            "sourceColumn": "Costes Estructura",
+            "isAvailableInMdx": false
           },
           {
             "name": "MOD",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "MOD"
+            "sourceColumn": "MOD",
+            "isAvailableInMdx": false
           },
           {
             "name": "Horas Máquina",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Horas Máquina"
+            "sourceColumn": "Horas Máquina",
+            "isAvailableInMdx": false
           },
           {
             "name": "Reserva 2",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Reserva 2"
+            "sourceColumn": "Reserva 2",
+            "isAvailableInMdx": false
           },
           {
             "name": "Reserva 3",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Reserva 3"
+            "sourceColumn": "Reserva 3",
+            "isAvailableInMdx": false
           },
           {
             "name": "Peso bruto",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Peso bruto"
+            "sourceColumn": "Peso bruto",
+            "isAvailableInMdx": false
           },
           {
             "name": "Condición Zuni",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Condición Zuni"
+            "sourceColumn": "Condición Zuni",
+            "isAvailableInMdx": false
           },
           {
             "name": "Recargo Lidl",
             "dataType": "double",
             "isHidden": true,
-            "sourceColumn": "Recargo Lidl"
+            "sourceColumn": "Recargo Lidl",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Organizacion_Ventas",
             "dataType": "int64",
             "isHidden": true,
-            "sourceColumn": "Id_Organizacion_Ventas"
+            "sourceColumn": "Id_Organizacion_Ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Clientes",
             "dataType": "int64",
             "isHidden": true,
-            "sourceColumn": "Id_Clientes"
+            "sourceColumn": "Id_Clientes",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id Zona_Ventas",
             "dataType": "int64",
             "isHidden": true,
-            "sourceColumn": "Id Zona_Ventas"
+            "sourceColumn": "Id Zona_Ventas",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Costes",
             "dataType": "int64",
             "isHidden": true,
-            "sourceColumn": "Id_Costes"
+            "sourceColumn": "Id_Costes",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Material",
             "dataType": "int64",
             "isHidden": true,
-            "sourceColumn": "Id_Material"
+            "sourceColumn": "Id_Material",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Centro",
             "dataType": "int64",
             "isHidden": true,
-            "sourceColumn": "Id_Centro"
+            "sourceColumn": "Id_Centro",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Sociedad",
             "dataType": "int64",
-            "sourceColumn": "Id_Sociedad"
+            "isHidden": true,
+            "sourceColumn": "Id_Sociedad",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Sectores",
             "dataType": "int64",
-            "sourceColumn": "Id_Sectores"
+            "isHidden": true,
+            "sourceColumn": "Id_Sectores",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Fecha",
             "dataType": "dateTime",
-            "sourceColumn": "Id_Fecha"
+            "isHidden": true,
+            "sourceColumn": "Id_Fecha",
+            "isAvailableInMdx": false
           },
           {
             "name": "Id_Divisiones",
             "dataType": "int64",
-            "sourceColumn": "Id_Divisiones"
+            "isHidden": true,
+            "sourceColumn": "Id_Divisiones",
+            "isAvailableInMdx": false
+          },
+          {
+            "name": "Id_Ramo",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Id_Ramo",
+            "formatString": "#,##0",
+            "isAvailableInMdx": false
+          },
+          {
+            "name": "Id_Coste_Plan",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Id_Coste_Plan",
+            "isAvailableInMdx": false
+          },
+          {
+            "name": "Id_Atributos_Materiales_PROVISIONAL",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Id_Atributos_Materiales_PROVISIONAL",
+            "isAvailableInMdx": false
           }
         ],
         "partitions": [
@@ -4402,6 +4917,7 @@
               "    'dim Atributos_Costes'[Clase de operación] = \"F\",",
               "    'dim Atributos_Costes'[Version Plan] = \"000\",",
               "    'dim Atributos_Costes'[Indicador plan/real] = \"1\",",
+              "    --'Materiales'[BK_MATERIAL] = \"000000000000140046\"",
               "    'dim Material'[BK_MATERIAL] = \"000000000000140046\"",
               ")"
             ],
@@ -4495,8 +5011,10 @@
               "    'dim Atributos_Costes'[Clase de operación] = \"F\",",
               "    'dim Atributos_Costes'[Version Plan] = \"000\",",
               "    'dim Atributos_Costes'[Indicador plan/real] = \"1\",",
-              "     'dim Material'[BK_MATERIAL] = \"000000000000140140\"",
-              ")"
+              "    'dim Material'[BK_MATERIAL] = \"000000000000140140\"",
+              "    --'Materiales'[BK_MATERIAL] = \"000000000000140140\"",
+              ")",
+              ""
             ],
             "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
             "annotations": [
@@ -4529,6 +5047,72 @@
               ")"
             ],
             "formatString": "#,0"
+          },
+          {
+            "name": "Venta Neta Plan (No Hierar)",
+            "expression": [
+              "VAR _Ventas =",
+              "    ( ( [Ingresos Totales Plan] - [€ Descuentos Ventas Plan] ) + [€ Rappels Plan] + [€ Abono Roto montad. Plan]",
+              "        + [€ Abono Mala Calidad Plan] )",
+              "        - [€ Dtos Rotos Montadora Plan]",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        _Ventas",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"3082\" DisplayName=\"€ Spanish (Spain)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Total Cantidad M2 (Plan) (No Hierar)",
+            "expression": [
+              "VAR _Nivel2= IF( SELECTEDVALUE( Ramo_Industrial[DescripcionNivel2] ) = \"\", 1, 0 ) ",
+              "",
+              "VAR _Nivel3= IF( SELECTEDVALUE( Ramo_Industrial[DescripcionNivel3] ) = \"\", 1, 0 ) ",
+              "",
+              "VAR _Cantidad =",
+              "    CALCULATE(",
+              "        SUM( 'fact Costes_Plan'[Cantidad en M2] ),",
+              "        'dim Atributos_Costes'[Clase de operación] = \"F\",",
+              "        'dim Atributos_Costes'[Version Plan] = \"000\",",
+              "        'dim Atributos_Costes'[Indicador plan/real] = \"1\"",
+              "    )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE(),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "        _Nivel3 = 1 ),",
+              "    ",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
+              "         _Nivel2 = 1 ),",
+              "            BLANK( ),",
+              "        _Cantidad",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "#,0"
           }
         ]
       },
@@ -4538,11 +5122,13 @@
           {
             "name": "Id_Sociedad",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Id_Sociedad"
           },
           {
             "name": "BK_MANDT",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_MANDT"
           },
           {
@@ -4587,6 +5173,7 @@
             "name": "Id",
             "dataType": "int64",
             "isNameInferred": false,
+            "isDataTypeInferred": false,
             "sourceColumn": "[Value]"
           },
           {
@@ -4644,54 +5231,46 @@
           {
             "name": "Resultado Real",
             "expression": [
-              "",
-              "",
-              "SWITCH (",
-              "    MAX ( 'Metricas visuales'[Id] ),",
+              "SWITCH(",
+              "    MAX( 'Metricas visuales'[Id] ),",
               "    1, [Venta Neta],",
               "    2, [Total Cantidad M2 (Real)],",
               "    3, [Total Cantidad UD (Real)],",
               "    4, [Venta Neta BO],",
-              "    5, [% Margen Final BO]*100,",
-              "    6, [% Margen Final BO UNI]*100",
-              ")",
-              ""
+              "    5, [% Margen Final BO] * 100,",
+              "    6, [% Margen Final BO UNI] * 100",
+              ")"
             ],
             "formatString": "#,0"
           },
           {
             "name": "Resultado Plan",
             "expression": [
-              "",
-              "",
-              "SWITCH (",
-              "    MAX ( 'Metricas visuales'[Id] ),",
+              "SWITCH(",
+              "    MAX( 'Metricas visuales'[Id] ),",
               "    1, [Venta Neta Plan],",
               "    2, [Total Cantidad M2 (Plan)],",
               "    3, [Total Cantidad UD (Plan)],",
               "    4, [Venta Neta Plan]",
-              "    /*,",
+              "/*,",
               "    3, [Margen Contribucion Plan] ,",
               "    4, [Margen Final Plan],",
               "    5, [% Margen Final]",
               "    */",
-              ")",
-              ""
+              ")"
             ],
             "formatString": "#,0"
           },
           {
             "name": "Real YTD",
             "expression": [
-              " ",
-              "",
-              "SWITCH (",
-              "    MAX ( 'Metricas visuales'[Id] ),",
-              "    1, CALCULATE([Venta Neta],DATESYTD('dim Fechas'[Fecha])),",
-              "    2, CALCULATE([Total Cantidad M2 (Real)],DATESYTD('dim Fechas'[Fecha])) ,",
-              "    3, CALCULATE([Total Cantidad UD (Real)],DATESYTD('dim Fechas'[Fecha])) ,",
-              "    4, CALCULATE([Venta Neta BO],DATESYTD('dim Fechas'[Fecha]))",
-              "    /* ,",
+              "SWITCH(",
+              "    MAX( 'Metricas visuales'[Id] ),",
+              "    1, CALCULATE( [Venta Neta], DATESYTD( 'dim Fechas'[Fecha] ) ),",
+              "    2, CALCULATE( [Total Cantidad M2 (Real)], DATESYTD( 'dim Fechas'[Fecha] ) ),",
+              "    3, CALCULATE( [Total Cantidad UD (Real)], DATESYTD( 'dim Fechas'[Fecha] ) ),",
+              "    4, CALCULATE( [Venta Neta BO], DATESYTD( 'dim Fechas'[Fecha] ) )",
+              "/* ,",
               "    5, CALCULATE( [% Margen Final],DATESYTD(Fechas[Fecha]))",
               "    */",
               ")"
@@ -4701,19 +5280,17 @@
           {
             "name": "Plan YTD",
             "expression": [
-              " ",
-              "",
-              "SWITCH (",
-              "    MAX ( 'Metricas visuales'[Id] ),",
-              "    1, CALCULATE([Venta Neta Plan],DATESYTD('dim Fechas'[Fecha])),",
-              "    2, CALCULATE([Total Cantidad M2 (Plan)],DATESYTD('dim Fechas'[Fecha])),",
-              "     3, CALCULATE([Total Cantidad UD (Plan)],DATESYTD('dim Fechas'[Fecha])),",
-              "    4, CALCULATE([Venta Neta Plan],DATESYTD('dim Fechas'[Fecha]))",
-              "    /*,",
+              "SWITCH(",
+              "    MAX( 'Metricas visuales'[Id] ),",
+              "    1, CALCULATE( [Venta Neta Plan], DATESYTD( 'dim Fechas'[Fecha] ) ),",
+              "    2, CALCULATE( [Total Cantidad M2 (Plan)], DATESYTD( 'dim Fechas'[Fecha] ) ),",
+              "    3, CALCULATE( [Total Cantidad UD (Plan)], DATESYTD( 'dim Fechas'[Fecha] ) ),",
+              "    4, CALCULATE( [Venta Neta Plan], DATESYTD( 'dim Fechas'[Fecha] ) )",
+              "/*,",
               "    3, CALCULATE([Margen Contribucion Plan],DATESYTD(Fechas[Fecha])),",
               "    4, CALCULATE([Margen Final Plan],DATESYTD(Fechas[Fecha])) ,",
               "    5, CALCULATE( [% Margen Final],DATESYTD(Fechas[Fecha]))",
-              "    */\t",
+              "    */",
               ")"
             ],
             "formatString": "#,0"
@@ -4726,25 +5303,17 @@
           {
             "name": "Ingresos Totales Plan YTD",
             "expression": [
-              "",
-              "",
-              "",
-              "VAR _DIAS = CALCULATE(DISTINCTCOUNT('dim Fechas'[Fecha]),'dim Fechas'[DiaSemana]<6)",
-              "VAR _Promedio = DIVIDE([Ingresos Totales Plan],_DIAS)",
-              "",
-              "VAR _YTD = CALCULATE([Ingresos Totales],DATESYTD('dim Fechas'[Fecha]))",
-              "",
-              "",
-              "",
-              "RETURN _Promedio ",
-              "",
-              ""
+              "VAR _DIAS = CALCULATE( DISTINCTCOUNT( 'dim Fechas'[Fecha] ), 'dim Fechas'[DiaSemana] < 6 )",
+              "VAR _Promedio = DIVIDE( [Ingresos Totales Plan], _DIAS )",
+              "VAR _YTD = CALCULATE( [Ingresos Totales], DATESYTD( 'dim Fechas'[Fecha] ) )",
+              "RETURN",
+              "    _Promedio"
             ],
             "formatString": "#,0"
           },
           {
             "name": "Dias",
-            "expression": " CALCULATE(DISTINCTCOUNT( 'dim Fechas'[Fecha]), 'dim Fechas'[DiaSemana]<6)"
+            "expression": "CALCULATE( DISTINCTCOUNT( 'dim Fechas'[Fecha] ), 'dim Fechas'[DiaSemana] < 6 )"
           },
           {
             "name": "Plan YTD / Dia",
@@ -4754,14 +5323,12 @@
           {
             "name": "Real  SPLY",
             "expression": [
-              " ",
-              "",
-              "SWITCH (",
-              "    MAX ( 'Metricas visuales'[Id] ),",
-              "    1, CALCULATE([Venta Neta],SAMEPERIODLASTYEAR('dim Fechas'[Fecha])),",
-              "    2, CALCULATE([Total Cantidad M2 (Real)],SAMEPERIODLASTYEAR('dim Fechas'[Fecha])) ,",
-              "    3, CALCULATE([Total Cantidad UD (Real)],SAMEPERIODLASTYEAR('dim Fechas'[Fecha])) ",
-              "    /*,",
+              "SWITCH(",
+              "    MAX( 'Metricas visuales'[Id] ),",
+              "    1, CALCULATE( [Venta Neta], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) ),",
+              "    2, CALCULATE( [Total Cantidad M2 (Real)], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) ),",
+              "    3, CALCULATE( [Total Cantidad UD (Real)], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) )",
+              "/*,",
               "    4, CALCULATE([Margen Final],SAMEPERIODLASTYEAR(Fechas[Fecha])) ,",
               "    5, CALCULATE( [% Margen Final],SAMEPERIODLASTYEAR(Fechas[Fecha]))",
               "    */",
@@ -4791,44 +5358,37 @@
           {
             "name": "RANK Agrupado",
             "expression": [
-              "",
-              "",
-              "VAR _Top5 = RANKX(ALL('dim Clientes'),[Dif SPLY],,DESC,Dense)",
-              "",
-              "VAR _Down5 = RANKX(ALL('dim Clientes'),[Dif SPLY],,ASC,Dense)",
-              "",
+              "VAR _Top5 = RANKX( ALL( 'dim Clientes' ), [Dif SPLY], , DESC, DENSE )",
+              "VAR _Down5 = RANKX( ALL( 'dim Clientes' ), [Dif SPLY], , ASC, DENSE )",
               "RETURN",
-              "IF(_Top5<=10,\"TOP5\",IF(_Down5<=10,\"DOWN5\",\"RESTO\"))"
+              "    IF( _Top5 <= 10, \"TOP5\", IF( _Down5 <= 10, \"DOWN5\", \"RESTO\" ) )"
             ]
           },
           {
             "name": "% Real s / SPLY",
-            "expression": " DIVIDE([Resultado Real],[Real  SPLY])-1",
+            "expression": "DIVIDE( [Resultado Real], [Real  SPLY] ) - 1",
             "formatString": "0.00 %;-0.00 %;0.00 %"
           },
           {
             "name": "Dif Plan vs Real",
-            "expression": [
-              "",
-              "",
-              "[Resultado Real]-[Resultado Plan]",
-              ""
-            ],
+            "expression": "[Resultado Real] - [Resultado Plan]",
             "formatString": "#,0"
           },
           {
             "name": "Visualizacion 1",
             "expression": [
-              "",
-              "SWITCH(TRUE(),",
-              "\tMAX('Metricas visuales'[Id])= 1 && SELECTEDVALUE('dim Sociedades'[BK_SOCIEDAD])=\"15\",0,",
-              "\tMAX('Metricas visuales'[Id])= 1 && SELECTEDVALUE('dim Sociedades'[BK_SOCIEDAD])<>\"15\",1,",
-              "\tMAX('Metricas visuales'[Id])= 2 && SELECTEDVALUE('dim Sociedades'[BK_SOCIEDAD])=\"15\",0,",
-              "\tMAX('Metricas visuales'[Id]) = 2 && SELECTEDVALUE('dim Sociedades'[BK_SOCIEDAD])<>\"15\",1,",
-              "\tMAX('Metricas visuales'[Id])= 3 && SELECTEDVALUE('dim Sociedades'[BK_SOCIEDAD])=\"15\",1,",
-              "\tMAX('Metricas visuales'[Id])= 3 && SELECTEDVALUE('dim Sociedades'[BK_SOCIEDAD])<>\"15\",0,",
-              "\tMAX('Metricas visuales'[Id])= 4 && SELECTEDVALUE('dim Sociedades'[BK_SOCIEDAD])=\"15\",1,",
-              "\tMAX('Metricas visuales'[Id])= 4 && SELECTEDVALUE('dim Sociedades'[BK_SOCIEDAD])<>\"15\",0,BLANK())"
+              "SWITCH(",
+              "    TRUE( ),",
+              "    MAX( 'Metricas visuales'[Id] ) = 1 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 1 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 2 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 2 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 3 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 3 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 4 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 4 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 0,",
+              "    BLANK( )",
+              ")"
             ]
           },
           {
@@ -4874,11 +5434,11 @@
               "VAR _Result =",
               "    SWITCH (",
               "        TRUE (),",
-              "        NOT ( ISBLANK ( _Sociedad ) )&& _FirstMonth=_LastMonth,  \"Análisis Rentabilidad en \" & _Month & \" de \" & _Year & \"  en \" & _Sociedad,",
-              "        NOT ( ISBLANK ( _Sociedad ) )&& _FirstMonth<>_LastMonth,  \"Análisis Rentabilidad en \" & \"[ Varios Meses ]\" & \" de \" & _Year & \" en \" & _Sociedad,",
-              "        NOT ( ISBLANK ( _Month ) ), \"Análisis Rentabilidad en \" & _Month & \" de \" & _Year,",
-              "        NOT ( ISBLANK ( _Year ) ), \"Análisis Rentabilidad en \" & _Year,",
-              "        \"Análisis Rentabilidad \"",
+              "        NOT ( ISBLANK ( _Sociedad ) )&& _FirstMonth=_LastMonth,  \"Análisis Rentabilidad de Venta en \" & _Month & \" de \" & _Year & \"  en \" & _Sociedad,",
+              "        NOT ( ISBLANK ( _Sociedad ) )&& _FirstMonth<>_LastMonth,  \"Análisis Rentabilidad de Venta en \" & \"[ Varios Meses ]\" & \" de \" & _Year & \" en \" & _Sociedad,",
+              "        NOT ( ISBLANK ( _Month ) ), \"Análisis Rentabilidad de Venta en \" & _Month & \" de \" & _Year,",
+              "        NOT ( ISBLANK ( _Year ) ), \"Análisis Rentabilidad de Venta en \" & _Year,",
+              "        \"Análisis Rentabilidad de Venta\"",
               "    )",
               "RETURN",
               "    _Result"
@@ -4985,6 +5545,156 @@
               "_Result",
               ""
             ]
+          },
+          {
+            "name": "Visualizacion 2",
+            "expression": [
+              "SWITCH(",
+              "    TRUE( ),",
+              "    MAX( 'Metricas visuales'[Id] ) = 1 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 1 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 2 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 2 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 3 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 3 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 4 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 4 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 5 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 5 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 6 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 6 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 2,",
+              "    BLANK( )",
+              ")"
+            ]
+          },
+          {
+            "name": "Titulo Grafico Historico Ventas",
+            "expression": [
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "RETURN",
+              "    \"Real vs Plan de \" & _Metricas & \" en \" & _Year"
+            ]
+          },
+          {
+            "name": "Real vs Real SPLY (m2)",
+            "expression": [
+              "VAR _SPLY =",
+              "    CALCULATE(",
+              "        [Total Cantidad M2 (Real)],",
+              "        SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] )",
+              "    )",
+              "RETURN",
+              "    [Total Cantidad M2 (Real)] - _SPLY"
+            ],
+            "formatString": "#,##0"
+          },
+          {
+            "name": "Real vs Real SPLY (€)",
+            "expression": [
+              "VAR _SPLY =",
+              "    CALCULATE(",
+              "        [Venta Neta],",
+              "        SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] )",
+              "    )",
+              "RETURN",
+              "    [Venta Neta] - _SPLY"
+            ],
+            "formatString": "#,##0"
+          },
+          {
+            "name": "Titulo Desglose Zona Geografica",
+            "expression": [
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "RETURN",
+              "    \"Análisis de \" & _Metricas & \" por Zona Geográfica en \" & _Year"
+            ]
+          },
+          {
+            "name": "Titulo Desglose Ramo Industrial",
+            "expression": [
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "RETURN",
+              "    \"Análisis de \" & _Metricas & \" por Ramo Industrial en \" & _Year"
+            ]
+          },
+          {
+            "name": "Titulo Desglose Familia",
+            "expression": [
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "RETURN",
+              "    \"Análisis de \" & _Metricas",
+              "        & \" por Familia de Materiales en \"",
+              "        & _Year                       "
+            ]
+          },
+          {
+            "name": "Titulo Desglose Sector",
+            "expression": [
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "RETURN",
+              "    \"Análisis de \" & _Metricas",
+              "        & \" por Sectores en \"",
+              "        & _Year                       "
+            ]
+          },
+          {
+            "name": "Real vs Real SPLY (€) (No Hierar)",
+            "expression": [
+              "VAR _SPLY = CALCULATE( [Venta Neta], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) )",
+              "",
+              "VAR _Result1 = [Venta Neta] - _SPLY",
+              "",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        _Result1",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "#,##0"
+          },
+          {
+            "name": "Real vs Real SPLY (m2) (No Hierar)",
+            "expression": [
+              "VAR _SPLY = CALCULATE( [Total Cantidad M2 (Real)], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) )",
+              "",
+              "VAR _Result1 = [Total Cantidad M2 (Real)] - _SPLY",
+              "",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        _Result1",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "#,##0"
           }
         ]
       },
@@ -4994,11 +5704,14 @@
           {
             "name": "Id_Sectores",
             "dataType": "int64",
+            "description": "Columna duplicada para diferenciar paginas detalle de los informes de ventas",
+            "isHidden": true,
             "sourceColumn": "Id_Sectores"
           },
           {
             "name": "BK_MANDT",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "BK_MANDT"
           },
           {
@@ -5015,6 +5728,11 @@
             "name": "Sectores Agrupados",
             "dataType": "string",
             "sourceColumn": "Sectores Agrupados"
+          },
+          {
+            "name": "Descripcion Sector1",
+            "dataType": "string",
+            "sourceColumn": "Descripcion Sector"
           }
         ],
         "partitions": [
@@ -5299,6 +6017,7 @@
           {
             "name": "Id_Divisiones",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Id_Divisiones"
           },
           {
@@ -5338,6 +6057,7 @@
             "name": "Id",
             "dataType": "int64",
             "isNameInferred": false,
+            "isDataTypeInferred": false,
             "sourceColumn": "[Value]"
           },
           {
@@ -5632,9 +6352,6 @@
           {
             "name": "ZCTAREDOS -- Costes Real",
             "expression": [
-              "",
-              "",
-              "/*",
               "SWITCH(",
               "    MAX( 'Metricas visuales Costes'[Id] ),",
               "    1, [Ingresos Totales],",
@@ -5646,10 +6363,7 @@
               "    7, [ZCTAREDOS2-- Margen Operativo],",
               "    8, [ZCTAREDOS2-- Margen Neto],",
               "    9, [ZCTAREDOS2-- Margen Final]",
-              "    ",
-              ")",
-              "*/",
-              ""
+              ")"
             ]
           }
         ]
@@ -5790,44 +6504,85 @@
           {
             "name": "Costes Visual",
             "expression": [
-              "SWITCH(MAX('Detalle Costes'[Sub_Id]),",
+              "",
+              "",
+              "VAR _Costes =SWITCH(MAX('Detalle Costes'[Sub_Id]),",
+              "    \"1.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Precio Neto 5000], BLANK()),",
+              "    \"1.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Ingresos], BLANK()),",
+              "    \"1.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ C.Transport. Teorico], BLANK()),",
+              "    \"1.4\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Rec. Multsdad], BLANK()),",
+              "    \"1.5\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Abono Mala Calidad], BLANK()),",
+              "    \"3.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[Ingresos Totales], BLANK()),",
+              "    \"3.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Descuento Ventas]*-1, BLANK()),",
+              "    \"3.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Rappels], BLANK()),",
+              "    \"3.4\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Abono Mala Calidad], BLANK()),",
+              "    \"3.5\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Dtos Rotos Montadora]*-1, BLANK()),",
+              "    \"3.6\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Abono Roto montad.], BLANK()),",
+              "    \"5.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[Pr. Estandar], BLANK()),",
+              "    \"5.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[Desv. Product Costing], BLANK()),",
+              "    \"5.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[Desviacion Ordenes], BLANK()),",
+              "    \"6.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Comision de Ventas]*-1, BLANK()),",
+              "    \"6.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Transporte Total]*-1, BLANK()),",
+              "    \"6.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Canon Unic]*-1, BLANK()),",
+              "    \"6.4\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Coste Recargo Lidl]*-1, BLANK()),",
+              "    \"6.5\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Coste Chep Palet]*-1, BLANK()),",
+              "    \"6.6\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Coste Palets]*-1, BLANK()),",
+              "    \"6.7\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Coste de Montaje]*-1, BLANK()),",
+              "    \"6.8\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Seguro Caucion]*-1, BLANK()),",
+              "    \"6.9\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Compra Troq/Cliches/Utiles]*-1, BLANK()),",
+              "    \"6.10\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Gastos Montadora]*-1, BLANK()),",
+              "    \"6.11\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Gastos Dir. Cogenerac.]*-1, BLANK()),",
+              "    \"6.12\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Gastos Recorte]*-1, BLANK()),",
+              "    \"7.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Estructura Comercial]*-1, BLANK()),",
+              "    \"7.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Logistica Carga/Mtto]*-1, BLANK()),",
+              "    \"7.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Estructura Oficinas]*-1, BLANK()),",
+              "    \"7.4\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Estructura General]*-1, BLANK()),",
+              "    \"7.5\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Gastos Cogeneracion]*-1, BLANK()),",
+              "    \"8.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Ing. Financieros], BLANK()),",
+              "    \"8.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Gastos Financieros]*-1, BLANK()),",
+              "    \"8.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[€ Descuentos por pronto pago]*-1, BLANK()),",
+              "    \"9.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),[Ing. Extraordin. Total], BLANK())",
+              ")",
+              "",
+              "VAR _Costes2 = SWITCH(MAX('Detalle Costes'[Sub_Id]),",
               "    \"1.1\",[€ Precio Neto 5000],",
               "    \"1.2\",[€ Ingresos],",
               "    \"1.3\",[€ C.Transport. Teorico],",
-              "    \"1.4\",[€ Rec. Multsdad],",
+              "    \"1.4\",[€ Rec. Multsdad], ",
               "    \"1.5\",[€ Abono Mala Calidad],",
-              "    \"3.1\",[Ingresos Totales],",
-              "    \"3.2\",[€ Descuento Ventas]*-1,",
+              "    \"3.1\",[Ingresos Totales], ",
+              "    \"3.2\",[€ Descuento Ventas]*-1, ",
               "    \"3.3\",[€ Rappels],",
               "    \"3.4\",[€ Abono Mala Calidad],",
               "    \"3.5\",[€ Dtos Rotos Montadora]*-1,",
-              "    \"5.1\",[Pr. Estandar],",
+              "    \"3.6\",[€ Abono Roto montad.], ",
+              "    \"5.1\",[Pr. Estandar], ",
               "    \"5.2\",[Desv. Product Costing],",
-              "    \"5.3\",[Desviacion Ordenes],",
-              "    ",
+              "    \"5.3\",[Desviacion Ordenes], ",
               "    \"6.1\",[€ Comision de Ventas]*-1,",
-              "    \"6.2\",[€ Transporte Total]*-1,",
-              "    \"6.3\",[€ Canon Unic]*-1,",
-              "    \"6.4\",[€ Coste Recargo Lidl]*-1,",
-              "    \"6.5\",[€ Coste Chep Palet]*-1,",
-              "    \"6.6\",[€ Coste Palets]*-1,",
-              "    \"6.7\",[€ Coste de Montaje]*-1,",
-              "    \"6.8\",[€ Seguro Caucion]*-1,",
+              "    \"6.2\",[€ Transporte Total]*-1, ",
+              "    \"6.3\",[€ Canon Unic]*-1, ",
+              "    \"6.4\",[€ Coste Recargo Lidl]*-1, ",
+              "    \"6.5\",[€ Coste Chep Palet]*-1, ",
+              "    \"6.6\",[€ Coste Palets]*-1, ",
+              "    \"6.7\",[€ Coste de Montaje]*-1, ",
+              "    \"6.8\",[€ Seguro Caucion]*-1, ",
               "    \"6.9\",[€ Compra Troq/Cliches/Utiles]*-1,",
-              "    \"6.10\",[€ Gastos Montadora]*-1,",
-              "    \"6.11\",[€ Gastos Dir. Cogenerac.]*-1,",
-              "    \"6.12\",[€ Gastos Recorte]*-1,",
-              "    \"7.1\",[€ Estructura Comercial]*-1,",
-              "    \"7.2\",[€ Logistica Carga/Mtto]*-1,",
-              "    \"7.3\",[€ Estructura Oficinas]*-1,",
-              "    \"7.4\",[€ Estructura General]*-1,",
-              "    \"7.5\",[€ Gastos Cogeneracion]*-1,",
+              "    \"6.10\",[€ Gastos Montadora]*-1, ",
+              "    \"6.11\",[€ Gastos Dir. Cogenerac.]*-1, ",
+              "    \"6.12\",[€ Gastos Recorte]*-1, ",
+              "    \"7.1\",[€ Estructura Comercial]*-1, ",
+              "    \"7.2\",[€ Logistica Carga/Mtto]*-1, ",
+              "    \"7.3\",[€ Estructura Oficinas]*-1, ",
+              "    \"7.4\",[€ Estructura General]*-1, ",
+              "    \"7.5\",[€ Gastos Cogeneracion]*-1, ",
               "    \"8.1\",[€ Ing. Financieros],",
-              "    \"8.2\",[€ Gastos Financieros]*-1,",
-              "    \"8.3\",[€ Descuentos por pronto pago]*-1,",
-              "    \"9.1\",[Ing. Extraordin. Total]",
+              "    \"8.2\",[€ Gastos Financieros]*-1, ",
+              "    \"8.3\",[€ Descuentos por pronto pago]*-1, ",
+              "    \"9.1\",[Ing. Extraordin. Total] ",
               ")",
               "",
+              "RETURN IF(ISFILTERED('Detalle Costes'[Sub_Id]),_Costes2)",
               "",
               "",
               "",
@@ -5887,43 +6642,54 @@
             "name": "% Costes Visual",
             "expression": [
               "SWITCH(MAX('Detalle Costes'[Sub_Id]),",
-              "    \"1.1\",DIVIDE([€ Precio Neto 5000],[Venta Neta])*100,",
-              "    \"1.2\",DIVIDE([€ Ingresos],[Venta Neta])*100,",
-              "    \"1.3\",DIVIDE([€ C.Transport. Teorico],[Venta Neta])*100,",
-              "    \"1.4\",DIVIDE([€ Rec. Multsdad],[Venta Neta])*100,",
-              "    \"1.5\",DIVIDE([€ Abono Mala Calidad]*-1,[Venta Neta])*100,",
-              "    \"3.1\",DIVIDE([Ingresos Totales],[Ingresos Totales])*100,",
-              "    \"3.2\",DIVIDE([€ Descuento Ventas],[Ingresos Totales])*100,",
-              "    \"3.3\",DIVIDE([€ Rappels]*-1,[Ingresos Totales])*100,",
-              "    \"3.4\",DIVIDE([€ Abono Mala Calidad]*-1,[Ingresos Totales])*100,",
-              "    \"3.5\",DIVIDE([€ Dtos Rotos Montadora],[Ingresos Totales])*100,",
-              "    \"5.1\",DIVIDE([Pr. Estandar],[Venta Neta])*100,",
-              "    \"5.2\",DIVIDE([Desv. Product Costing],[Venta Neta])*100,",
-              "    \"5.3\",DIVIDE([Desviacion Ordenes],[Venta Neta])*100,",
-              "    \"6.1\",DIVIDE([€ Comision de Ventas],[Venta Neta])*100,",
-              "    \"6.2\",DIVIDE([€ Transporte Total],[Venta Neta])*100,",
-              "    \"6.3\",DIVIDE([€ Canon Unic],[Venta Neta])*100,",
-              "    \"6.4\",DIVIDE([€ Coste Recargo Lidl],[Venta Neta])*100,",
-              "    \"6.5\",DIVIDE([€ Coste Chep Palet],[Venta Neta])*100,",
-              "    \"6.6\",DIVIDE([€ Coste Palets],[Venta Neta])*100,",
-              "    \"6.7\",DIVIDE([€ Coste de Montaje],[Venta Neta])*100,",
-              "    \"6.8\",DIVIDE([€ Seguro Caucion],[Venta Neta])*100,",
-              "    \"6.9\",DIVIDE([€ Compra Troq/Cliches/Utiles],[Venta Neta])*100,",
-              "    \"6.10\",DIVIDE([€ Gastos Montadora],[Venta Neta])*100,",
-              "    \"6.11\",DIVIDE([€ Gastos Dir. Cogenerac.],[Venta Neta])*100,",
-              "    \"6.12\",DIVIDE([€ Gastos Recorte],[Venta Neta])*100,",
-              "    \"7.1\",DIVIDE([€ Estructura Comercial],[Venta Neta])*100,",
-              "    \"7.2\",DIVIDE([€ Logistica Carga/Mtto],[Venta Neta])*100,",
-              "    \"7.3\",DIVIDE([€ Estructura Oficinas],[Venta Neta])*100,",
-              "    \"7.4\",DIVIDE([€ Estructura General],[Venta Neta])*100,",
-              "    \"7.5\",DIVIDE([€ Gastos Cogeneracion],[Venta Neta])*100,",
-              "    \"8.1\",DIVIDE([€ Ing. Financieros],[Venta Neta])*100,",
-              "    \"8.2\",DIVIDE([€ Gastos Financieros],[Venta Neta])*100,",
-              "    \"8.3\",DIVIDE([€ Descuentos por pronto pago],[Venta Neta])*100,",
-              "    \"9.1\",DIVIDE([Ing. Extraordin. Total],[Venta Neta])*100",
+              "    \"1.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Precio Neto 5000],[Venta Neta])*100,BLANK()),",
+              "    \"1.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Ingresos],[Venta Neta])*100,BLANK()),",
+              "    \"1.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ C.Transport. Teorico],[Venta Neta])*100,BLANK()),",
+              "    \"1.4\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Rec. Multsdad],[Venta Neta])*100,BLANK()),",
+              "    \"1.5\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Abono Mala Calidad]*-1,[Venta Neta])*100,BLANK()),",
+              "    \"3.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([Ingresos Totales],[Ingresos Totales])*100,BLANK()),",
+              "    \"3.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Descuento Ventas],[Ingresos Totales])*100,BLANK()),",
+              "    \"3.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Rappels]*-1,[Ingresos Totales])*100,BLANK()),",
+              "    \"3.4\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Abono Mala Calidad]*-1,[Ingresos Totales])*100,BLANK()),",
+              "    \"3.5\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Dtos Rotos Montadora],[Ingresos Totales])*100,BLANK()),",
+              "    \"3.6\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Abono Roto montad.]*-1,[Venta Neta])*100,BLANK()),",
+              "    \"5.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([Pr. Estandar],[Venta Neta])*100,BLANK()),",
+              "    \"5.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([Desv. Product Costing],[Venta Neta])*100,BLANK()),",
+              "    \"5.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([Desviacion Ordenes],[Venta Neta])*100,BLANK()),",
+              "    \"6.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Comision de Ventas],[Venta Neta])*100,BLANK()),",
+              "    \"6.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Transporte Total],[Venta Neta])*100,BLANK()),",
+              "    \"6.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Canon Unic],[Venta Neta])*100,BLANK()),",
+              "    \"6.4\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Coste Recargo Lidl],[Venta Neta])*100,BLANK()),",
+              "    \"6.5\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Coste Chep Palet],[Venta Neta])*100,BLANK()),",
+              "    \"6.6\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Coste Palets],[Venta Neta])*100,BLANK()),",
+              "    \"6.7\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Coste de Montaje],[Venta Neta])*100,BLANK()),",
+              "    \"6.8\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Seguro Caucion],[Venta Neta])*100,BLANK()),",
+              "    \"6.9\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Compra Troq/Cliches/Utiles],[Venta Neta])*100,BLANK()),",
+              "    \"6.10\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Gastos Montadora],[Venta Neta])*100,BLANK()),",
+              "    \"6.11\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Gastos Dir. Cogenerac.],[Venta Neta])*100,BLANK()),",
+              "    \"6.12\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Gastos Recorte],[Venta Neta])*100,BLANK()),",
+              "    \"7.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Estructura Comercial],[Venta Neta])*100,BLANK()),",
+              "    \"7.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Logistica Carga/Mtto],[Venta Neta])*100,BLANK()),",
+              "    \"7.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Estructura Oficinas],[Venta Neta])*100,BLANK()),",
+              "    \"7.4\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Estructura General],[Venta Neta])*100,BLANK()),",
+              "    \"7.5\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Gastos Cogeneracion],[Venta Neta])*100,BLANK()),",
+              "    \"8.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Ing. Financieros],[Venta Neta])*100,BLANK()),",
+              "    \"8.2\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Gastos Financieros],[Venta Neta])*100,BLANK()),",
+              "    \"8.3\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([€ Descuentos por pronto pago],[Venta Neta])*100,BLANK()),",
+              "    \"9.1\",IF(ISFILTERED('Detalle Costes'[Sub_Id]),DIVIDE([Ing. Extraordin. Total],[Venta Neta])*100,BLANK())",
               ")"
             ],
             "formatString": "0.0"
+          },
+          {
+            "name": "Aviso Medida Seleccionada",
+            "expression": [
+              "IF(",
+              "    NOT ( ISFILTERED( 'Detalle Costes'[Sub_Id] ) ),",
+              "    \"Seleccionar de la Gráfica Desglose Costes\",",
+              "    \"\"",
+              ")"
+            ]
           }
         ]
       },
@@ -6090,6 +6856,61 @@
               "    \"5.3.10\",CALCULATE([** Desv. Precio Mixto],SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha]))",
               ")"
             ]
+          },
+          {
+            "name": "Titulo Grafico Historico Costes",
+            "expression": [
+              "VAR _Metricas =",
+              "    SELECTEDVALUE( 'Metricas visuales Costes'[Metricas Costes] )",
+              "RETURN",
+              "    _Metricas & \" por AÑOS\""
+            ]
+          },
+          {
+            "name": "Titulo Grafico Historico Costes 1",
+            "expression": [
+              "VAR _Metricas =",
+              "    SELECTEDVALUE( 'Detalle Costes'[Desglose Coste] )",
+              "RETURN",
+              "    IF(",
+              "        _Metricas = \"\",",
+              "        \"Evolución Anual Costes\",",
+              "        _Metricas & \" por AÑOS\"",
+              "    )"
+            ]
+          },
+          {
+            "name": "Titulo Grafico Ratio Costes 1",
+            "expression": [
+              "VAR _Metricas =",
+              "    SELECTEDVALUE( 'Detalle Costes'[Desglose Coste] )",
+              "VAR _MetricasVis =",
+              "    SELECTEDVALUE( 'Metricas visuales Costes'[Metricas Costes] )",
+              "RETURN",
+              "    IF(",
+              "        _MetricasVis = \"Venta Neta\" && _Metricas = \"\",",
+              "        \"Evolución s/Ingresos Totales\",",
+              "        IF(",
+              "            _MetricasVis <> \"Venta Neta\" && _Metricas = \"\",",
+              "            \"Evolucion s/Venta Neta\",",
+              "            IF(",
+              "                _MetricasVis <> \"Venta Neta\" && _Metricas <> \"\",",
+              "                \"% \" & _Metricas & \" s/Venta Neta\",",
+              "                \"% \" & _Metricas & \" s/Ingresos Totales\"",
+              "            )",
+              "        )",
+              "    )"
+            ]
+          },
+          {
+            "name": "Titulo Grafico Historico Costes 2",
+            "expression": [
+              "VAR _Metricas =",
+              "    SELECTEDVALUE( 'Metricas visuales Costes'[Metricas Costes] )",
+              "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "RETURN",
+              "    \"Historico \" & _Metricas & \" en \" & _Year"
+            ]
           }
         ]
       },
@@ -6102,6 +6923,7 @@
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "[Id_Clientes]"
           },
           {
@@ -6379,7 +7201,8 @@
           {
             "name": "Año",
             "dataType": "int64",
-            "sourceColumn": "Año"
+            "sourceColumn": "Año",
+            "summarizeBy": "none"
           },
           {
             "name": "Mes",
@@ -6512,6 +7335,278 @@
                 "    #\"Changed Type\" = Table.TransformColumnTypes(dim_Fechas,{{\"Año\", Int64.Type}, {\"MesNro\", Int64.Type}, {\"DiaNro\", Int64.Type}, {\"SemanaNro\", Int64.Type}, {\"DiaSemana\", Int64.Type}, {\"TrimNro\", Int64.Type}, {\"SemestreNro\", Int64.Type}, {\"AñoMes\", Int64.Type}, {\"AñoTrim\", Int64.Type}, {\"AñoSem\", Int64.Type}, {\"AñoSemana\", Int64.Type}})",
                 "in",
                 "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Ramo_Industrial",
+        "columns": [
+          {
+            "name": "ID_Ramo",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ID_Ramo",
+            "formatString": "#,##0"
+          },
+          {
+            "name": "BK_MANDT",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "BK_MANDT"
+          },
+          {
+            "name": "BK_RAMOINDUSTRIAL",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "BK_RAMOINDUSTRIAL"
+          },
+          {
+            "name": "Descripcion Ramo",
+            "dataType": "string",
+            "sourceColumn": "Descripcion Ramo",
+            "sortByColumn": "BK_RAMOINDUSTRIAL"
+          },
+          {
+            "name": "Nivel2",
+            "dataType": "string",
+            "sourceColumn": "Nivel2"
+          },
+          {
+            "name": "DescripcionNivel2",
+            "dataType": "string",
+            "sourceColumn": "DescripcionNivel2"
+          },
+          {
+            "name": "Nivel3",
+            "dataType": "string",
+            "sourceColumn": "Nivel3"
+          },
+          {
+            "name": "DescripcionNivel3",
+            "dataType": "string",
+            "sourceColumn": "DescripcionNivel3"
+          },
+          {
+            "name": "Nivel4",
+            "dataType": "string",
+            "sourceColumn": "Nivel4"
+          },
+          {
+            "name": "DescripcionNivel4",
+            "dataType": "string",
+            "sourceColumn": "DescripcionNivel4"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Ramo_Industrial",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
+                "    Data = Source{[Schema=\"dim\",Item=\"Ramo_Industrial\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(Data,\"\",null,Replacer.ReplaceValue,{\"Nivel2\", \"DescripcionNivel2\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Ramo Industrial",
+            "levels": [
+              {
+                "name": "DescripcionNivel4",
+                "ordinal": 0,
+                "column": "DescripcionNivel4"
+              },
+              {
+                "name": "DescripcionNivel3",
+                "ordinal": 1,
+                "column": "DescripcionNivel3"
+              },
+              {
+                "name": "DescripcionNivel2",
+                "ordinal": 2,
+                "column": "DescripcionNivel2"
+              },
+              {
+                "name": "Descripcion Ramo",
+                "ordinal": 3,
+                "column": "Descripcion Ramo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Materiales",
+        "columns": [
+          {
+            "name": "Id_Materiales",
+            "dataType": "int64",
+            "sourceColumn": "Id_Materiales"
+          },
+          {
+            "name": "BK_MANDT",
+            "dataType": "string",
+            "sourceColumn": "BK_MANDT"
+          },
+          {
+            "name": "BK_MATERIAL",
+            "dataType": "string",
+            "sourceColumn": "BK_MATERIAL"
+          },
+          {
+            "name": "BK_CENTRO",
+            "dataType": "string",
+            "sourceColumn": "BK_CENTRO"
+          },
+          {
+            "name": "BK_ALMACEN",
+            "dataType": "string",
+            "sourceColumn": "BK_ALMACEN"
+          },
+          {
+            "name": "BK_TipoMaterial",
+            "dataType": "string",
+            "sourceColumn": "BK_TipoMaterial"
+          },
+          {
+            "name": "BK_Ramo",
+            "dataType": "string",
+            "sourceColumn": "BK_Ramo"
+          },
+          {
+            "name": "BK_GrupoArticulos",
+            "dataType": "string",
+            "sourceColumn": "BK_GrupoArticulos"
+          },
+          {
+            "name": "Nombre Material",
+            "dataType": "string",
+            "sourceColumn": "Nombre Material"
+          },
+          {
+            "name": "UM Material",
+            "dataType": "string",
+            "sourceColumn": "UM Material"
+          },
+          {
+            "name": "Grupo Articulos",
+            "dataType": "string",
+            "sourceColumn": "Grupo Articulos"
+          },
+          {
+            "name": "Nombre Grupo",
+            "dataType": "string",
+            "sourceColumn": "Nombre Grupo"
+          },
+          {
+            "name": "Jerarquía",
+            "dataType": "string",
+            "sourceColumn": "Jerarquía"
+          },
+          {
+            "name": "Familia",
+            "dataType": "string",
+            "sourceColumn": "Familia"
+          },
+          {
+            "name": "SubFamilia1",
+            "dataType": "string",
+            "sourceColumn": "SubFamilia1"
+          },
+          {
+            "name": "Calidad",
+            "dataType": "string",
+            "sourceColumn": "Calidad"
+          },
+          {
+            "name": "Digital",
+            "dataType": "string",
+            "sourceColumn": "Digital"
+          },
+          {
+            "name": "AltaCalidad",
+            "dataType": "string",
+            "sourceColumn": "AltaCalidad"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Materiales",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
+                "    Data = Source{[Schema=\"dim\",Item=\"Materiales\"]}[Data]",
+                "in",
+                "    Data"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim Provisional_Atributos_Materiales_Costes",
+        "columns": [
+          {
+            "name": "Id_Atributos_Materiales_PROVISIONAL",
+            "dataType": "int64",
+            "sourceColumn": "Id_Atributos_Materiales_PROVISIONAL"
+          },
+          {
+            "name": "Grupo de materiales 1",
+            "dataType": "string",
+            "sourceColumn": "Grupo de materiales 1"
+          },
+          {
+            "name": "Grupo de material 2",
+            "dataType": "string",
+            "sourceColumn": "Grupo de material 2"
+          },
+          {
+            "name": "Descripcion Familia",
+            "dataType": "string",
+            "sourceColumn": "Descripcion Familia"
+          },
+          {
+            "name": "Descripcion SubFamilia",
+            "dataType": "string",
+            "sourceColumn": "Descripcion SubFamilia"
+          },
+          {
+            "name": "Agrupacion Familia",
+            "dataType": "string",
+            "sourceColumn": "Agrupacion Familia",
+            "sortByColumn": "Orden Agrupacion Familia"
+          },
+          {
+            "name": "Orden Agrupacion Familia",
+            "dataType": "int64",
+            "sourceColumn": "Orden Agrupacion Familia"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
+                "    dim_Provisional_Atributos_Materiales_Costes = Source{[Schema=\"dim\",Item=\"Provisional_Atributos_Materiales_Costes\"]}[Data]",
+                "in",
+                "    dim_Provisional_Atributos_Materiales_Costes"
               ]
             }
           }
@@ -6686,18 +7781,50 @@
         "fromColumn": "Id_Fecha",
         "toTable": "dim Fechas",
         "toColumn": "Fecha"
-      }
-    ],
-    "expressions": [
+      },
       {
-        "name": "Query1",
-        "kind": "m",
-        "expression": [
-          "let",
-          "    Source = \"\"",
-          "in",
-          "    Source"
-        ]
+        "name": "980ae191-c9b6-4d61-b4d5-98ee565da7ef",
+        "fromTable": "fact Costes_Plan",
+        "fromColumn": "Id_Ramo",
+        "toTable": "Ramo_Industrial",
+        "toColumn": "ID_Ramo"
+      },
+      {
+        "name": "977dc51c-a678-4c30-8c89-bbc5c524e039",
+        "fromTable": "fact Costes_Real",
+        "fromColumn": "Id_Ramo",
+        "toTable": "Ramo_Industrial",
+        "toColumn": "ID_Ramo"
+      },
+      {
+        "name": "0cfe8220-190c-4c84-94e4-9ce314ce4830",
+        "fromTable": "fact Costes_Plan",
+        "fromColumn": "Id_Material",
+        "toTable": "Materiales",
+        "toColumn": "Id_Materiales",
+        "isActive": false
+      },
+      {
+        "name": "d04fdf7b-78a5-41ef-b9f8-1db17e5219ed",
+        "fromTable": "fact Costes_Real",
+        "fromColumn": "Id_Materiales",
+        "toTable": "Materiales",
+        "toColumn": "Id_Materiales",
+        "isActive": false
+      },
+      {
+        "name": "657d1f5d-2462-451f-ba4f-c933fff1f21d",
+        "fromTable": "fact Costes_Plan",
+        "fromColumn": "Id_Atributos_Materiales_PROVISIONAL",
+        "toTable": "dim Provisional_Atributos_Materiales_Costes",
+        "toColumn": "Id_Atributos_Materiales_PROVISIONAL"
+      },
+      {
+        "name": "6f07454a-2d3c-48d4-9553-910744748123",
+        "fromTable": "fact Costes_Real",
+        "fromColumn": "Id_Atributos_Materiales_PROVISIONAL",
+        "toTable": "dim Provisional_Atributos_Materiales_Costes",
+        "toColumn": "Id_Atributos_Materiales_PROVISIONAL"
       }
     ],
     "annotations": [
@@ -6706,5 +7833,6 @@
         "value": "600"
       }
     ]
-  }
+  },
+  "id": "SemanticModel"
 }
