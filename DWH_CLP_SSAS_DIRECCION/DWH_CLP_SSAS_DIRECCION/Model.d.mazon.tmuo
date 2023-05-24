@@ -2,15 +2,15 @@
   "UseWorkspace": true,
   "WorkspaceConnection": {
     "ConnectionString": "provider=MSOLAP;data source=POWERBI\\DWHPOWERBI",
-    "EncryptedCredentials": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8dSPVpU2J02vnbb0R/upqQAAAAACAAAAAAADZgAAwAAAABAAAAA0Na8SkGiepPK9gIsERYm8AAAAAASAAACgAAAAEAAAACLFLibMNV5MX/wPDSyTytbQAAAAoQXx9kSOhqf7jzH9g8TtERZ6a2m+U9VRL1xkKkDn4gLscsb3MX1sQhN3QsODjQnJdTqp9xj77imUvjZ2qz/kfVi856H1VqFQSoIrCTKJ6Yd+2BqY/IyN1sIqjtI/k0cS9Dc7e6DcpoGvsuzQJ02aFgx6HdfbMoWDX+cQBJMOfktqDHOIE0Cy4JDjEGjk+64uzLzLlt3dOPxtW8gVnaotAFF+9lyQ642ERp7Ce7UgOmgSs3Fg1zZDErRjo/OFKZpBgBr8FVJES3tNxa/JUMk59RQAAABDsWnDV5blKAgAhsH87W1aFOQKtg=="
+    "EncryptedCredentials": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8dSPVpU2J02vnbb0R/upqQAAAAACAAAAAAADZgAAwAAAABAAAAC3ZqUYkkmPCo5obN1XdtNPAAAAAASAAACgAAAAEAAAALVhbWrx1hRMREZ5viBgfP/QAAAA8jZvWO1DVpI1rga90On3ezvPWXWj5LlwD5BehqvPAq9ixukOlsxa09MvMCx/aJQqbRq6jv7IKC9lDUOsfkExgIXC0XBrqZCogKteBCOWfHa1scGttD4ZibizHI5FaCBshtSQblaB64PlL0N2aFN2/Dl7lbNcZWS6weGbTtZSOz/2eUDn4YCOeAK/4EqB4FC5kjdtb6HT6ajgTw3tTrMSSigDctPPXClXweNLaCSPq3h8sZPS9gGOOEmuIfyWqIx4YAZTUtwny+fDDz3R0gQw5xQAAADPwH3WUu8s/s8bj2ckUE9nae50lw=="
   },
   "WorkspaceDatabase": "DWH_CLP_SSAS_DIRECCION_Administrador_0c5e2278-fb20-4d3b-aafc-c285ec05d10e",
   "Deployment": {
     "TargetConnectionString": "POWERBI\\DWHPOWERBI",
     "TargetDatabase": "DWH_CLP_SSAS_DIRECCION_Administrador_0c5e2278-fb20-4d3b-aafc-c285ec05d10e",
     "TargetCredentials": {
-      "EncryptedPassword": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8dSPVpU2J02vnbb0R/upqQAAAAACAAAAAAADZgAAwAAAABAAAAAVmxmPqF1AUXIPG4weB8GiAAAAAASAAACgAAAAEAAAAB3KAaXYRdac+yUXipSxJPsYAAAAIUB/8FuaH8f2G0k0Vnj0gBprZqVJO0DHFAAAAKNy0DG3d8cvP8/5PHtUl+5FOm8K",
-      "UserName": "serviciospowerbi"
+      "EncryptedPassword": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8dSPVpU2J02vnbb0R/upqQAAAAACAAAAAAADZgAAwAAAABAAAACDJJtohpDIvvtLqAUnidLRAAAAAASAAACgAAAAEAAAAPgdjhxd6hoic4rO7aTBiA0gAAAAPLAmSaZXdZHLoLeuZJJD9ALN5Jz3WRJ+Zc9V6wyxV3UUAAAAPwltzUChJ6EMKkQXlVSMBW318gE=",
+      "UserName": "SERVIDOR\\Administrador"
     },
     "DeployDataSources": true,
     "DeployPartitions": true,
@@ -23,8 +23,21 @@
       "Username": "SERVIDOR\\Administrador",
       "Password": {
         "Encryption": "UserKey",
-        "EncryptedString": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8dSPVpU2J02vnbb0R/upqQAAAAACAAAAAAADZgAAwAAAABAAAACPNPbTgP5L0Kh1gdavgHiGAAAAAASAAACgAAAAEAAAAPejNxM5971ywvL/8fJgIDQgAAAAgKqyk9PtdlwxtjOlkmCidT1/l5Vpj0PQZm6J96CeCtsUAAAAt6IYGibj4wO2EuD3cUlwDCG4vpM="
+        "EncryptedString": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8dSPVpU2J02vnbb0R/upqQAAAAACAAAAAAADZgAAwAAAABAAAAASxqiSYrmw3CiCU65A3DgdAAAAAASAAACgAAAAEAAAAB5B1895p6q8rsasyuhjDe0gAAAAAZRVpiKSQabaJHhPs6rEMsuvvL0I/ANZMfkaOFZo57UUAAAAlJjnRzyPtk1JE+bbesVRiUuJjJc="
       }
+    }
+  },
+  "TableImportSettings": {
+    "SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST": {
+      "ServerType": "Sql",
+      "Options": {
+        "Trust Server Certificate": "True"
+      },
+      "UserId": "serviciospowerbi",
+      "Server": "POWERBI\\DWHPOWERBI",
+      "Database": "DWH_CLP",
+      "Authentication": "Sql",
+      "Encrypt": true
     }
   }
 }

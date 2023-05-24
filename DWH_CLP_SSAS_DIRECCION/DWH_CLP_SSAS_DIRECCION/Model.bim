@@ -11,17 +11,18 @@
         "connectionDetails": {
           "protocol": "tds",
           "address": {
-            "server": "POWERBIPROD\\DWHPOWERBI",
+            "server": "POWERBI\\DWHPOWERBI",
             "database": "DWH_CLP"
           },
           "authentication": null,
           "query": null
         },
-        "options": {},
         "credential": {
-          "AuthenticationKind": "Windows",
-          "Username": "SERVIDOR\\Administrador",
-          "EncryptConnection": true,
+          "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "powerbi\\dwhpowerbi;DWH_CLP",
+          "Username": "serviciospowerbi",
+          "EncryptConnection": false,
           "PrivacySetting": "Organizational"
         }
       }
@@ -607,37 +608,27 @@
           {
             "name": "Id_Clientes",
             "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Id_Clientes",
-            "isAvailableInMdx": false
+            "sourceColumn": "Id_Clientes"
           },
           {
             "name": "Id_Materiales",
             "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Id_Materiales",
-            "isAvailableInMdx": false
+            "sourceColumn": "Id_Materiales"
           },
           {
             "name": "Id_Zona_Ventas",
             "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Id_Zona_Ventas",
-            "isAvailableInMdx": false
+            "sourceColumn": "Id_Zona_Ventas"
           },
           {
             "name": "Id_Organizacion_Ventas",
             "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Id_Organizacion_Ventas",
-            "isAvailableInMdx": false
+            "sourceColumn": "Id_Organizacion_Ventas"
           },
           {
             "name": "Id_Centros",
             "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Id_Centros",
-            "isAvailableInMdx": false
+            "sourceColumn": "Id_Centros"
           },
           {
             "name": "Id_Costes",
@@ -649,23 +640,17 @@
           {
             "name": "Id_Sociedad",
             "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Id_Sociedad",
-            "isAvailableInMdx": false
+            "sourceColumn": "Id_Sociedad"
           },
           {
             "name": "Id_Sectores",
             "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Id_Sectores",
-            "isAvailableInMdx": false
+            "sourceColumn": "Id_Sectores"
           },
           {
             "name": "Id_Fecha",
             "dataType": "dateTime",
-            "isHidden": true,
-            "sourceColumn": "Id_Fecha",
-            "isAvailableInMdx": false
+            "sourceColumn": "Id_Fecha"
           },
           {
             "name": "Cantidad en UD",
@@ -677,9 +662,7 @@
           {
             "name": "Id_Divisiones",
             "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Id_Divisiones",
-            "isAvailableInMdx": false
+            "sourceColumn": "Id_Divisiones"
           },
           {
             "name": "Id_Ramo",
@@ -701,6 +684,31 @@
             "isHidden": true,
             "sourceColumn": "Id_Atributos_Materiales_PROVISIONAL",
             "isAvailableInMdx": false
+          },
+          {
+            "name": "Id_Atributos_Ramo_PROVISIONAL",
+            "dataType": "int64",
+            "sourceColumn": "Id_Atributos_Ramo_PROVISIONAL"
+          },
+          {
+            "name": "Id_Personal 1",
+            "dataType": "int64",
+            "sourceColumn": "Id_Personal 1"
+          },
+          {
+            "name": "Id_Personal 2",
+            "dataType": "int64",
+            "sourceColumn": "Id_Personal 2"
+          },
+          {
+            "name": "Id_Proveedor 1",
+            "dataType": "int64",
+            "sourceColumn": "Id_Proveedor 1"
+          },
+          {
+            "name": "Id_Proveedor 2",
+            "dataType": "int64",
+            "sourceColumn": "Id_Proveedor 2"
           }
         ],
         "partitions": [
@@ -3112,6 +3120,11 @@
             "name": "País",
             "dataType": "string",
             "sourceColumn": "País"
+          },
+          {
+            "name": "Agrupacion Zonas",
+            "dataType": "string",
+            "sourceColumn": "Agrupacion Zonas"
           }
         ],
         "partitions": [
@@ -4183,6 +4196,31 @@
             "isHidden": true,
             "sourceColumn": "Id_Atributos_Materiales_PROVISIONAL",
             "isAvailableInMdx": false
+          },
+          {
+            "name": "Id_Atributos_Ramo_PROVISIONAL",
+            "dataType": "int64",
+            "sourceColumn": "Id_Atributos_Ramo_PROVISIONAL"
+          },
+          {
+            "name": "Id_Personal 1",
+            "dataType": "int64",
+            "sourceColumn": "Id_Personal 1"
+          },
+          {
+            "name": "Id_Personal 2",
+            "dataType": "int64",
+            "sourceColumn": "Id_Personal 2"
+          },
+          {
+            "name": "Id_Proveedor 1",
+            "dataType": "int64",
+            "sourceColumn": "Id_Proveedor 1"
+          },
+          {
+            "name": "Id_Proveedor 2",
+            "dataType": "int64",
+            "sourceColumn": "Id_Proveedor 2"
           }
         ],
         "partitions": [
@@ -7611,6 +7649,104 @@
             }
           }
         ]
+      },
+      {
+        "name": "dim Personal",
+        "columns": [
+          {
+            "name": "Id_Personal",
+            "dataType": "int64",
+            "sourceColumn": "Id_Personal"
+          },
+          {
+            "name": "BK_MANDT",
+            "dataType": "string",
+            "sourceColumn": "BK_MANDT"
+          },
+          {
+            "name": "BK_PERSONAL",
+            "dataType": "string",
+            "sourceColumn": "BK_PERSONAL"
+          },
+          {
+            "name": "Apellidos Nombre",
+            "dataType": "string",
+            "sourceColumn": "Apellidos Nombre"
+          },
+          {
+            "name": "Nombre Completo",
+            "dataType": "string",
+            "sourceColumn": "Nombre Completo",
+            "sortByColumn": "BK_PERSONAL"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
+                "    dim_Personal = Source{[Schema=\"dim\",Item=\"Personal\"]}[Data]",
+                "in",
+                "    dim_Personal"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim Proveedores",
+        "columns": [
+          {
+            "name": "Id_Proveedores",
+            "dataType": "int64",
+            "sourceColumn": "Id_Proveedores"
+          },
+          {
+            "name": "BK_MANDT",
+            "dataType": "string",
+            "sourceColumn": "BK_MANDT"
+          },
+          {
+            "name": "BK_PROVEEDOR",
+            "dataType": "string",
+            "sourceColumn": "BK_PROVEEDOR"
+          },
+          {
+            "name": "Nombre",
+            "dataType": "string",
+            "sourceColumn": "Nombre"
+          },
+          {
+            "name": "Poblacion",
+            "dataType": "string",
+            "sourceColumn": "Poblacion"
+          },
+          {
+            "name": "Zona Transporte",
+            "dataType": "string",
+            "sourceColumn": "Zona Transporte"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
+                "    dim_Proveedores = Source{[Schema=\"dim\",Item=\"Proveedores\"]}[Data]",
+                "in",
+                "    dim_Proveedores"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -7825,6 +7961,66 @@
         "fromColumn": "Id_Atributos_Materiales_PROVISIONAL",
         "toTable": "dim Provisional_Atributos_Materiales_Costes",
         "toColumn": "Id_Atributos_Materiales_PROVISIONAL"
+      },
+      {
+        "name": "b62c7a07-4d8b-4325-8ef4-ecb68059b924",
+        "fromTable": "fact Costes_Real",
+        "fromColumn": "Id_Personal 1",
+        "toTable": "dim Personal",
+        "toColumn": "Id_Personal"
+      },
+      {
+        "name": "223c7082-dcc1-4233-a9fe-a656f544b25a",
+        "fromTable": "fact Costes_Real",
+        "fromColumn": "Id_Personal 2",
+        "toTable": "dim Personal",
+        "toColumn": "Id_Personal",
+        "isActive": false
+      },
+      {
+        "name": "d100e673-c5c9-4eca-8472-ee983f4b0ee1",
+        "fromTable": "fact Costes_Real",
+        "fromColumn": "Id_Proveedor 1",
+        "toTable": "dim Proveedores",
+        "toColumn": "Id_Proveedores"
+      },
+      {
+        "name": "b6fafa30-4ec2-4328-9fd9-6f49123864af",
+        "fromTable": "fact Costes_Real",
+        "fromColumn": "Id_Proveedor 2",
+        "toTable": "dim Proveedores",
+        "toColumn": "Id_Proveedores",
+        "isActive": false
+      },
+      {
+        "name": "28503094-5e29-42ed-a623-55a311ca7d0f",
+        "fromTable": "fact Costes_Plan",
+        "fromColumn": "Id_Personal 1",
+        "toTable": "dim Personal",
+        "toColumn": "Id_Personal"
+      },
+      {
+        "name": "99c5d10b-4d4b-48c1-8c70-ed3e7c2eb696",
+        "fromTable": "fact Costes_Plan",
+        "fromColumn": "Id_Personal 2",
+        "toTable": "dim Personal",
+        "toColumn": "Id_Personal",
+        "isActive": false
+      },
+      {
+        "name": "6deaa47d-ad1e-4c55-8fa6-35e863c894e3",
+        "fromTable": "fact Costes_Plan",
+        "fromColumn": "Id_Proveedor 1",
+        "toTable": "dim Proveedores",
+        "toColumn": "Id_Proveedores"
+      },
+      {
+        "name": "f3e8857b-bde0-4c84-b146-07fcc694760d",
+        "fromTable": "fact Costes_Plan",
+        "fromColumn": "Id_Proveedor 2",
+        "toTable": "dim Proveedores",
+        "toColumn": "Id_Proveedores",
+        "isActive": false
       }
     ],
     "annotations": [
