@@ -11,17 +11,17 @@
         "connectionDetails": {
           "protocol": "tds",
           "address": {
-            "server": "POWERBI\\DWHPOWERBI",
+            "server": "POWERBIPROD\\DWHPOWERBI",
             "database": "DWH_CLP"
           },
           "authentication": null,
           "query": null
         },
         "credential": {
-          "AuthenticationKind": "UsernamePassword",
+          "AuthenticationKind": "Windows",
           "kind": "SQL",
-          "path": "powerbi\\dwhpowerbi;DWH_CLP",
-          "Username": "serviciospowerbi",
+          "path": "powerbiprod\\dwhpowerbi;DWH_CLP",
+          "Username": "SERVIDOR\\Administrador",
           "EncryptConnection": false,
           "PrivacySetting": "Organizational"
         }
@@ -31,83 +31,6 @@
       {
         "name": "fact Costes_Real",
         "columns": [
-          {
-            "name": "CLV_Mandante",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Mandante",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Tipo de moneda para una sociedad PA",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Tipo de moneda para una sociedad PA",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Clase de operación",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Clase de operación",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Versión plan (CO-PA)",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Versión plan (CO-PA)",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Período/Año",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Período/Año",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Número para objetos PA (CO-PA)",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Número para objetos PA (CO-PA)",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Historial de modificación para objetos PA (CO-PA)",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Historial de modificación para objetos PA (CO-PA)",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Nº de documento del cálculo de resultados de prtd.individual",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Nº de documento del cálculo de resultados de prtd.individual",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Número de posición de la cuenta de resultados de PI",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Número de posición de la cuenta de resultados de PI",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "T/C de conversión de mon. de área de resultados -> mon. soc.",
-            "dataType": "double",
-            "isHidden": true,
-            "sourceColumn": "T/C de conversión de mon. de área de resultados -> mon. soc.",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "T/C de conversión de mon. del área de resultados -> mon. gp.",
-            "dataType": "double",
-            "isHidden": true,
-            "sourceColumn": "T/C de conversión de mon. del área de resultados -> mon. gp.",
-            "isAvailableInMdx": false
-          },
           {
             "name": "Coste Producto",
             "dataType": "double",
@@ -686,11 +609,6 @@
             "isAvailableInMdx": false
           },
           {
-            "name": "Id_Atributos_Ramo_PROVISIONAL",
-            "dataType": "int64",
-            "sourceColumn": "Id_Atributos_Ramo_PROVISIONAL"
-          },
-          {
             "name": "Id_Personal 1",
             "dataType": "int64",
             "sourceColumn": "Id_Personal 1"
@@ -720,9 +638,10 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
-                "    fact_Costes_Real = Source{[Schema=\"fact\",Item=\"Costes_Real\"]}[Data]",
+                "    fact_Costes_Real = Source{[Schema=\"fact\",Item=\"Costes_Real\"]}[Data],",
+                "    #\"Removed Columns\" = Table.RemoveColumns(fact_Costes_Real,{\"CLV_Mandante\", \"CLV_Tipo de moneda para una sociedad PA\", \"CLV_Clase de operación\", \"CLV_Versión plan (CO-PA)\", \"CLV_Período/Año\", \"CLV_Número para objetos PA (CO-PA)\", \"CLV_Historial de modificación para objetos PA (CO-PA)\", \"CLV_Nº de documento del cálculo de resultados de prtd.individual\", \"CLV_Número de posición de la cuenta de resultados de PI\", \"T/C de conversión de mon. de área de resultados -> mon. soc.\", \"T/C de conversión de mon. del área de resultados -> mon. gp.\"})",
                 "in",
-                "    fact_Costes_Real"
+                "    #\"Removed Columns\""
               ]
             }
           }
@@ -951,7 +870,12 @@
           },
           {
             "name": "Ingresos Totales",
-            "expression": " [€ Precio Neto 5000] + [€ Ingresos] + [€ C.Transport. Teorico] + [€ Rec. Multsdad] - [€ Abono Mala Calidad]",
+            "expression": [
+              "[€ Precio Neto 5000] + [€ Ingresos]",
+              "    + [€ C.Transport. Teorico]",
+              "    + [€ Rec. Multsdad]",
+              "    - [€ Abono Mala Calidad]"
+            ],
             "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
             "annotations": [
               {
@@ -980,7 +904,12 @@
           },
           {
             "name": "Venta Neta",
-            "expression": " ( ([Ingresos Totales] - [€ Descuento Ventas]) + [€ Rappels] + [€ Abono Roto montad.] + [€ Abono Mala Calidad] ) - [€ Dtos Rotos Montadora]",
+            "expression": [
+              "( ( [Ingresos Totales] - [€ Descuento Ventas] ) + [€ Rappels]",
+              "    + [€ Abono Roto montad.]",
+              "    + [€ Abono Mala Calidad] )",
+              "    - [€ Dtos Rotos Montadora]"
+            ],
             "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
             "annotations": [
               {
@@ -2423,10 +2352,19 @@
             "name": "Reserva 2 BO",
             "expression": [
               "",
+              "",
+              "/*",
               "CALCULATE (",
               "    SUM ( 'fact Costes_Real'[Reserva 2] ),",
               "    'fact Costes_Real'[CLV_Clase de operación] = \"F\"",
               "        || 'fact Costes_Real'[CLV_Clase de operación] = \"C\"",
+              ")",
+              "*/",
+              "",
+              "CALCULATE (",
+              "    SUM ( 'fact Costes_Real'[Reserva 2] ),",
+              "    'dim Atributos_Costes'[Clase de operación] = \"F\"",
+              "        ||'dim Atributos_Costes'[Clase de operación] = \"C\"",
               ")"
             ],
             "formatString": "#,0.00 \"€\";-#,0.00 \"€\";#,0.00 \"€\"",
@@ -2441,10 +2379,20 @@
             "name": "Condicion Zuni  BO",
             "expression": [
               "",
+              "",
+              "/*",
               "CALCULATE (",
               "    SUM ( 'fact Costes_Real'[Condición Zuni] ),",
               "    'fact Costes_Real'[CLV_Clase de operación] = \"F\"",
               "        || 'fact Costes_Real'[CLV_Clase de operación] = \"C\"",
+              ")",
+              "*/",
+              "",
+              "",
+              "CALCULATE (",
+              "    SUM ( 'fact Costes_Real'[Condición Zuni] ),",
+              "    'dim Atributos_Costes'[Clase de operación] = \"F\"",
+              "        || 'dim Atributos_Costes'[Clase de operación] = \"C\"",
               ")"
             ]
           },
@@ -2506,14 +2454,14 @@
           },
           {
             "name": "Venta Neta BO",
-            "expression": " ( ([Ingresos Totales BO UNI] - [€ Descuento Ventas]) + [€ Rappels] + [€ Abono Roto montad.] + [€ Abono Mala Calidad] ) - [€ Dtos Rotos Montadora]",
-            "formatString": "#,0.00 \"€\";-#,0.00 \"€\";#,0.00 \"€\"",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"3082\" DisplayName=\"€ Spanish (Spain)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
-              }
-            ]
+            "expression": [
+              "( ( [Ingresos Totales BO UNI] - [€ Descuento Ventas] )",
+              "    + [€ Rappels]",
+              "    + [€ Abono Roto montad.]",
+              "    + [€ Abono Mala Calidad] )",
+              "    - [€ Dtos Rotos Montadora]"
+            ],
+            "formatString": "#,##0"
           },
           {
             "name": "Pr. Estandar BO",
@@ -2528,7 +2476,10 @@
           },
           {
             "name": "Ingresos Totales BO UNI",
-            "expression": " [€ Ingresos] + [€ C.Transport. Teorico] + [€ Rec. Multsdad] - [€ Abono Mala Calidad]"
+            "expression": [
+              "[€ Ingresos] + [€ C.Transport. Teorico] + [€ Rec. Multsdad]",
+              "    - [€ Abono Mala Calidad]"
+            ]
           },
           {
             "name": "% Margen Final BO UNI",
@@ -2658,16 +2609,17 @@
           },
           {
             "name": "Total Real Vs Plan (m2)",
-            "expression": "[Total Cantidad M2 (Real)]-[Total Cantidad M2 (Plan)]"
+            "expression": "[Total Cantidad M2 (Real)]-[Total Cantidad M2 (Plan)]",
+            "formatString": "#,##0"
           },
           {
-            "name": "Total Real vs Plan (€)",
+            "name": "----- Elimiar-----Total Real vs Plan (€)",
             "expression": "[Ingresos Totales]-[Ingresos Totales Plan]"
           },
           {
             "name": "% Margen Final BO (No Hierar)",
             "expression": [
-              "VAR _Margen = DIVIDE( [Margen Final BO], [Venta Neta], BLANK( ) )",
+              "",
               "VAR _Result =",
               "    SWITCH(",
               "        TRUE( ),",
@@ -2677,31 +2629,22 @@
               "        ),",
               "            BLANK( ),",
               "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
-              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
               "        ),",
               "            BLANK( ),",
-              "        _Margen",
+              "        --[% Margen Final BO]",
+              "        [Resultado % Margen Final VAR]",
               "    )",
               "RETURN",
               "    _Result"
             ],
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "Metricas Jerarquia Ramos"
           },
           {
             "name": "Total Cantidad M2 (Real) (No Hierar)",
             "expression": [
-              "VAR _Cantidad =",
-              "    CALCULATE(",
-              "        SUM( 'fact Costes_Real'[Cantidad en M2] ),",
-              "        'dim Atributos_Costes'[Clase de operación] = \"F\",",
-              "        'dim Atributos_Costes'[Indicador plan/real] = \"0\",",
-              "        'dim Clientes'[BK_CLIENTE] <> \"\"",
-              "    )",
-              "",
-              "/*  Se incluye el ultimo Filtro de Clientes ya que en los Informes de BO no estan tenido en cuenta los movimientos de M2 que no tienen cliente Asociado ",
-              "     Por ejemplo en el mes de Enero de 2021 hay 119673 m2 no asociados a ningun cliente */",
-              "",
               "",
               "VAR _Result =",
               "    SWITCH(",
@@ -2712,23 +2655,66 @@
               "        ),",
               "            BLANK( ),",
               "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
-              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
               "        ),",
               "            BLANK( ),",
-              "        _Cantidad",
+              "        --[Total Cantidad M2 (Real)]",
+              "        [Resultado Cantidad Real VAR]",
               "    )",
               "RETURN",
-              "    _Result"
+              "    _Result",
+              "    ",
+              "    ",
+              "/*",
+              "VAR _SocBetxi =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        [Total Cantidad M2 (Real)]",
+              "    )",
+              "VAR _SocIgualada=",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        [Total Cantidad UD (Real)]",
+              "    )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", _SocIgualada,",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", _SocBetxi",
+              "    )",
+              "RETURN",
+              "    _Result",
+              "    */"
             ],
-            "formatString": "#,0"
+            "formatString": "#,0",
+            "displayFolder": "Metricas Jerarquia Ramos"
           },
           {
             "name": "Venta Neta (No Hierar)",
             "expression": [
-              "VAR _Venta =",
-              "    ( ( [Ingresos Totales] - [€ Descuento Ventas] ) + [€ Rappels] + [€ Abono Roto montad.] + [€ Abono Mala Calidad] )",
-              "        - [€ Dtos Rotos Montadora]",
+              "",
+              "",
               "VAR _Result =",
               "    SWITCH(",
               "        TRUE( ),",
@@ -2738,16 +2724,60 @@
               "        ),",
               "            BLANK( ),",
               "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
-              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
               "        ),",
               "            BLANK( ),",
-              "        _Venta",
+              "        --[Venta Neta]",
+              "        [Resultado Venta Real VAR]",
               "    )",
               "RETURN",
-              "    _Result"
+              "    _Result",
+              "    ",
+              "/*",
+              " VAR _SocBetxi =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        [Venta Neta]",
+              "    )",
+              " ",
+              " VAR _SocIgualada=",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        [Venta Neta BO]",
+              "    )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", _SocIgualada,",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", _SocBetxi",
+              "    )",
+              "    ",
+              "RETURN _Result",
+              "*/"
             ],
             "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
+            "displayFolder": "Metricas Jerarquia Ramos",
             "annotations": [
               {
                 "name": "Format",
@@ -2757,7 +2787,359 @@
           },
           {
             "name": "Total Venta Neta Real vs Plan (€)",
-            "expression": "[Venta Neta] - [Venta Neta Plan]"
+            "expression": "[Venta Neta] - [Venta Neta Plan]",
+            "formatString": "#,##0 €"
+          },
+          {
+            "name": "% Margen Industrial BO",
+            "expression": [
+              "DIVIDE( [Margen Industrial BO], [Venta Neta], BLANK( ) )",
+              "",
+              "/*",
+              "([Margen Final BO] / [Venta Neta])",
+              "",
+              "*/"
+            ],
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "% Margen Contribucion BO",
+            "expression": [
+              "DIVIDE( [Margen Contribucion BO], [Venta Neta], BLANK( ) )",
+              "",
+              "/*",
+              "([Margen Final BO] / [Venta Neta])",
+              "",
+              "*/"
+            ],
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Total % Venta s. Total Clientes",
+            "expression": [
+              "VAR _TotalClientes =",
+              "    CALCULATE(",
+              "        [Venta Neta],",
+              "        ALLSELECTED( 'dim Clientes' )",
+              "    )",
+              "VAR _Result = DIVIDE( [Venta Neta], _TotalClientes )",
+              "",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "#,##0.00 %"
+          },
+          {
+            "name": "Real vs Real SPLY (m2) (No Hierar)",
+            "expression": [
+              "",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        --[Real vs Real SPLY (m2)]",
+              "        [Resultado Cantidad vs SPLY]",
+              "    )",
+              "RETURN",
+              "    _Result",
+              "    ",
+              "    ",
+              " /*",
+              "",
+              "VAR _SocBetxi =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        [Real vs Real SPLY (m2)]",
+              "    )",
+              "    ",
+              "VAR _SocIgualada =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        [Real vs Real SPLY (ud)]",
+              "    )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", _SocIgualada,",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", _SocBetxi",
+              "    )",
+              "RETURN",
+              "    _Result",
+              "    ",
+              "    */"
+            ],
+            "formatString": "#,##0",
+            "displayFolder": "Metricas Jerarquia Ramos"
+          },
+          {
+            "name": "Real vs Real SPLY (€) (No Hierar)",
+            "expression": [
+              "",
+              "",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "       -- [Real vs Real SPLY (€)]",
+              "        [Resultado Venta vs SPLY]",
+              "    )",
+              "RETURN",
+              "    _Result",
+              "    ",
+              ""
+            ],
+            "formatString": "#,##0",
+            "displayFolder": "Metricas Jerarquia Ramos"
+          },
+          {
+            "name": "Venta Neta Plan (No Hierar)",
+            "expression": [
+              "",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        [Venta Neta Plan]",
+              "        ",
+              "    )",
+              "RETURN",
+              "    _Result",
+              "    ",
+              ""
+            ],
+            "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
+            "displayFolder": "Metricas Jerarquia Ramos",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"3082\" DisplayName=\"€ Spanish (Spain)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Total Cantidad M2 (Plan) (No Hierar)",
+            "expression": [
+              "",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        --[Total Cantidad M2 (Plan)]",
+              "        [Resultado Cantidad Plan VAR]",
+              "    )",
+              "",
+              "RETURN",
+              "    _Result",
+              "    ",
+              "/*",
+              "VAR _SocBetxi =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        [Total Cantidad M2 (Plan)]",
+              "    )",
+              "VAR _SocIgualada =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        [Total Cantidad UD (Plan)]",
+              "    )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", _SocIgualada,",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", _SocBetxi",
+              "    )",
+              "RETURN",
+              "    _Result",
+              "    ",
+              "    */"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Metricas Jerarquia Ramos"
+          },
+          {
+            "name": "Total Real Vs Plan (m2) (No Hierar)",
+            "expression": [
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        --[Total Real Vs Plan (m2)]",
+              "        [Resultado Cantidad Real vs Plan VAR]",
+              "    )",
+              "    ",
+              "RETURN _Result"
+            ],
+            "formatString": "#,##0",
+            "displayFolder": "Metricas Jerarquia Ramos"
+          },
+          {
+            "name": "Total Venta Neta Real vs Plan (€) (No Hierar)",
+            "expression": [
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        --[Total Venta Neta Real vs Plan (€)]",
+              "        [Resultado Venta Real vs Plan VAR]",
+              "    )",
+              "    ",
+              "RETURN _Result"
+            ],
+            "formatString": "#,##0 €",
+            "displayFolder": "Metricas Jerarquia Ramos"
+          },
+          {
+            "name": "% Margen Contribucion BO (No Hierar)",
+            "expression": [
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "            ",
+              "        [% Margen Contribucion BO]",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "Metricas Jerarquia Ramos"
+          },
+          {
+            "name": "% Margen Industrial BO (No Hierar)",
+            "expression": [
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        AND(",
+              "            ISINSCOPE( Ramo_Industrial[Descripcion Ramo] ),",
+              "            ISBLANK( VALUES( Ramo_Industrial[Descripcion Ramo] ) )",
+              "        ),",
+              "            BLANK( ),",
+              "        [% Margen Industrial BO]",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "Metricas Jerarquia Ramos"
+          },
+          {
+            "name": "Total Real Vs Plan (ud)",
+            "expression": "[Total Cantidad UD (Real)]-[Total Cantidad UD (Plan)]",
+            "formatString": "#,##0"
+          },
+          {
+            "name": "Total Venta Neta Real vs Plan (€) UNI",
+            "expression": "[Venta Neta BO] - [Venta Neta Plan]",
+            "formatString": "#,##0 €"
           }
         ]
       },
@@ -3119,12 +3501,18 @@
           {
             "name": "País",
             "dataType": "string",
-            "sourceColumn": "País"
+            "sourceColumn": "País",
+            "sortByColumn": "BK_PAIS"
           },
           {
             "name": "Agrupacion Zonas",
             "dataType": "string",
             "sourceColumn": "Agrupacion Zonas"
+          },
+          {
+            "name": "Provincia1",
+            "dataType": "string",
+            "sourceColumn": "Provincia1"
           }
         ],
         "partitions": [
@@ -3136,9 +3524,11 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
-                "    dim_Zona_Ventas = Source{[Schema=\"dim\",Item=\"Zona_Ventas\"]}[Data]",
+                "    dim_Zona_Ventas = Source{[Schema=\"dim\",Item=\"Zona_Ventas\"]}[Data],",
+                "    #\"Duplicated Column\" = Table.DuplicateColumn(dim_Zona_Ventas, \"Provincia\", \"Provincia - Copy\"),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Duplicated Column\",{{\"Provincia - Copy\", \"Provincia1\"}})",
                 "in",
-                "    dim_Zona_Ventas"
+                "    #\"Renamed Columns\""
               ]
             }
           }
@@ -3154,8 +3544,13 @@
               },
               {
                 "name": "Provincia",
-                "ordinal": 1,
+                "ordinal": 2,
                 "column": "Provincia"
+              },
+              {
+                "name": "Agrupacion Zonas",
+                "ordinal": 1,
+                "column": "Agrupacion Zonas"
               }
             ]
           }
@@ -3358,7 +3753,6 @@
             "name": "MesNro",
             "dataType": "int64",
             "isNameInferred": true,
-            "isDataTypeInferred": false,
             "sourceColumn": "[MesNro]",
             "summarizeBy": "none"
           },
@@ -3367,7 +3761,6 @@
             "name": "TrimNro",
             "dataType": "double",
             "isNameInferred": true,
-            "isDataTypeInferred": false,
             "sourceColumn": "[TrimNro]",
             "summarizeBy": "none"
           },
@@ -3552,62 +3945,6 @@
       {
         "name": "fact Costes_Plan",
         "columns": [
-          {
-            "name": "CLV_Mandante",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Mandante",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Tipo de moneda para una sociedad PA",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Tipo de moneda para una sociedad PA",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Clase de operación",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Clase de operación",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Versión plan (CO-PA)",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Versión plan (CO-PA)",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Período/Año",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Período/Año",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Número para objetos PA (CO-PA)",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Número para objetos PA (CO-PA)",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Historial de modificación para objetos PA (CO-PA)",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Historial de modificación para objetos PA (CO-PA)",
-            "isAvailableInMdx": false
-          },
-          {
-            "name": "CLV_Nº de documento del cálculo de resultados de prtd.individual",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "CLV_Nº de documento del cálculo de resultados de prtd.individual",
-            "isAvailableInMdx": false
-          },
           {
             "name": "Coste Producto",
             "dataType": "double",
@@ -4198,11 +4535,6 @@
             "isAvailableInMdx": false
           },
           {
-            "name": "Id_Atributos_Ramo_PROVISIONAL",
-            "dataType": "int64",
-            "sourceColumn": "Id_Atributos_Ramo_PROVISIONAL"
-          },
-          {
             "name": "Id_Personal 1",
             "dataType": "int64",
             "sourceColumn": "Id_Personal 1"
@@ -4232,9 +4564,10 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
-                "    fact_Costes_Plan = Source{[Schema=\"fact\",Item=\"Costes_Plan\"]}[Data]",
+                "    fact_Costes_Plan = Source{[Schema=\"fact\",Item=\"Costes_Plan\"]}[Data],",
+                "    #\"Removed Columns\" = Table.RemoveColumns(fact_Costes_Plan,{\"CLV_Mandante\", \"CLV_Tipo de moneda para una sociedad PA\", \"CLV_Clase de operación\", \"CLV_Versión plan (CO-PA)\", \"CLV_Período/Año\", \"CLV_Número para objetos PA (CO-PA)\", \"CLV_Historial de modificación para objetos PA (CO-PA)\", \"CLV_Nº de documento del cálculo de resultados de prtd.individual\"})",
                 "in",
-                "    fact_Costes_Plan"
+                "    #\"Removed Columns\""
               ]
             }
           }
@@ -5076,79 +5409,31 @@
           {
             "name": "Total Cantidad UD (Plan)",
             "expression": [
-              "",
-              "CALCULATE (",
-              "    SUM ( 'fact Costes_Plan'[Volumen de ventas] ),",
-              "    'dim Atributos_Costes'[Clase de operación] = \"F\",",
-              "    'dim Atributos_Costes'[Version Plan] = \"000\",",
-              "    'dim Atributos_Costes'[Indicador plan/real] = \"1\"",
-              ")"
-            ],
-            "formatString": "#,0"
-          },
-          {
-            "name": "Venta Neta Plan (No Hierar)",
-            "expression": [
-              "VAR _Ventas =",
-              "    ( ( [Ingresos Totales Plan] - [€ Descuentos Ventas Plan] ) + [€ Rappels Plan] + [€ Abono Roto montad. Plan]",
-              "        + [€ Abono Mala Calidad Plan] )",
-              "        - [€ Dtos Rotos Montadora Plan]",
-              "VAR _Result =",
-              "    SWITCH(",
-              "        TRUE( ),",
-              "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
-              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
-              "        ),",
-              "            BLANK( ),",
-              "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
-              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
-              "        ),",
-              "            BLANK( ),",
-              "        _Ventas",
-              "    )",
-              "RETURN",
-              "    _Result"
-            ],
-            "formatString": "#,0 \"€\";-#,0 \"€\";#,0 \"€\"",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"3082\" DisplayName=\"€ Spanish (Spain)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Total Cantidad M2 (Plan) (No Hierar)",
-            "expression": [
-              "VAR _Nivel2= IF( SELECTEDVALUE( Ramo_Industrial[DescripcionNivel2] ) = \"\", 1, 0 ) ",
-              "",
-              "VAR _Nivel3= IF( SELECTEDVALUE( Ramo_Industrial[DescripcionNivel3] ) = \"\", 1, 0 ) ",
-              "",
-              "VAR _Cantidad =",
+              "/***** Opcion Inicial del Desarrollo ******/",
+              "VAR _Opcion1 =",
               "    CALCULATE(",
-              "        SUM( 'fact Costes_Plan'[Cantidad en M2] ),",
+              "        SUM( 'fact Costes_Plan'[Volumen de ventas] ),",
               "        'dim Atributos_Costes'[Clase de operación] = \"F\",",
               "        'dim Atributos_Costes'[Version Plan] = \"000\",",
               "        'dim Atributos_Costes'[Indicador plan/real] = \"1\"",
               "    )",
-              "VAR _Result =",
-              "    SWITCH(",
-              "        TRUE(),",
-              "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
-              "        _Nivel3 = 1 ),",
-              "    ",
-              "            BLANK( ),",
-              "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
-              "         _Nivel2 = 1 ),",
-              "            BLANK( ),",
-              "        _Cantidad",
+              "",
+              "/***** Opcion Vetnas ZPLAN002B Indicada por Alberto Romero ******/",
+              "VAR _Opcion2 =",
+              "    CALCULATE(",
+              "        SUM( 'fact Costes_Plan'[Volumen de ventas] ),",
+              "        'dim Atributos_Costes'[Clase de operación] = \"F\"",
+              "        || 'dim Atributos_Costes'[Clase de operación] = \"C\"",
+              "        || 'dim Atributos_Costes'[Clase de operación] = \"B\"",
+              "        || 'dim Atributos_Costes'[Clase de operación] = \"V\",",
+              "        'dim Atributos_Costes'[Version Plan] = \"000\",",
+              "        'dim Atributos_Costes'[Indicador plan/real] = \"1\"",
               "    )",
               "RETURN",
-              "    _Result"
+              "    _Opcion2",
+              "    ",
+              "    /*  Se incluye el ultimo Filtro de Clientes ya que en los Informes de BO no estan tenido en cuenta los movimientos de M2 que no tienen cliente Asociado ",
+              "     Por ejemplo en el mes de Enero de 2021 hay 119673 m2 no asociados a ningun cliente */"
             ],
             "formatString": "#,0"
           }
@@ -5211,7 +5496,6 @@
             "name": "Id",
             "dataType": "int64",
             "isNameInferred": false,
-            "isDataTypeInferred": false,
             "sourceColumn": "[Value]"
           },
           {
@@ -5225,9 +5509,11 @@
               "1,\"Venta Neta\",",
               "2,\"M2\",",
               "3,\"UD\",",
-              "4,\"Venta neta \",",
+              "4,\"Venta Neta \",",
               "5,\"% Margen Final\",",
-              "6,\"% Margen Final \"",
+              "6,\"% Margen Final \",",
+              "7,\"Margen Final (€)\",",
+              "8,\"Margen Final (€)\"",
               ")",
               "/*",
               "    IF (",
@@ -5261,7 +5547,7 @@
             "name": "CalculatedTable 1",
             "source": {
               "type": "calculated",
-              "expression": " /* {1,2,3,4,5,6}*/ {1,2,3,4,5,6}"
+              "expression": " /* {1,2,3,4,5,6}*/ {1,2,3,4,5,6,7,8}"
             }
           }
         ],
@@ -5361,11 +5647,27 @@
           {
             "name": "Real  SPLY",
             "expression": [
+              "/**********PRODUCCION***********",
+              "",
               "SWITCH(",
               "    MAX( 'Metricas visuales'[Id] ),",
               "    1, CALCULATE( [Venta Neta], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) ),",
               "    2, CALCULATE( [Total Cantidad M2 (Real)], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) ),",
               "    3, CALCULATE( [Total Cantidad UD (Real)], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) )",
+              "/*,",
+              "    4, CALCULATE([Margen Final],SAMEPERIODLASTYEAR(Fechas[Fecha])) ,",
+              "    5, CALCULATE( [% Margen Final],SAMEPERIODLASTYEAR(Fechas[Fecha]))",
+              "    */",
+              ")",
+              "",
+              "*/",
+              "",
+              "SWITCH(",
+              "    MAX( 'Metricas visuales'[Id] ),",
+              "    1, CALCULATE( [Venta Neta], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) ),",
+              "    2, CALCULATE( [Total Cantidad M2 (Real)], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) ),",
+              "    3, CALCULATE( [Total Cantidad UD (Real)], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) ),",
+              "    4, CALCULATE( [Venta Neta BO], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) )",
               "/*,",
               "    4, CALCULATE([Margen Final],SAMEPERIODLASTYEAR(Fechas[Fecha])) ,",
               "    5, CALCULATE( [% Margen Final],SAMEPERIODLASTYEAR(Fechas[Fecha]))",
@@ -5638,101 +5940,434 @@
               "RETURN",
               "    [Venta Neta] - _SPLY"
             ],
-            "formatString": "#,##0"
+            "formatString": "#,##0 €"
           },
           {
             "name": "Titulo Desglose Zona Geografica",
             "expression": [
               "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
               "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "VAR _TextoA = \"Análisis de \" & _Metricas & \" por Zona Geográfica en \" & _Year",
+              "",
+              "VAR _TextoB = \"Análisis de Clientes por Zona Geográfica en \" & _Year",
+              "",
+              "VAR _Result = IF(ISBLANK( _Metricas ),_TextoB,_TextoA)",
+              "",
+              "",
               "RETURN",
-              "    \"Análisis de \" & _Metricas & \" por Zona Geográfica en \" & _Year"
+              "   _Result  "
             ]
           },
           {
             "name": "Titulo Desglose Ramo Industrial",
             "expression": [
+              "/*",
+              "",
               "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
               "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
               "RETURN",
-              "    \"Análisis de \" & _Metricas & \" por Ramo Industrial en \" & _Year"
+              "    \"Análisis de \" & _Metricas & \" por Ramo Industrial en \" & _Year",
+              "    ",
+              " */",
+              "",
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "VAR _TextoA =",
+              "    \"Análisis de \" & _Metricas & \" por Ramo Industrial en \"",
+              "        & _Year",
+              "VAR _TextoB =",
+              "    \"Análisis de Clientes por Ramo Industrial en \" & _Year",
+              "VAR _Result = IF( ISBLANK( _Metricas ), _TextoB, _TextoA )",
+              "RETURN",
+              "    _Result"
             ]
           },
           {
             "name": "Titulo Desglose Familia",
             "expression": [
+              "/*",
               "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
               "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
               "RETURN",
               "    \"Análisis de \" & _Metricas",
               "        & \" por Familia de Materiales en \"",
-              "        & _Year                       "
+              "        & _Year        ",
+              "        ",
+              " */",
+              "",
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "VAR _TextoA =",
+              "    \"Análisis de \" & _Metricas & \" por Familia de Materiales en \"",
+              "        & _Year",
+              "VAR _TextoB =",
+              "    \"Análisis de Clientes por Familia de Materiales en \" & _Year",
+              "VAR _Result = IF( ISBLANK( _Metricas ), _TextoB, _TextoA )",
+              "RETURN",
+              "    _Result"
             ]
           },
           {
             "name": "Titulo Desglose Sector",
             "expression": [
+              "/*",
               "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
               "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
               "RETURN",
               "    \"Análisis de \" & _Metricas",
               "        & \" por Sectores en \"",
-              "        & _Year                       "
+              "        & _Year                       ",
+              "*/",
+              "",
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "VAR _TextoA =",
+              "    \"Análisis de \" & _Metricas & \" por Sectores en \"",
+              "        & _Year",
+              "VAR _TextoB =",
+              "    \"Análisis de Clientes por Sectores en \" & _Year",
+              "VAR _Result = IF( ISBLANK( _Metricas ), _TextoB, _TextoA )",
+              "RETURN",
+              "    _Result"
             ]
           },
           {
-            "name": "Real vs Real SPLY (€) (No Hierar)",
+            "name": "Margen Real",
             "expression": [
-              "VAR _SPLY = CALCULATE( [Venta Neta], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) )",
+              "SWITCH(",
+              "    MAX( 'Metricas visuales'[Id] ),",
+              "    5, [% Margen Final BO] * 100,",
+              "    6, [% Margen Final BO UNI] * 100,",
+              "    7, [Margen Final BO],",
+              "    8, [Margen Final BO UNI]",
+              ")"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Visualizacion Margenes",
+            "expression": [
+              "/*",
+              "SWITCH(",
+              "    TRUE( ),",
+              "    MAX( 'Metricas visuales'[Id] ) = 1 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 1 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 2 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 2 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 3 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 3 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 4 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 4 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 0,",
+              "    BLANK( )",
+              ")",
+              "*/",
+              "SWITCH(",
+              "    TRUE( ),",
+              "    MAX( 'Metricas visuales'[Id] ) = 5 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 5 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 6 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 6 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 7 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 0,",
+              "    MAX( 'Metricas visuales'[Id] ) = 7 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 8 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "    MAX( 'Metricas visuales'[Id] ) = 8 && SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 0,",
+              "    BLANK( )",
+              ")"
+            ]
+          },
+          {
+            "name": "Resultado Cantidad Plan VAR",
+            "expression": [
               "",
-              "VAR _Result1 = [Venta Neta] - _SPLY",
+              "SWITCH(",
+              "    TRUE( ),",
+              "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", [Total Cantidad UD (Plan)],",
+              "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", [Total Cantidad M2 (Plan)]",
+              ")",
               "",
-              "VAR _Result =",
-              "    SWITCH(",
-              "        TRUE( ),",
-              "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
-              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
-              "        ),",
-              "            BLANK( ),",
-              "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
-              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
-              "        ),",
-              "            BLANK( ),",
-              "        _Result1",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Metricas Variables por Sociedad"
+          },
+          {
+            "name": "Resultado Cantidad Real VAR",
+            "expression": [
+              "SWITCH(",
+              "    TRUE( ),",
+              "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", [Total Cantidad UD (Real)],",
+              "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", [Total Cantidad M2 (Real)]",
+              ")",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Metricas Variables por Sociedad"
+          },
+          {
+            "name": "Resultado Venta Real VAR",
+            "expression": [
+              "",
+              "SWITCH(",
+              "    TRUE( ),",
+              "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", [Venta Neta BO],",
+              "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", [Venta Neta]",
+              "    ",
+              ")",
+              "",
+              ""
+            ],
+            "formatString": "#,##0 €",
+            "displayFolder": "Metricas Variables por Sociedad"
+          },
+          {
+            "name": "Resultado Cantidad Real vs Plan VAR",
+            "expression": [
+              "[Resultado Cantidad Real VAR]",
+              "    - [Resultado Cantidad Plan VAR]"
+            ],
+            "formatString": "#,##0",
+            "displayFolder": "Metricas Variables por Sociedad"
+          },
+          {
+            "name": "Resultado Venta Real vs Plan VAR",
+            "expression": [
+              "",
+              "[Resultado Venta Real VAR]-[Venta Neta Plan]"
+            ],
+            "formatString": "#,##0 €",
+            "displayFolder": "Metricas Variables por Sociedad"
+          },
+          {
+            "name": "Resultado Venta vs SPLY",
+            "expression": [
+              "VAR _SPLY =",
+              "    CALCULATE(",
+              "        [Resultado Venta Real VAR],",
+              "        SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] )",
               "    )",
               "RETURN",
-              "    _Result"
+              "    [Resultado Venta Real VAR] - _SPLY"
+            ],
+            "formatString": "#,##0 €",
+            "displayFolder": "Metricas Variables por Sociedad"
+          },
+          {
+            "name": "Resultado Cantidad vs SPLY",
+            "expression": [
+              "VAR _SPLY =",
+              "    CALCULATE(",
+              "        [Resultado Cantidad Real VAR],",
+              "        SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] )",
+              "    )",
+              "RETURN",
+              "    [Resultado Cantidad Real VAR] - _SPLY"
+            ],
+            "formatString": "#,##0",
+            "displayFolder": "Metricas Variables por Sociedad"
+          },
+          {
+            "name": "Real vs Real SPLY (ud)",
+            "expression": [
+              "VAR _SPLY =",
+              "    CALCULATE(",
+              "        [Total Cantidad UD (Real)],",
+              "        SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] )",
+              "    )",
+              "RETURN",
+              "    [Total Cantidad UD (Real)] - _SPLY"
             ],
             "formatString": "#,##0"
           },
           {
-            "name": "Real vs Real SPLY (m2) (No Hierar)",
+            "name": "Resultado % Margen Final VAR",
             "expression": [
-              "VAR _SPLY = CALCULATE( [Total Cantidad M2 (Real)], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) )",
               "",
-              "VAR _Result1 = [Total Cantidad M2 (Real)] - _SPLY",
+              "SWITCH(",
+              "    TRUE( ),",
+              "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", [% Margen Final BO UNI],",
+              "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", [% Margen Final BO]",
+              ")",
               "",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Metricas Variables por Sociedad"
+          },
+          {
+            "name": "Resultado Plan VAR",
+            "expression": [
+              "/*",
+              "VAR _SELECCION = SWITCH(",
+              "    MAX( 'Metricas visuales'[Id] ),",
+              "    1, [Venta Neta Plan],",
+              "    2, [Total Cantidad M2 (Plan)],",
+              "    3, [Total Cantidad UD (Plan)],",
+              "    4, [Venta Neta Plan]",
+              "/*,",
+              "    3, [Margen Contribucion Plan] ,",
+              "    4, [Margen Final Plan],",
+              "    5, [% Margen Final]",
+              "    */",
+              ")",
+              "",
+              "*/",
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Sociedad =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 2",
+              "    )",
               "VAR _Result =",
               "    SWITCH(",
               "        TRUE( ),",
-              "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel3] ),",
-              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel3] ) )",
-              "        ),",
-              "            BLANK( ),",
-              "        AND(",
-              "            ISINSCOPE( Ramo_Industrial[DescripcionNivel2] ),",
-              "            ISBLANK( VALUES( Ramo_Industrial[DescripcionNivel2] ) )",
-              "        ),",
-              "            BLANK( ),",
-              "        _Result1",
+              "        ISBLANK( _Metricas ),[Venta Neta Plan],",
+              "        ",
+              "        [Resultado Plan]",
               "    )",
               "RETURN",
               "    _Result"
             ],
-            "formatString": "#,##0"
+            "formatString": "#,0"
+          },
+          {
+            "name": "Resultado Real VAR",
+            "expression": [
+              "/*",
+              "VAR _Seleccion =",
+              "    SWITCH(",
+              "        MAX( 'Metricas visuales'[Id] ),",
+              "        1, [Venta Neta],",
+              "        2, [Total Cantidad M2 (Real)],",
+              "        3, [Total Cantidad UD (Real)],",
+              "        4, [Venta Neta BO],",
+              "        5, [% Margen Final BO] * 100,",
+              "        6, [% Margen Final BO UNI] * 100",
+              "    )",
+              "",
+              "VAR _Year = SELECTEDVALUE( 'dim Fechas'[Año] )",
+              "*/",
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Sociedad =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 2",
+              "    )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        ISBLANK( _Metricas ) && _Sociedad = 1, [Venta Neta BO],",
+              "        ISBLANK( _Metricas ) && _Sociedad = 2, [Venta Neta],",
+              "        [Resultado Real]",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Real  SPLY VAR",
+            "expression": [
+              "/*",
+              "SWITCH(",
+              "    MAX( 'Metricas visuales'[Id] ),",
+              "    1, CALCULATE( [Venta Neta], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) ),",
+              "    2, CALCULATE( [Total Cantidad M2 (Real)], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) ),",
+              "    3, CALCULATE( [Total Cantidad UD (Real)], SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] ) )",
+              "/*,",
+              "    4, CALCULATE([Margen Final],SAMEPERIODLASTYEAR(Fechas[Fecha])) ,",
+              "    5, CALCULATE( [% Margen Final],SAMEPERIODLASTYEAR(Fechas[Fecha]))",
+              "    */",
+              ")",
+              "*/",
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Sociedad =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 2",
+              "    )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        ISBLANK( _Metricas ) && _Sociedad = 1, [Venta Neta BO],",
+              "        ISBLANK( _Metricas ) && _Sociedad = 2, [Venta Neta],",
+              "        [Dif SPLY]",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Titulo Desglose Graficos",
+            "expression": [
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        ISBLANK( _Metricas ), \"TOP 10 en Venta Neta\",",
+              "        \"TOP 10 en \" & _Metricas",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ]
+          },
+          {
+            "name": "Titulo Desglose Graficos Historico",
+            "expression": [
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        ISBLANK( _Metricas ), \"Historico Resultados en Venta Neta\",",
+              "        \"Historico Resultados en \" & _Metricas",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ]
+          },
+          {
+            "name": "Titulo Desglose Graficos Crec.",
+            "expression": [
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        ISBLANK( _Metricas ), \"TOP 10 Crecimiento en Venta Neta\",",
+              "        \"TOP 10 Crecimiento en \" & _Metricas",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ]
+          },
+          {
+            "name": "Visual % Margen x100",
+            "expression": [
+              "",
+              "SWITCH(TRUE(),",
+              "\t SELECTEDVALUE('dim Sociedades'[BK_SOCIEDAD])=\"15\",[% Margen Final BO UNI]*100,",
+              "\tSELECTEDVALUE('dim Sociedades'[BK_SOCIEDAD])<>\"15\",[% Margen Final BO]*100",
+              "    ",
+              "\t)",
+              "",
+              ""
+            ],
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Real vs Real SPLY (€) UNI",
+            "expression": [
+              "VAR _SPLY =",
+              "    CALCULATE(",
+              "        [Venta Neta BO],",
+              "        SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] )",
+              "    )",
+              "RETURN",
+              "    [Venta Neta BO] - _SPLY"
+            ],
+            "formatString": "#,##0 €"
           }
         ]
       },
@@ -5771,6 +6406,11 @@
             "name": "Descripcion Sector1",
             "dataType": "string",
             "sourceColumn": "Descripcion Sector"
+          },
+          {
+            "name": "Descripcion Sector2",
+            "dataType": "string",
+            "sourceColumn": "Descripcion Sector2"
           }
         ],
         "partitions": [
@@ -5782,9 +6422,11 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
-                "    dim_Sectores = Source{[Schema=\"dim\",Item=\"Sectores\"]}[Data]",
+                "    dim_Sectores = Source{[Schema=\"dim\",Item=\"Sectores\"]}[Data],",
+                "    #\"Duplicated Column\" = Table.DuplicateColumn(dim_Sectores, \"Descripcion Sector\", \"Descripcion Sector - Copy\"),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Duplicated Column\",{{\"Descripcion Sector - Copy\", \"Descripcion Sector2\"}})",
                 "in",
-                "    dim_Sectores"
+                "    #\"Renamed Columns\""
               ]
             }
           }
@@ -6095,7 +6737,6 @@
             "name": "Id",
             "dataType": "int64",
             "isNameInferred": false,
-            "isDataTypeInferred": false,
             "sourceColumn": "[Value]"
           },
           {
@@ -7435,6 +8076,21 @@
             "name": "DescripcionNivel4",
             "dataType": "string",
             "sourceColumn": "DescripcionNivel4"
+          },
+          {
+            "name": "Descripcion Ramo1",
+            "dataType": "string",
+            "sourceColumn": "Descripcion Ramo1"
+          },
+          {
+            "name": "DescripcionNivel2_2",
+            "dataType": "string",
+            "sourceColumn": "DescripcionNivel2_2"
+          },
+          {
+            "name": "DescripcionNivel3_2",
+            "dataType": "string",
+            "sourceColumn": "DescripcionNivel3_2"
           }
         ],
         "partitions": [
@@ -7447,9 +8103,12 @@
                 "let",
                 "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
                 "    Data = Source{[Schema=\"dim\",Item=\"Ramo_Industrial\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(Data,\"\",null,Replacer.ReplaceValue,{\"Nivel2\", \"DescripcionNivel2\"})",
+                "    #\"Duplicated Column\" = Table.DuplicateColumn(Data, \"Descripcion Ramo\", \"Descripcion Ramo - Copy\"),",
+                "    #\"Duplicated Column1\" = Table.DuplicateColumn(#\"Duplicated Column\", \"DescripcionNivel2\", \"DescripcionNivel2 - Copy\"),",
+                "    #\"Duplicated Column2\" = Table.DuplicateColumn(#\"Duplicated Column1\", \"DescripcionNivel3\", \"DescripcionNivel3 - Copy\"),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Duplicated Column2\",{{\"Descripcion Ramo - Copy\", \"Descripcion Ramo1\"}, {\"DescripcionNivel2 - Copy\", \"DescripcionNivel2_2\"}, {\"DescripcionNivel3 - Copy\", \"DescripcionNivel3_2\"}})",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Renamed Columns\""
               ]
             }
           }
@@ -7631,6 +8290,16 @@
             "name": "Orden Agrupacion Familia",
             "dataType": "int64",
             "sourceColumn": "Orden Agrupacion Familia"
+          },
+          {
+            "name": "Agrupacion Familia1",
+            "dataType": "string",
+            "sourceColumn": "Agrupacion Familia1"
+          },
+          {
+            "name": "Descripcion SubFamilia1",
+            "dataType": "string",
+            "sourceColumn": "Descripcion SubFamilia1"
           }
         ],
         "partitions": [
@@ -7642,9 +8311,12 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/POWERBI\\DWHPOWERBI;DWH_CLP_TEST\",",
-                "    dim_Provisional_Atributos_Materiales_Costes = Source{[Schema=\"dim\",Item=\"Provisional_Atributos_Materiales_Costes\"]}[Data]",
+                "    dim_Provisional_Atributos_Materiales_Costes = Source{[Schema=\"dim\",Item=\"Provisional_Atributos_Materiales_Costes\"]}[Data],",
+                "    #\"Duplicated Column\" = Table.DuplicateColumn(dim_Provisional_Atributos_Materiales_Costes, \"Agrupacion Familia\", \"Agrupacion Familia - Copy\"),",
+                "    #\"Duplicated Column1\" = Table.DuplicateColumn(#\"Duplicated Column\", \"Descripcion SubFamilia\", \"Descripcion SubFamilia - Copy\"),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Duplicated Column1\",{{\"Agrupacion Familia - Copy\", \"Agrupacion Familia1\"}, {\"Descripcion SubFamilia - Copy\", \"Descripcion SubFamilia1\"}})",
                 "in",
-                "    dim_Provisional_Atributos_Materiales_Costes"
+                "    #\"Renamed Columns\""
               ]
             }
           }
@@ -7676,8 +8348,7 @@
           {
             "name": "Nombre Completo",
             "dataType": "string",
-            "sourceColumn": "Nombre Completo",
-            "sortByColumn": "BK_PERSONAL"
+            "sourceColumn": "Nombre Completo"
           }
         ],
         "partitions": [
@@ -7745,6 +8416,150 @@
                 "    dim_Proveedores"
               ]
             }
+          }
+        ]
+      },
+      {
+        "name": "Metricas Variables Sociedad",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "Cant. Plan",
+              "expression": [
+                "SWITCH(",
+                "    TRUE( ),",
+                "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", [Total Cantidad UD (Plan)],",
+                "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", [Total Cantidad M2 (Plan)]",
+                ")"
+              ],
+              "ordinal": 4,
+              "formatStringDefinition": {
+                "expression": "\"#,##0\""
+              }
+            },
+            {
+              "name": "Cant. Real",
+              "expression": [
+                "SWITCH(",
+                "    TRUE( ),",
+                "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", [Total Cantidad UD (Real)],",
+                "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", [Total Cantidad M2 (Real)]",
+                ")"
+              ],
+              "ordinal": 3,
+              "formatStringDefinition": {
+                "expression": "\"#,##0\""
+              }
+            },
+            {
+              "name": "€ Real",
+              "expression": [
+                "SWITCH(",
+                "    TRUE( ),",
+                "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", [Venta Neta BO],",
+                "    SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", [Venta Neta]",
+                "    ",
+                ")"
+              ],
+              "ordinal": 0,
+              "formatStringDefinition": {
+                "expression": "\"#,##0 €\""
+              }
+            },
+            {
+              "name": "€ Plan",
+              "expression": "[Venta Neta Plan]",
+              "ordinal": 1,
+              "formatStringDefinition": {
+                "expression": "\"#,##0 €\""
+              }
+            },
+            {
+              "name": "€ (n-1)",
+              "expression": [
+                "VAR _SPLY =",
+                "    CALCULATE(",
+                "        [Resultado Venta Real VAR],",
+                "        SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] )",
+                "    )",
+                "RETURN",
+                "    [Resultado Venta Real VAR] - _SPLY"
+              ],
+              "ordinal": 2,
+              "formatStringDefinition": {
+                "expression": "\"#,##0 €\""
+              }
+            },
+            {
+              "name": "Cant. (n-1)",
+              "expression": [
+                "VAR _SPLY =",
+                "    CALCULATE(",
+                "        [Resultado Cantidad Real VAR],",
+                "        SAMEPERIODLASTYEAR( 'dim Fechas'[Fecha] )",
+                "    )",
+                "RETURN",
+                "    [Resultado Cantidad Real VAR] - _SPLY"
+              ],
+              "ordinal": 5,
+              "formatStringDefinition": {
+                "expression": "\"#,##0\""
+              }
+            },
+            {
+              "name": "% MF",
+              "expression": "[Visual % Margen]",
+              "ordinal": 6,
+              "formatStringDefinition": {
+                "expression": "\"0.0 %\""
+              }
+            }
+          ]
+        },
+        "columns": [
+          {
+            "name": "Name",
+            "dataType": "string",
+            "sourceColumn": "Name",
+            "sortByColumn": "Ordinal"
+          },
+          {
+            "name": "Ordinal",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Ordinal"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "New Measure",
+            "expression": [
+              "VAR _Metricas = SELECTEDVALUE( 'Metricas visuales'[Metricas] )",
+              "VAR _Sociedad =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) = \"15\", 1,",
+              "        SELECTEDVALUE( 'dim Sociedades'[BK_SOCIEDAD] ) <> \"15\", 2",
+              "    )",
+              "VAR _Result =",
+              "    SWITCH(",
+              "        TRUE( ),",
+              "        ISBLANK( _Metricas ) && _Sociedad = 1, [Venta Neta BO],",
+              "        ISBLANK( _Metricas ) && _Sociedad = 2, [Venta Neta],",
+              "        [Resultado Real]",
+              "    )",
+              "RETURN",
+              "    _Result"
+            ]
           }
         ]
       }
@@ -8023,12 +8838,29 @@
         "isActive": false
       }
     ],
+    "roles": [
+      {
+        "name": "Sector Agricultura",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "SERVIDOR\\serviciospowerbi",
+            "memberId": "S-1-5-21-411202168-1230990733-1847928074-11947"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "dim Sectores",
+            "filterExpression": "'dim Sectores'[BK_CODRAMO] =\"1\""
+          }
+        ]
+      }
+    ],
     "annotations": [
       {
         "name": "ClientCompatibilityLevel",
         "value": "600"
       }
     ]
-  },
-  "id": "SemanticModel"
+  }
 }
