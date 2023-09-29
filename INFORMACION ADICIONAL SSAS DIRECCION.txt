@@ -1,0 +1,8 @@
+INFORMACION ADICIONAL SSAS DIRECCION
+
+El despliegue de este cubo afecta al de Calidad, ya que coge los costes de ventas para los indicadores...
+
+Verificar que el procesado del cubo de calidad es correcto o han cambiado los metadatos.
+
+Para solucionarlo, enlazar el cubo de Calidad con el vubo de ventas (fact costes). Hecho esto se soluciona el error ya que si no, da error de que la tabla esta vacia)
+
