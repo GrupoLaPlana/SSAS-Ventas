@@ -3496,13 +3496,15 @@
           {
             "name": "Provincia",
             "dataType": "string",
-            "sourceColumn": "Provincia"
+            "sourceColumn": "Provincia",
+            "dataCategory": "County"
           },
           {
             "name": "País",
             "dataType": "string",
             "sourceColumn": "País",
-            "sortByColumn": "BK_PAIS"
+            "sortByColumn": "BK_PAIS",
+            "dataCategory": "Country"
           },
           {
             "name": "Agrupacion Zonas",
@@ -3512,7 +3514,8 @@
           {
             "name": "Provincia1",
             "dataType": "string",
-            "sourceColumn": "Provincia1"
+            "sourceColumn": "Provincia1",
+            "dataCategory": "County"
           }
         ],
         "partitions": [
@@ -3753,6 +3756,7 @@
             "name": "MesNro",
             "dataType": "int64",
             "isNameInferred": true,
+            "isDataTypeInferred": false,
             "sourceColumn": "[MesNro]",
             "summarizeBy": "none"
           },
@@ -3761,6 +3765,7 @@
             "name": "TrimNro",
             "dataType": "double",
             "isNameInferred": true,
+            "isDataTypeInferred": false,
             "sourceColumn": "[TrimNro]",
             "summarizeBy": "none"
           },
@@ -4487,7 +4492,6 @@
           {
             "name": "Id_Sociedad",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "Id_Sociedad",
             "isAvailableInMdx": false
           },
@@ -4501,14 +4505,12 @@
           {
             "name": "Id_Fecha",
             "dataType": "dateTime",
-            "isHidden": true,
             "sourceColumn": "Id_Fecha",
             "isAvailableInMdx": false
           },
           {
             "name": "Id_Divisiones",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "Id_Divisiones",
             "isAvailableInMdx": false
           },
@@ -4537,21 +4539,25 @@
           {
             "name": "Id_Personal 1",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Id_Personal 1"
           },
           {
             "name": "Id_Personal 2",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Id_Personal 2"
           },
           {
             "name": "Id_Proveedor 1",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Id_Proveedor 1"
           },
           {
             "name": "Id_Proveedor 2",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Id_Proveedor 2"
           }
         ],
@@ -5467,7 +5473,8 @@
           {
             "name": "Poblacion",
             "dataType": "string",
-            "sourceColumn": "Poblacion"
+            "sourceColumn": "Poblacion",
+            "dataCategory": "City"
           }
         ],
         "partitions": [
@@ -5496,6 +5503,7 @@
             "name": "Id",
             "dataType": "int64",
             "isNameInferred": false,
+            "isDataTypeInferred": false,
             "sourceColumn": "[Value]"
           },
           {
@@ -6737,6 +6745,7 @@
             "name": "Id",
             "dataType": "int64",
             "isNameInferred": false,
+            "isDataTypeInferred": false,
             "sourceColumn": "[Value]"
           },
           {
@@ -8862,5 +8871,6 @@
         "value": "600"
       }
     ]
-  }
+  },
+  "id": "SemanticModel"
 }

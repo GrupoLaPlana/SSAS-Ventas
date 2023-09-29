@@ -2,14 +2,14 @@
   "UseWorkspace": true,
   "WorkspaceConnection": {
     "ConnectionString": "provider=MSOLAP;data source=POWERBI\\DWHPOWERBI",
-    "EncryptedCredentials": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8dSPVpU2J02vnbb0R/upqQAAAAACAAAAAAADZgAAwAAAABAAAACkRXMwwmpOW5FfSFgUJkxoAAAAAASAAACgAAAAEAAAAN0uYqJkmjHaC+mRa+dgX3vQAAAAkyDngzkxNB80Wr/rg1+MZGJTVzxuMgRJOssn/kQZeypswrgrxnVoeaHlUfCj3wvrhat+mHY1nH0H+9+5JZqMFDyy+E0J2trYfpZtsSKNHCHo2UMSsoWLOG5UMBZNbbhVNyhlcOvKLpfI4kVP02pGfe/Mlsir46iHbnaMaaPyeHx/crSr6uxwEdREpHIPE159VSatc90jwVH5IfvVxNO3GBZXr5F3l2o8wzQmgcE5hF26iGzmoBShAB7/sil3Twwr5w/DOqNbnUaX2lstjeGZgRQAAACtBk+UHgJ9FfL7FkySrhsDSdLr/Q=="
+    "EncryptedCredentials": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhjEJTBr46EOJfhAnyPDzvAAAAAACAAAAAAADZgAAwAAAABAAAAD8KIDJTC0VjBQrwjV30Ql7AAAAAASAAACgAAAAEAAAAKkLkE6neBo3tF3pv8KJdmTQAAAADFL37BWpT7Mx1Y7DcEM5JKdDuKTYFZJQq+Jx73RvYSmmq4wdsMTvxiF8gqMac+6lVY9rbXvwbr6Fb+erAFTNIKWppCQUQSv5eGNnKVl6wf48xzyL5NbQlCqeSo0Yb6nJ1LwtTmi6D9/gdKP6D/LPo8b7JkzqIxnWWZR7l+UdX5NOffn0XDx8WNIcKr49+kgeJrqgZna49UVq/svlRldglsi9u+w8gbz1jc88M8L7XnxjJRSbK0FGewpeORcScNgIpG/X1YwvbZ0aY/Mue0eAeBQAAAC0BOUhhQl52m+EUN9Xkjei2FX8DQ=="
   },
   "WorkspaceDatabase": "DWH_CLP_SSAS_DIRECCION_Administrador_0c5e2278-fb20-4d3b-aafc-c285ec05d10e",
   "Deployment": {
-    "TargetConnectionString": "POWERBIPROD\\DWHPOWERBI",
-    "TargetDatabase": "DWH_CLP_SSAS_DIRECCION",
+    "TargetConnectionString": "POWERBI\\DWHPOWERBI",
+    "TargetDatabase": "DWH_CLP_SSAS_DIRECCION_Administrador_0c5e2278-fb20-4d3b-aafc-c285ec05d10e",
     "TargetCredentials": {
-      "EncryptedPassword": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8dSPVpU2J02vnbb0R/upqQAAAAACAAAAAAADZgAAwAAAABAAAAD3VxthW+YVENuVuoaCR1vgAAAAAASAAACgAAAAEAAAAK5TKeVVrSMRtXyIqB6VWgogAAAA+2tiVKOt59qlp4QGuAtjRb3SqR/BiBsOp8WHr2aMCpYUAAAAH6wB+T/thP6I5go3N3ybqGQqf5I=",
+      "EncryptedPassword": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhjEJTBr46EOJfhAnyPDzvAAAAAACAAAAAAADZgAAwAAAABAAAADNJ/zGnUsBGMpqv5bVpMZeAAAAAASAAACgAAAAEAAAAIXZLLoFJ7uCJFOe249QwCEgAAAATWc6wYv5sr2OXEPpkS+G/1q/wHlvxdTqG6vFEpjgCU0UAAAADqr+JsFbske0JViHG5hXY+yEn3w=",
       "UserName": "SERVIDOR\\Administrador"
     },
     "DeployDataSources": true,
@@ -23,7 +23,7 @@
       "Username": "SERVIDOR\\Administrador",
       "Password": {
         "Encryption": "UserKey",
-        "EncryptedString": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8dSPVpU2J02vnbb0R/upqQAAAAACAAAAAAADZgAAwAAAABAAAAAwQlVM8E8zBIMPKxcyEEcQAAAAAASAAACgAAAAEAAAAIivSbjI/VuRHt+2IgZojFogAAAADLa3akOuoECwfdoBb4r3WbBTufqhw7mu3vzk0QHFBycUAAAAPOpfP73HyoGziWRMEEyJCOymvJ4="
+        "EncryptedString": "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhjEJTBr46EOJfhAnyPDzvAAAAAACAAAAAAADZgAAwAAAABAAAACpPNbunV+ZXBfrLcoMSYUDAAAAAASAAACgAAAAEAAAAIwDUqPOQ7Unp9hgvI4kWjQgAAAAoSF9D4rWYyLea3ZGvvJC1nNKdwUjPf6G3CFfUm2MaWMUAAAA9rvBH+hB8w86WW5BNv0Q+08aHEg="
       }
     }
   }
